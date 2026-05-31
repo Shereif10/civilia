@@ -1,0 +1,95 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --font-civilia: "George Town", "Cormorant Garamond", Georgia, serif;
+  --paper: #fffdfa;
+  --red: #cd1417;
+  --ink: #181818;
+  --cream: #fef7ec;
+}
+
+* {
+  box-sizing: border-box;
+  font-family: var(--font-civilia);
+}
+
+html {
+  scroll-behavior: smooth;
+  background: var(--paper);
+}
+
+body {
+  margin: 0;
+  background: var(--paper);
+  color: var(--ink);
+  font-family: var(--font-civilia);
+  letter-spacing: 0;
+  overflow-x: hidden;
+}
+
+button,
+input,
+textarea {
+  font: inherit;
+}
+
+button,
+a {
+  -webkit-tap-highlight-color: transparent;
+}
+
+::selection {
+  background: var(--red);
+  color: white;
+}
+
+.container-civilia {
+  width: min(calc(100% - 32px), 1152px);
+  margin-inline: auto;
+}
+
+@media (min-width: 768px) {
+  .container-civilia {
+    width: min( 1152px);
+  }
+}
+
+p,
+h1,
+h2,
+h3,
+a,
+span {
+  overflow-wrap: anywhere;
+}
+
+.civilia-gradient-card {
+  border: 3px solid rgba(0, 0, 0, 0.05);
+  background: linear-gradient(90deg, rgba(255, 255, 255, 0.25), rgba(200, 125, 7, 0));
+  backdrop-filter: blur(50px);
+}
+
+.grain-bg {
+  background:
+    radial-gradient(circle at 18% 12%, rgba(205, 20, 23, 0.08), transparent 30%),
+    linear-gradient(180deg, #fffdfa 0%, #f9f4ec 58%, #fffdfa 100%);
+}
+
+.rounded-civilia {
+  border-radius: 8px 8px 8px 96px;
+}
+
+.rounded-civilia-reverse {
+  border-radius: 8px 8px 96px 8px;
+}
+
+.civilia-soft-gradient {
+  background: linear-gradient(
+    90deg,
+    #fffcfa 0%,
+    #fff3e1 50%,
+    #fffcfa 100%
+  );
+}
