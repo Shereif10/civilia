@@ -2,8 +2,93 @@
 @tailwind components;
 @tailwind utilities;
 
+/* =========================
+   Georgetown
+========================= */
+
+@font-face {
+  font-family: "Georgetown";
+  src: url("/fonts/GEORGETOWN-THIN.TTF") format("truetype");
+  font-weight: 100;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Georgetown";
+  src: url("/fonts/GEORGETOWN-EXTRALIGHT.TTF") format("truetype");
+  font-weight: 200;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Georgetown";
+  src: url("/fonts/GEORGETOWN-LIGHT.TTF") format("truetype");
+  font-weight: 300;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Georgetown";
+  src: url("/fonts/GEORGETOWN-REGULAR.TTF") format("truetype");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Georgetown";
+  src: url("/fonts/GEORGETOWN-MEDIUM.TTF") format("truetype");
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Georgetown";
+  src: url("/fonts/GEORGETOWN-SEMIBOLD.TTF") format("truetype");
+  font-weight: 600;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* =========================
+   Benton Sans
+========================= */
+
+@font-face {
+  font-family: "BentonSans";
+  src: url("/fonts/BENTONSANS-BOLD.TTF") format("truetype");
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "BentonSans";
+  src: url("/fonts/BENTONSANS-BLACK.TTF") format("truetype");
+  font-weight: 900;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* =========================
+   Badgline
+========================= */
+
+@font-face {
+  font-family: "Badgline";
+  src: url("/fonts/BADGLINE.OTF") format("opentype");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
 :root {
-  --font-civilia: "George Town", "Cormorant Garamond", Georgia, serif;
+  --font-civilia: "Georgetown", serif;
+
   --paper: #fffdfa;
   --red: #cd1417;
   --ink: #181818;
@@ -12,7 +97,6 @@
 
 * {
   box-sizing: border-box;
-  font-family: var(--font-civilia);
 }
 
 html {
@@ -52,7 +136,7 @@ a {
 
 @media (min-width: 768px) {
   .container-civilia {
-    width: min( 1152px);
+    width: 1152px;
   }
 }
 
@@ -67,13 +151,21 @@ span {
 
 .civilia-gradient-card {
   border: 3px solid rgba(0, 0, 0, 0.05);
-  background: linear-gradient(90deg, rgba(255, 255, 255, 0.25), rgba(200, 125, 7, 0));
+  background: linear-gradient(
+    90deg,
+    rgba(255, 255, 255, 0.25),
+    rgba(200, 125, 7, 0)
+  );
   backdrop-filter: blur(50px);
 }
 
 .grain-bg {
   background:
-    radial-gradient(circle at 18% 12%, rgba(205, 20, 23, 0.08), transparent 30%),
+    radial-gradient(
+      circle at 18% 12%,
+      rgba(205, 20, 23, 0.08),
+      transparent 30%
+    ),
     linear-gradient(180deg, #fffdfa 0%, #f9f4ec 58%, #fffdfa 100%);
 }
 

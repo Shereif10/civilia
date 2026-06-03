@@ -5,7 +5,10 @@ export function ProjectOverviewSection() {
         data-animate="fade-up"
         className="mx-auto rounded-[32px] bg-[#F0E459] px-16 py-20"
       >
-        <h2 className="text-center text-[72px] font-light leading-none text-[#1D2D8C] md:text-[80px]">
+        <h2
+          className="text-center text-[72px] font-light leading-none text-[#031286] md:text-[80px]"
+          style={{ fontFamily: "Badgline", fontSize: "80px" }}
+        >
           Project Overview
         </h2>
 

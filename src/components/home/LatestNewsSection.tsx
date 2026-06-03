@@ -6,7 +6,7 @@ import { newsItems } from "@/lib/data";
 export function LatestNewsSection() {
   return (
     <section id="news" className="bg-civilia-paper py-16 md:py-24">
-      <SectionTitle className="mx-auto w-full max-w-[1280px]">Latest News & Articles</SectionTitle>
+      <SectionTitle className="mx-auto w-full">Latest News & Articles</SectionTitle>
 
       <div className="container-civilia mt-16 grid gap-8 md:grid-cols-[1fr_410px_1fr]" data-animate="stagger">
         {newsItems.map((item, index) => (

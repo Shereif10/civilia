@@ -3,13 +3,19 @@
 import { useState } from "react";
 import { ChevronDown } from "lucide-react";
 
+type AccordionItem = {
+  question: string;
+  answer: string;
+};
+
 type AccordionListProps = {
-  items: string[];
+  items: AccordionItem[];
   variant?: "default" | "project";
 };
 
 export function AccordionList({ items, variant }: AccordionListProps) {
   const [openIndex, setOpenIndex] = useState<number | null>(0);
+
   const isProject = variant === "project";
 
   return (
@@ -19,7 +25,7 @@ export function AccordionList({ items, variant }: AccordionListProps) {
 
         return (
           <button
-            key={item}
+            key={item.question}
             type="button"
             onClick={() => setOpenIndex(isOpen ? null : index)}
             className={`group rounded-[8px] p-5 text-left transition duration-300 md:p-8 ${
@@ -31,14 +37,16 @@ export function AccordionList({ items, variant }: AccordionListProps) {
           >
             <span className="flex items-center gap-5">
               <span className="flex-1 text-base leading-normal md:text-[22px] md:leading-[1.5]">
-                {item}
+                {item.question}
               </span>
+
               <ChevronDown
                 className={`h-6 w-6 shrink-0 transition duration-300 ${
                   isOpen ? "rotate-180" : ""
-                } ${isProject ? "text-white" : "text-white"}`}
+                }`}
               />
             </span>
+
             <span
               className={`grid transition-[grid-template-rows,opacity,margin] duration-300 ${
                 isOpen
@@ -51,10 +59,7 @@ export function AccordionList({ items, variant }: AccordionListProps) {
                   isProject ? "text-white/80" : "text-white/78"
                 }`}
               >
-                {" "}
-                CIVILIA combines construction discipline, consultant
-                partnerships, and transparent delivery milestones to create
-                reliable long-term communities.
+                {item.answer}
               </span>
             </span>
           </button>

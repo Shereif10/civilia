@@ -28,8 +28,8 @@ export default function ProjectsPage() {
     <GsapProvider>
       <main className="overflow-hidden bg-civilia-paper text-civilia-ink">
         <ReusableHeroSection variant="projects" />
-        <CivWestStatsSection />
         <ProjectOverviewSection />
+        <CivWestStatsSection />
         <FeaturesAmenitiesSection />
         <LatestProjectSection />
         <ProjectIntroBanner />

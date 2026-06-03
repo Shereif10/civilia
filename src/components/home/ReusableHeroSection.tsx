@@ -38,7 +38,7 @@ const heroContent = {
     showContent: true,
     roundedBottom: true,
     overlay:
-      "bg-[linear-gradient(90deg,rgba(24,24,24,0.28)_0%,rgba(24,24,24,0.10)_40%,rgba(24,24,24,0)_75%)]",
+      "bg-[linear-gradient(262.09deg,rgba(255,255,255,0)_-0.07%,rgba(0,0,0,0.5)_100%)]",
   },
 } as const;
 
@@ -87,9 +87,9 @@ export function ReusableHeroSection({ variant = "about" }: HeroSectionProps) {
 
       {variant === "careers" && (
         <div className="container-civilia relative z-20 flex min-h-[720px] items-center md:min-h-[860px]">
-          <div className="max-w-[760px] pt-24 md:pt-32">
+          <div className="max-w-[1280px] pt-24 md:pt-32">
             <div data-animate="fade-up">
-              <h1 className="text-[64px] font-semibold uppercase leading-[0.9] tracking-[-2px] text-white md:text-[120px] md:tracking-[-4px]">
+              <h1 className="text-[64px] font-semibold uppercase leading-[0.9] tracking-[-2px] text-[#f3f3f3] md:text-[120px] md:tracking-[-4px]">
                 <span className="block">{content.title[0]}</span>
                 <span className="block">{content.title[1]}</span>
               </h1>
@@ -98,7 +98,7 @@ export function ReusableHeroSection({ variant = "about" }: HeroSectionProps) {
                 {content.subtitle}
               </p>
 
-              <p className="mt-3 text-[20px] leading-[1.4] text-white md:text-[32px]">
+              <p className="mt-3 text-[20px] leading-[1.4] text-[#f3f3f3] md:text-[32px]">
                 {content.description}
               </p>
             </div>

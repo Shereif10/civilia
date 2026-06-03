@@ -1,38 +1,51 @@
 import { AccordionList } from "@/components/ui/AccordionList";
-import { SectionTitle } from "@/components/ui/SectionTitle";
 import { homeQuestions, projectQuestions } from "@/lib/data";
 
 type QuestionsSectionProps = {
   variant?: "default" | "project";
 };
 
+const variants = {
+  default: {
+    items: homeQuestions,
+    titleClass:
+      "text-center text-[48px] font-semibold leading-none text-civilia-red md:text-[72px]",
+    wrapperClass: "mx-auto rounded-[16px] py-10 backdrop-blur-[100px]",
+    background:
+      "linear-gradient(90deg, rgba(255,255,255,0.95) 0%, rgba(255,243,225,0.9) 50%, rgba(255,255,255,0.95) 100%)",
+    marginTop: "mt-8 md:mt-16",
+  },
+
+  project: {
+    items: projectQuestions,
+    titleClass:
+      "text-center text-[48px] font-light leading-none text-[#031286] md:text-[72px]",
+    wrapperClass:
+      "overflow-hidden rounded-[32px] rounded-bl-[285px] px-8 py-10 backdrop-blur-[100px] md:px-16 md:py-12",
+    background:
+      "linear-gradient(90deg, rgba(255, 255, 255, 0.25) 0%, rgba(200, 125, 7, 0) 100%)",
+    marginTop: "mt-8",
+  },
+};
+
 export function QuestionsSection({
   variant = "default",
 }: QuestionsSectionProps) {
-  const isProject = variant === "project";
-
-  const items = isProject ? projectQuestions : homeQuestions;
+  const config = variants[variant];
 
   return (
     <section className="bg-civilia-paper py-16 md:py-24">
-      {isProject ? (
-        <div className="overflow-hidden rounded-[32px]">
-          <div className="rounded-bl-[285px] bg-[#F0E459] px-8 py-10 md:px-16 md:py-12">
-            <h2 className="text-center text-[48px] font-light leading-none text-[#031286] md:text-[72px]">
-              Questions & Answers
-            </h2>
-          </div>
-        </div>
-      ) : (
-        <SectionTitle className="mx-auto w-full max-w-[1280px]">
-          Questions & Answers
-        </SectionTitle>
-      )}
-
       <div
-        className={`container-civilia ${isProject ? "mt-8" : "mt-8 md:mt-16"}`}
+        className={config.wrapperClass}
+        style={{
+          background: config.background,
+        }}
       >
-        <AccordionList items={items} variant={variant} />
+        <h2 className={config.titleClass}>Questions & Answers</h2>
+      </div>
+
+      <div className={`container-civilia ${config.marginTop}`}>
+        <AccordionList items={config.items} variant={variant} />
       </div>
     </section>
   );

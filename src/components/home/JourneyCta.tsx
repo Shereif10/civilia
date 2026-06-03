@@ -1,6 +1,10 @@
 import { CiviliaButton } from "@/components/ui/CiviliaButton";
 
-type JourneyCtaVariant = "home" | "project" | "projectJourney";
+type JourneyCtaVariant =
+  | "home"
+  | "project"
+  | "projectJourney"
+  | "careers";
 
 type JourneyCtaProps = {
   variant?: JourneyCtaVariant;
@@ -13,6 +17,7 @@ const ctaContent = {
       "Our team is ready to guide you through every detail, from booking to ownership.",
     containerClass: "bg-[#191919] text-[#f3f3f3]",
     titleClass: "text-[34px] font-semibold md:text-5xl",
+    descriptionClass: "text-lg font-medium leading-[1.2] md:text-2xl",
     primaryButton: {
       label: "Book a Visit",
       variant: "red" as const,
@@ -29,8 +34,9 @@ const ctaContent = {
     title: "Your Ideal Community Awaits...",
     description:
       "Experience the Modern Living in Thawra El Khadra, Sheikh Zayed City.",
-    containerClass: "bg-[#031286] text-white border-[3px] border-black/10",
+    containerClass: "border-[3px] border-black/10 bg-[#031286] text-white",
     titleClass: "text-[42px] font-light text-[#F0E459] md:text-[64px]",
+    descriptionClass: "text-lg text-white md:text-[18px]",
     primaryButton: {
       label: "Contact us",
       variant: "light" as const,
@@ -47,8 +53,9 @@ const ctaContent = {
     title: "Start Your Journey to CIV West",
     description:
       "Our team is ready to guide you through every detail, from booking to ownership.",
-    containerClass: "bg-[#031286] text-white border-[3px] border-black/10",
+    containerClass: "border-[3px] border-black/10 bg-[#031286] text-white",
     titleClass: "text-[42px] font-light text-[#F0E459] md:text-[64px]",
+    descriptionClass: "text-lg text-white md:text-[18px]",
     primaryButton: {
       label: "Book a Visit",
       variant: "yellow" as const,
@@ -60,52 +67,67 @@ const ctaContent = {
       href: "/contact",
     },
   },
+
+  careers: {
+    title: "Ready to join us?",
+    description:
+      "Your next great architectural achievement starts with a single step. Join the team that is redefining Egypt's built environment.",
+    containerClass: "bg-[#191919] text-white",
+    titleClass: "text-[42px] font-semibold text-white md:text-[88px]",
+    descriptionClass:
+      "mx-auto max-w-[700px] text-[18px] font-medium text-civilia-red md:text-[24px]",
+    primaryButton: {
+      label: "View Our Rules",
+      variant: "red" as const,
+      href: "/careers-rules",
+    },
+  },
 };
 
-export function JourneyCta({ variant = "home" }: JourneyCtaProps) {
+export function JourneyCta({
+  variant = "home",
+}: JourneyCtaProps) {
   const content = ctaContent[variant];
 
   return (
     <section className="bg-civilia-paper px-4 pb-16 md:pb-24">
       <div
         data-animate="fade-up"
-        className={`container-civilia rounded-[20px] px-6 py-12 text-center md:px-8 md:py-16 ${content.containerClass}`}
+        className={`container-civilia rounded-[32px] px-6 py-12 text-center md:px-8 md:py-16 ${content.containerClass}`}
       >
         <div className="mx-auto max-w-[930px]">
-          <h2
-            className={`${content.titleClass} leading-[1.2] md:leading-[1.3]`}
-          >
+          <h2 className={`${content.titleClass} leading-[1.1]`}>
             {content.title}
           </h2>
 
-          <p
-            className={`mt-4 ${
-              variant === "home"
-                ? "text-lg font-medium leading-[1.2] md:text-2xl"
-                : "text-lg text-white md:text-[18px]"
-            }`}
-          >
+          <p className={`mt-4 ${content.descriptionClass}`}>
             {content.description}
           </p>
 
           <div className="mt-10 flex flex-col justify-center gap-4 sm:flex-row md:gap-8">
             <CiviliaButton
               href={content.primaryButton.href}
-              className="w-full sm:w-[319px]"
+              className={
+                variant === "careers"
+                  ? "min-w-[280px]"
+                  : "w-full sm:w-[319px]"
+              }
               variant={content.primaryButton.variant}
               withArrow={false}
             >
               {content.primaryButton.label}
             </CiviliaButton>
 
-            <CiviliaButton
-              href={content.secondaryButton.href}
-              className="w-full sm:w-[319px]"
-              variant={content.secondaryButton.variant}
-              withArrow={false}
-            >
-              {content.secondaryButton.label}
-            </CiviliaButton>
+            {"secondaryButton" in content && content.secondaryButton && (
+              <CiviliaButton
+                href={content.secondaryButton.href}
+                className="w-full sm:w-[319px]"
+                variant={content.secondaryButton.variant}
+                withArrow={false}
+              >
+                {content.secondaryButton.label}
+              </CiviliaButton>
+            )}
           </div>
         </div>
       </div>

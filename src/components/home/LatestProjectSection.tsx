@@ -1,45 +1,198 @@
+"use client";
+
+import { useState, useEffect, useCallback, useRef } from "react";
 import Image from "next/image";
+import gsap from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+
 import { CiviliaButton } from "@/components/ui/CiviliaButton";
 import { SectionTitle } from "@/components/ui/SectionTitle";
 import { projectStats } from "@/lib/data";
 
+const projects = [
+  { src: "/assets/project-1.png", alt: "Project 1" },
+  { src: "/assets/project-2.png", alt: "Project 2" },
+  { src: "/assets/project-3.png", alt: "Project 3" },
+  { src: "/assets/project-4.png", alt: "Project 4" },
+  { src: "/assets/project-5.png", alt: "Project 5" },
+  { src: "/assets/project-6.png", alt: "Project 6" },
+];
+
 export function LatestProjectSection() {
+  const [centerIndex, setCenterIndex] = useState(1);
+  const [isPaused, setIsPaused] = useState(false);
+
+  const sectionRef = useRef<HTMLElement>(null);
+  const carouselRef = useRef<HTMLDivElement>(null);
+  const contentRef = useRef<HTMLDivElement>(null);
+
+  const getRoles = useCallback(() => {
+    const left = (centerIndex - 1 + projects.length) % projects.length;
+    const right = (centerIndex + 1) % projects.length;
+
+    return {
+      left,
+      center: centerIndex,
+      right,
+    };
+  }, [centerIndex]);
+
+  const roles = getRoles();
+
+  useEffect(() => {
+    if (isPaused) return;
+
+    const interval = setInterval(() => {
+      setCenterIndex((prev) => (prev + 1) % projects.length);
+    }, 3500);
+
+    return () => clearInterval(interval);
+  }, [isPaused]);
+
+  useEffect(() => {
+    gsap.registerPlugin(ScrollTrigger);
+
+    const ctx = gsap.context(() => {
+      const tl = gsap.timeline({
+        scrollTrigger: {
+          trigger: sectionRef.current,
+          start: "top 70%",
+        },
+      });
+
+      tl.from(".latest-project-title", {
+        y: 60,
+        opacity: 0,
+        duration: 1,
+        ease: "power3.out",
+      })
+        .from(
+          ".project-banner",
+          {
+            scaleX: 0,
+            transformOrigin: "center center",
+            duration: 0.8,
+            ease: "power3.out",
+          },
+          "-=0.4",
+        )
+        .from(
+          carouselRef.current,
+          {
+            y: 100,
+            opacity: 0,
+            duration: 1.2,
+            ease: "power4.out",
+          },
+          "-=0.2",
+        )
+        .from(
+          contentRef.current?.children || [],
+          {
+            y: 40,
+            opacity: 0,
+            stagger: 0.15,
+            duration: 0.8,
+            ease: "power3.out",
+          },
+          "-=0.6",
+        );
+
+      gsap.to(".center-card", {
+        y: -30,
+        ease: "none",
+        scrollTrigger: {
+          trigger: carouselRef.current,
+          start: "top bottom",
+          end: "bottom top",
+          scrub: true,
+        },
+      });
+    }, sectionRef);
+
+    return () => ctx.revert();
+  }, []);
+
+  const positionClasses = (role: "left" | "center" | "right") => {
+    switch (role) {
+      case "left":
+        return "left-0 top-[49px] h-[473px] w-[386px] z-0";
+      case "center":
+        return "left-[264px] top-0 h-[570px] w-[560px] z-10 shadow-soft";
+      case "right":
+        return "left-[702px] top-[49px] h-[473px] w-[386px] z-0";
+      default:
+        return "";
+    }
+  };
+
   return (
-    <section id="projects" className="bg-civilia-paper pb-16 md:pb-32">
-      <SectionTitle align="left" className="mx-auto w-full max-w-[1280px] justify-start">
+    <section
+      ref={sectionRef}
+      id="projects"
+      className="bg-civilia-paper pb-16 md:pb-32"
+    >
+      <SectionTitle
+        align="left"
+        className="latest-project-title mx-auto w-full justify-start"
+      >
         Latest Project
       </SectionTitle>
 
-      <div className="mt-16 bg-[#f5e94b] py-8 text-center md:mt-16">
-        <h2 data-animate="fade-up" className="text-[42px] font-light leading-[1.2] text-[#4b4320] md:text-[50px]">
+      <div className="project-banner mt-16 bg-[#f5e94b] py-8 text-center">
+        <h2
+          className="text-[42px] font-light leading-[1.2] text-[#031286] md:text-[50px]"
+          style={{
+            fontFamily: "Badgline",
+            fontSize: "80px",
+          }}
+        >
           CIV West
         </h2>
       </div>
 
       <div className="container-civilia mt-16">
-        <div data-animate="reveal" className="relative h-[360px] md:h-[570px]">
-          <div className="absolute left-0 top-[49px] hidden h-[473px] w-[386px] overflow-hidden rounded-2xl md:block">
-            <Image src="/assets/project-left.png" alt="" fill sizes="386px" className="object-cover" />
-          </div>
-          <div className="absolute right-0 top-[49px] hidden h-[473px] w-[386px] overflow-hidden rounded-2xl md:block">
-            <Image src="/assets/project-right.png" alt="" fill sizes="386px" className="object-cover" />
-          </div>
-          <div className="absolute left-1/2 top-0 h-full w-full max-w-[560px] -translate-x-1/2 overflow-hidden rounded-[10px] shadow-soft">
-            <Image
-              src="/assets/project-main.png"
-              alt="CIV West residential community"
-              fill
-              sizes="(max-width: 768px) 100vw, 560px"
-              className="object-cover"
-            />
-          </div>
+        <div
+          ref={carouselRef}
+          className="relative mx-auto h-[360px] w-full max-w-[1088px] overflow-hidden md:h-[570px]"
+          onMouseEnter={() => setIsPaused(true)}
+          onMouseLeave={() => setIsPaused(false)}
+        >
+          {projects.map((project, index) => {
+            let role: "left" | "center" | "right" | null = null;
+
+            if (index === roles.left) role = "left";
+            else if (index === roles.center) role = "center";
+            else if (index === roles.right) role = "right";
+
+            if (!role) return null;
+
+            return (
+              <div
+                key={project.src}
+                className={`absolute overflow-hidden rounded-2xl transition-all duration-500 ease-in-out ${positionClasses(
+                  role,
+                )} ${role === "center" ? "center-card" : ""}`}
+              >
+                <Image
+                  src={project.src}
+                  alt={project.alt}
+                  fill
+                  sizes="(max-width: 768px) 100vw, 386px"
+                  className="project-image object-cover"
+                />
+              </div>
+            );
+          })}
         </div>
 
-        <div data-animate="fade-up" className="mt-16 rounded-2xl px-0 py-0 md:px-8">
+        <div ref={contentRef} className="mt-16 rounded-2xl px-0 py-0 md:px-8">
           <p className="mx-auto max-w-[1088px] text-center text-xl leading-[1.25] text-[#404030] md:text-2xl">
-            Experience Modern Living in Thawra El Khadra, Sheikh Zayed City, spanning 38.000
-            Square meters, we bring our ambitious vision to life.
+            Experience Modern Living in Thawra El Khadra, Sheikh Zayed City,
+            spanning 38.000 Square meters, we bring our ambitious vision to
+            life.
           </p>
+
           <div className="mx-auto mt-6 flex max-w-[715px] flex-col items-center justify-between gap-3 text-center text-xl leading-[1.25] text-civilia-red md:flex-row md:text-2xl">
             <span>CIV West — A Community Built to Last</span>
             <span>Sheikh Zayed</span>
@@ -48,8 +201,13 @@ export function LatestProjectSection() {
           <div className="mt-12 grid gap-8 text-center md:grid-cols-3">
             {projectStats.map((item) => (
               <div key={item.label}>
-                <p className="text-[32px] font-semibold leading-none text-civilia-red">{item.value}</p>
-                <p className="mx-auto mt-1 max-w-[130px] text-base leading-none text-civilia-red">{item.label}</p>
+                <p className="text-[32px] font-semibold leading-none text-civilia-red">
+                  {item.value}
+                </p>
+
+                <p className="mx-auto mt-1 max-w-[130px] text-base leading-none text-civilia-red">
+                  {item.label}
+                </p>
               </div>
             ))}
           </div>
@@ -59,6 +217,27 @@ export function LatestProjectSection() {
           </div>
         </div>
       </div>
+
+      <style jsx>{`
+        .center-card img {
+          transition: transform 0.8s ease;
+        }
+
+        .center-card:hover img {
+          transform: scale(1.05);
+        }
+
+        @media (max-width: 767px) {
+          .absolute {
+            position: relative !important;
+            left: auto !important;
+            top: auto !important;
+            width: 100% !important;
+            height: 100% !important;
+            margin-top: 0 !important;
+          }
+        }
+      `}</style>
     </section>
   );
 }

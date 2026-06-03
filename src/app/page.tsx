@@ -24,7 +24,7 @@ export default function Home() {
         <TestimonialSection />
         <LifestyleGallerySection/>
         <ProofListSection />
-        <LatestNewsSection />
+        {/* <LatestNewsSection /> */}
         <QuestionsSection />
         <JourneyCta />
       </main>

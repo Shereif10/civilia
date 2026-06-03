@@ -2,9 +2,9 @@ import type { Metadata } from "next";
 import { ContactDetailsSection } from "@/components/contact/ContactDetailsSection";
 import { ContactHero } from "@/components/contact/ContactHero";
 import { ContactIntro } from "@/components/contact/ContactIntro";
-import { ContactQuestions } from "@/components/contact/ContactQuestions";
 import { Footer } from "@/components/layout/Footer";
 import { GsapProvider } from "@/components/motion/GsapProvider";
+import { QuestionsSection } from "@/components/home/QuestionsSection";
 
 export const metadata: Metadata = {
   title: "Contact",
@@ -19,7 +19,7 @@ export default function ContactPage() {
         <ContactHero />
         <ContactIntro />
         <ContactDetailsSection />
-        <ContactQuestions />
+        <QuestionsSection/>
       </main>
       <Footer />
     </GsapProvider>
