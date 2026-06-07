@@ -32,12 +32,30 @@ export function ProofListSection() {
   }, []);
 
   return (
-    <section ref={sectionRef} className="bg-civilia-paper py-10 md:py-16">
+    <section ref={sectionRef} className="bg-civilia-paper pb-10 md:pb-16">
       <div className="mx-auto flex flex-col gap-[10px]">
         {proofPoints.map((point, index) => (
           <div
             key={point}
-            className="flex min-h-[112px] items-center gap-4 rounded-bl-[96px] rounded-br-[16px] rounded-tl-[16px] rounded-tr-[16px] px-6 py-6 backdrop-blur-[100px] md:px-16 md:py-8"
+            className="
+              flex
+              min-h-[112px]
+              items-center
+              rounded-bl-[72px]
+              rounded-br-[16px]
+              rounded-tl-[16px]
+              rounded-tr-[16px]
+              px-5
+              py-5
+              backdrop-blur-[100px]
+
+              sm:px-6
+              sm:py-6
+              sm:rounded-bl-[96px]
+
+              md:px-16
+              md:py-8
+            "
             style={{
               background:
                 "linear-gradient(90deg, rgba(255,243,225,0.2) 0%, rgba(255,243,225,0.9) 50%, rgba(255,243,225,0.2) 100%)",
@@ -47,7 +65,14 @@ export function ProofListSection() {
               ref={(el) => {
                 rowsRef.current[index] = el;
               }}
-              className="flex w-full items-center gap-4"
+              className="
+                flex
+                w-full
+                items-center
+                gap-3
+
+                sm:gap-4
+              "
             >
               <Image
                 src="/assets/list-icon.svg"
@@ -57,7 +82,20 @@ export function ProofListSection() {
                 className="shrink-0"
               />
 
-              <p className="text-lg font-medium leading-[1.2] text-[#3d3d3d] md:text-[22px]">
+              <p
+                className="
+                  text-base
+                  font-medium
+                  leading-[1.35]
+                  text-[#3d3d3d]
+
+                  sm:text-lg
+                  sm:leading-[1.3]
+
+                  md:text-[22px]
+                  md:leading-[1.2]
+                "
+              >
                 {point}
               </p>
             </div>

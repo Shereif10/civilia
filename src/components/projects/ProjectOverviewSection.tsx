@@ -23,14 +23,14 @@ export function ProjectOverviewSection() {
           <p className="mt-10 text-[18px] leading-[1.7] text-[#252525] md:text-[20px]">
             The project offers modern apartments with contemporary designs,
             expansive green spaces, artificial lakes, and a complete suite of
-            leisure and sports facilities — all with flexible payment plans
+            leisure and sports facilities - all with flexible payment plans
             tailored for families seeking premium living in West Cairo.
           </p>
 
           <p className="mt-10 text-[18px] leading-[1.7] text-[#252525] md:text-[20px]">
             CIV West is designed to deliver a balanced lifestyle that harmonizes
             tranquility, luxury, and proximity to the essential services modern
-            Egyptian families need — through thoughtful urban planning that
+            Egyptian families need - through thoughtful urban planning that
             dedicates the majority of the compound&apos;s area to green spaces,
             water features, and open walkways.
           </p>

@@ -14,6 +14,7 @@ import { WhyChooseCivWestSection } from "@/components/projects/WhyChooseCivWestS
 import { AboutDeveloperSection } from "@/components/projects/AboutDeveloperSection";
 import { QuestionsSection } from "@/components/home/QuestionsSection";
 import { ReusableHeroSection } from "@/components/home/ReusableHeroSection";
+import { LegacyProjectsSection } from "@/components/projects/LegacyProjectsSection";
 
 
 
@@ -38,6 +39,7 @@ export default function ProjectsPage() {
         <MasterPlanSection />
         <PaymentPlanSection />
         <WhyChooseCivWestSection />
+        <LegacyProjectsSection/>
         <AboutDeveloperSection />
         <QuestionsSection variant="project" />
         <JourneyCta variant="projectJourney" />

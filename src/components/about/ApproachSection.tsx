@@ -25,38 +25,38 @@ const approachItems = [
 
 export function ApproachSection() {
   return (
-    <section className="bg-civilia-paper py-20 md:py-32">
+    <section className="overflow-x-hidden bg-civilia-paper py-12 sm:py-20 md:py-32">
       <div
-        className="mx-auto max-w-[1280px] rounded-[32px]  py-20"
+        className="mx-auto max-w-[1280px] rounded-2xl px-4 py-10 md:rounded-[32px] md:px-0 md:py-20"
         style={{
           background:
             "linear-gradient(90deg, #FFFDFA 0%, #FFF3E1 50%, #FFFDFA 100%)",
         }}
       >
-        <div className="flex flex-col items-end justify-between gap-16 lg:flex-row">
+        <div className="flex flex-col items-end justify-between gap-8 lg:flex-row lg:gap-16">
           {/* Content */}
           <div className="w-full">
             <h2
               data-animate="fade-up"
-              className="text-[56px] font-semibold leading-none text-civilia-red md:text-[72px]"
+              className="text-[40px] font-semibold leading-none text-civilia-red sm:text-[56px] md:text-[72px]"
             >
               Our Approach
             </h2>
 
-            <div className="mt-16 flex flex-col gap-12">
+            <div className="mt-12 flex flex-col gap-8 sm:mt-16 sm:gap-12">
               {approachItems.map((item) => (
                 <div key={item.number} data-animate="fade-up">
-                  <div className="flex items-start gap-6">
-                    <span className="min-w-[52px] text-[42px] font-semibold leading-none text-civilia-red/45 md:text-[52px]">
+                  <div className="flex items-start gap-4 sm:gap-6">
+                    <span className="min-w-[40px] text-[32px] font-semibold leading-none text-civilia-red/45 sm:min-w-[52px] sm:text-[42px] md:text-[52px] whitespace-nowrap">
                       {item.number}
                     </span>
 
                     <div>
-                      <h3 className="text-[24px] font-semibold leading-none text-civilia-ink md:text-[38px]">
+                      <h3 className="text-[20px] font-semibold leading-none text-civilia-ink sm:text-[24px] md:text-[38px]">
                         {item.title}
                       </h3>
 
-                      <p className="mt-3 text-base leading-[1.4] text-[#555555] md:text-[20px]">
+                      <p className="mt-2 text-sm leading-[1.4] text-[#555555] sm:mt-3 sm:text-base md:text-[20px]">
                         {item.description}
                       </p>
                     </div>
@@ -69,13 +69,13 @@ export function ApproachSection() {
           {/* Image */}
           <div
             data-animate="reveal"
-            className="relative h-[450px] w-full max-w-[420px] overflow-hidden rounded-[16px] grayscale"
+            className="relative h-[250px] w-full max-w-full overflow-hidden rounded-[16px] grayscale sm:h-[350px] md:h-[450px] md:max-w-[420px]"
           >
             <Image
               src="/assets/approach-image.png"
               alt="Civilia construction process"
               fill
-              sizes="420px"
+              sizes="(max-width: 768px) 100vw, 420px"
               className="object-cover"
             />
           </div>

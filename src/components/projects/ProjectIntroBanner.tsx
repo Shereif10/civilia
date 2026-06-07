@@ -12,7 +12,7 @@ export function ProjectIntroBanner() {
 
         <div className="flex items-center justify-center gap-16">
           <span className="text-[32px] font-light leading-none text-[#1D2D8C]">
-            CIV West — A Community Built to Last
+            CIV West - A Community Built to Last
           </span>
 
           <span className="text-[32px] font-light leading-none text-[#1D2D8C]">

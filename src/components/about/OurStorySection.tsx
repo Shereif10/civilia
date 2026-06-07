@@ -38,7 +38,7 @@ export function OurStorySection() {
             <p className="mt-8">
               The project offers modern apartments with contemporary designs,
               expansive green spaces, artificial lakes, and a complete suite of
-              leisure and sports facilities — all with flexible payment plans
+              leisure and sports facilities - all with flexible payment plans
               tailored for families seeking premium living in West Cairo.
             </p>
 
@@ -46,14 +46,14 @@ export function OurStorySection() {
               <span className="font-semibold text-civilia-red">CIV West</span>{" "}
               is designed to deliver a balanced lifestyle that harmonizes
               tranquility, luxury, and proximity to the essential services
-              modern Egyptian families need — through thoughtful urban planning
+              modern Egyptian families need - through thoughtful urban planning
               that dedicates the majority of the compound’s area to green
               spaces, water features, and open walkways.
             </p>
 
             <p className="mt-8">
-              The project is a direct embodiment of CIVILIA&apos;s motto —
-              <span className="font-medium"> “From Land to Landmark”</span> —
+              The project is a direct embodiment of CIVILIA&apos;s motto -
+              <span className="font-medium"> “From Land to Landmark”</span> -
               combining contemporary architecture, smart design details, and an
               integrated ecosystem of recreational, sports, and retail amenities
               within the compound.

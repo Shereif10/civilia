@@ -97,9 +97,32 @@ export function LifestyleGallerySection() {
   }, [activeSlide]);
 
   return (
-    <section ref={sectionRef} className="bg-civilia-paper py-16 md:py-24">
+    <section
+      ref={sectionRef}
+      className="bg-civilia-paper py-12 sm:py-14 md:py-24"
+    >
       <div className="gallery-wrapper">
-        <div className="relative h-[420px] overflow-hidden rounded-bl-[80px] rounded-br-[24px] rounded-tl-[24px] rounded-tr-[24px] md:h-[560px]">
+        <div
+          className="
+            relative
+            h-[320px]
+            overflow-hidden
+
+            rounded-bl-[48px]
+            rounded-br-[20px]
+            rounded-tl-[20px]
+            rounded-tr-[20px]
+
+            sm:h-[420px]
+            sm:rounded-bl-[60px]
+
+            md:h-[560px]
+            md:rounded-bl-[80px]
+            md:rounded-br-[24px]
+            md:rounded-tl-[24px]
+            md:rounded-tr-[24px]
+          "
+        >
           {slides.map((slide, index) => (
             <div
               key={slide.image}
@@ -122,11 +145,37 @@ export function LifestyleGallerySection() {
 
               <div className="absolute inset-0 bg-black/30" />
 
-              <div className="absolute bottom-8 left-8 right-8 z-10 md:bottom-12 md:left-12">
+              <div
+                className="
+                  absolute
+                  bottom-5
+                  left-5
+                  right-5
+                  z-10
+
+                  sm:bottom-8
+                  sm:left-8
+                  sm:right-8
+
+                  md:bottom-12
+                  md:left-12
+                "
+              >
                 {activeSlide === index && (
                   <p
                     ref={quoteRef}
-                    className="max-w-[1200px] text-lg leading-[1.4] text-white md:text-[32px] md:leading-[1.3]"
+                    className="
+                      max-w-[1200px]
+                      text-base
+                      leading-[1.5]
+                      text-white
+
+                      sm:text-[22px]
+                      sm:leading-[1.4]
+
+                      md:text-[32px]
+                      md:leading-[1.3]
+                    "
                   >
                     {slide.quote}
                   </p>
@@ -136,7 +185,7 @@ export function LifestyleGallerySection() {
           ))}
         </div>
 
-        <div className="mt-6 flex justify-center gap-5">
+        <div className="mt-5 flex justify-center gap-4 sm:mt-6 sm:gap-5">
           {slides.map((_, index) => (
             <button
               key={index}

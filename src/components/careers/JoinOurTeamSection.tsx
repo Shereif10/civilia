@@ -9,11 +9,39 @@ export function JoinOurTeamSection() {
       <div className="container-civilia">
         {/* Header */}
         <div data-animate="fade-up">
-          <h2 className="text-[52px] font-semibold leading-none text-civilia-red md:text-[72px]">
+          <h2
+            className="
+              text-[40px]
+              font-semibold
+              leading-none
+              text-civilia-red
+
+              sm:text-[46px]
+
+              md:text-[52px]
+
+              lg:text-[72px]
+            "
+          >
             Join Our Team
           </h2>
 
-          <p className="mt-6 max-w-[1280px] text-[18px] leading-[1.6] text-[#6A6A6A] md:text-[22px]">
+          <p
+            className="
+              mt-5
+              max-w-[1280px]
+              text-base
+              leading-[1.6]
+              text-[#6A6A6A]
+
+              sm:text-[17px]
+
+              md:mt-6
+              md:text-[18px]
+
+              lg:text-[22px]
+            "
+          >
             At Civilia Developments, we are dedicated to transforming visions
             into reality, creating communities that inspire and elevate daily
             living. Our mission, &quot;From Land to Landmark,&quot; reflects our
@@ -24,11 +52,35 @@ export function JoinOurTeamSection() {
         </div>
 
         {/* Content */}
-        <div className="mt-16 grid gap-12 lg:grid-cols-[560px_1fr] lg:gap-16">
+        <div
+          className="
+            mt-12
+            grid
+            gap-10
+
+            md:mt-16
+            md:gap-12
+
+            lg:grid-cols-[560px_1fr]
+            lg:gap-16
+          "
+        >
           {/* Image */}
           <div
             data-animate="fade-right"
-            className="relative h-[500px] overflow-hidden rounded-[32px] md:h-[760px]"
+            className="
+              relative
+              h-[320px]
+              overflow-hidden
+              rounded-[24px]
+
+              sm:h-[420px]
+
+              md:h-[560px]
+
+              lg:h-[760px]
+              lg:rounded-[32px]
+            "
           >
             <Image
               src="/assets/careers-form-image.png"
@@ -44,16 +96,44 @@ export function JoinOurTeamSection() {
             data-animate="fade-left"
             className="flex flex-col justify-center"
           >
-            <h3 className="text-[44px] font-semibold leading-none text-civilia-ink md:text-[64px]">
+            <h3
+              className="
+                text-[34px]
+                font-semibold
+                leading-none
+                text-civilia-ink
+
+                sm:text-[40px]
+
+                md:text-[52px]
+
+                lg:text-[64px]
+              "
+            >
               Job Application
             </h3>
 
-            <p className="mt-5 max-w-[620px] text-[18px] leading-[1.6] text-[#6A6A6A] md:text-[22px]">
+            <p
+              className="
+                mt-4
+                max-w-[620px]
+                text-base
+                leading-[1.6]
+                text-[#6A6A6A]
+
+                sm:text-[17px]
+
+                md:mt-5
+                md:text-[18px]
+
+                lg:text-[22px]
+              "
+            >
               Submit your details and a specialized real estate consultant will
               reach out to curate your experience.
             </p>
 
-            <form className="mt-14">
+            <form className="mt-10 md:mt-14">
               {/* Name */}
               <div>
                 <input
@@ -64,7 +144,7 @@ export function JoinOurTeamSection() {
               </div>
 
               {/* Email + Phone */}
-              <div className="mt-10 grid gap-8 md:grid-cols-2">
+              <div className="mt-8 grid gap-8 md:mt-10 md:grid-cols-2">
                 <input
                   type="email"
                   placeholder="Email"
@@ -79,7 +159,7 @@ export function JoinOurTeamSection() {
               </div>
 
               {/* Job Title + Department */}
-              <div className="mt-10 grid gap-8 md:grid-cols-2">
+              <div className="mt-8 grid gap-8 md:mt-10 md:grid-cols-2">
                 <input
                   type="text"
                   placeholder="Job Title"
@@ -94,7 +174,7 @@ export function JoinOurTeamSection() {
               </div>
 
               {/* Select Department */}
-              <div className="mt-10">
+              <div className="mt-8 md:mt-10">
                 <select className="w-full border-b border-civilia-red bg-transparent pb-4 text-[18px] text-[#9A9A9A] outline-none">
                   <option>Select Department</option>
                   <option>Engineering</option>
@@ -107,7 +187,7 @@ export function JoinOurTeamSection() {
               </div>
 
               {/* Resume */}
-              <div className="mt-10">
+              <div className="mt-8 md:mt-10">
                 <label className="block text-[18px] text-[#7A7A7A]">
                   Resume
                 </label>
@@ -119,7 +199,7 @@ export function JoinOurTeamSection() {
               </div>
 
               {/* Button */}
-              <div className="mt-14 flex justify-end">
+              <div className="mt-10 flex justify-stretch md:mt-14 md:justify-end">
                 <CiviliaButton
                   href="#"
                   variant="red"

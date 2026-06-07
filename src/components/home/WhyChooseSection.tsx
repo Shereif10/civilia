@@ -53,8 +53,8 @@ export function WhyChooseSection() {
         Why Choose CIVILIA
       </SectionTitle>
 
-      <div className="container-civilia mt-16">
-        <div className="grid gap-8 md:grid-cols-2">
+      <div className="container-civilia mt-10 sm:mt-12 md:mt-16">
+        <div className="grid gap-5 sm:gap-6 md:grid-cols-2 md:gap-8">
           {reasons.map((reason, index) => (
             <article
               key={reason.title}
@@ -64,19 +64,24 @@ export function WhyChooseSection() {
               className="
                 group
                 flex
-                min-h-[196px]
+                min-h-[180px]
                 flex-col
                 items-center
                 justify-center
                 rounded-2xl
-                p-8
+                p-6
                 text-center
                 backdrop-blur-[100px]
                 transition-all
                 duration-500
                 hover:-translate-y-2
                 hover:shadow-[0_24px_60px_rgba(0,0,0,0.08)]
+
+                sm:min-h-[196px]
+                sm:p-7
+
                 md:min-h-[220px]
+                md:p-8
               "
               style={{
                 background:
@@ -91,7 +96,24 @@ export function WhyChooseSection() {
                 className="transition-transform duration-500 group-hover:scale-105"
               />
 
-              <h3 className="mt-8 max-w-[360px] text-[34px] font-medium leading-[1.1] text-[#3d3d3d] md:text-[40px]">
+              <h3
+                className="
+                  mt-6
+                  max-w-full
+                  text-[26px]
+                  font-medium
+                  leading-[1.1]
+                  text-[#3d3d3d]
+
+                  sm:mt-7
+                  sm:max-w-[320px]
+                  sm:text-[30px]
+
+                  md:mt-8
+                  md:max-w-[360px]
+                  md:text-[40px]
+                "
+              >
                 {reason.title}
               </h3>
             </article>

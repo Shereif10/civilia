@@ -18,7 +18,6 @@ export function ExperienceSection() {
     gsap.registerPlugin(ScrollTrigger);
 
     const ctx = gsap.context(() => {
-      // Title Animation
       gsap.from(".experience-title", {
         y: 60,
         opacity: 0,
@@ -30,7 +29,6 @@ export function ExperienceSection() {
         },
       });
 
-      // Cards Stagger Animation
       gsap.from(cardsRef.current, {
         y: 80,
         opacity: 0,
@@ -43,7 +41,6 @@ export function ExperienceSection() {
         },
       });
 
-      // Icon Animation
       cardsRef.current.forEach((card) => {
         const icon = card?.querySelector(".metric-icon");
 
@@ -61,12 +58,10 @@ export function ExperienceSection() {
         });
       });
 
-      // Counter Animation
       valuesRef.current.forEach((el) => {
         if (!el) return;
 
         const finalValue = el.dataset.value || "";
-
         const numericValue = parseFloat(finalValue.replace(/[^\d.]/g, ""));
 
         const counter = { value: 0 };
@@ -100,19 +95,22 @@ export function ExperienceSection() {
   }, []);
 
   return (
-    <section ref={sectionRef} className="bg-civilia-paper py-16 md:py-32">
-      <SectionTitle className="experience-title mx-auto w-full text-[64px]">
+    <section
+      ref={sectionRef}
+      className="bg-civilia-paper py-12 sm:py-14 md:py-32 2xl:py-36"
+    >
+      <SectionTitle className="experience-title mx-auto w-full text-[38px] sm:text-[48px] md:text-[64px]">
         Built on Experience
       </SectionTitle>
 
-      <div className="container-civilia mt-16 grid gap-8 md:grid-cols-3">
+      <div className="container-civilia mt-10 grid gap-5 sm:mt-12 sm:gap-6 md:mt-16 md:grid-cols-3 md:gap-8 2xl:gap-10">
         {stats.map((item, index) => (
           <article
             key={item.label}
             ref={(el) => {
               cardsRef.current[index] = el;
             }}
-            className="civilia-gradient-card flex min-h-[268px] flex-col justify-between rounded-2xl p-8 md:min-h-[308px]"
+            className="civilia-gradient-card flex min-h-[220px] flex-col justify-between rounded-2xl p-6 sm:min-h-[250px] sm:p-7 md:min-h-[308px] md:p-8"
           >
             <div>
               <p
@@ -120,12 +118,12 @@ export function ExperienceSection() {
                   valuesRef.current[index] = el;
                 }}
                 data-value={item.value}
-                className="text-[52px] font-semibold leading-[1.2] text-[#252525] md:text-[56px]"
+                className="text-[40px] font-semibold leading-[1.2] text-[#252525] sm:text-[46px] md:text-[56px]"
               >
                 0
               </p>
 
-              <h3 className="mt-2 text-lg font-medium leading-[1.2] text-[#3d3d3d]">
+              <h3 className="mt-2 text-base font-medium leading-[1.2] text-[#3d3d3d] sm:text-lg">
                 {item.label}
               </h3>
             </div>

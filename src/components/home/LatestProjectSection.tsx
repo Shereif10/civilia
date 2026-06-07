@@ -139,22 +139,22 @@ export function LatestProjectSection() {
         Latest Project
       </SectionTitle>
 
-      <div className="project-banner mt-16 bg-[#f5e94b] py-8 text-center">
+      <div className="project-banner mt-10 bg-[#f5e94b] py-6 text-center sm:mt-12 md:mt-16 md:py-8">
         <h2
           className="text-[42px] font-light leading-[1.2] text-[#031286] md:text-[50px]"
           style={{
             fontFamily: "Badgline",
-            fontSize: "80px",
+            fontSize: "clamp(48px, 8vw, 80px)",
           }}
         >
           CIV West
         </h2>
       </div>
 
-      <div className="container-civilia mt-16">
+      <div className="container-civilia mt-10 sm:mt-12 md:mt-16">
         <div
           ref={carouselRef}
-          className="relative mx-auto h-[360px] w-full max-w-[1088px] overflow-hidden md:h-[570px]"
+          className="relative mx-auto h-[320px] w-full overflow-hidden sm:h-[420px] md:h-[570px] md:max-w-[1088px]"
           onMouseEnter={() => setIsPaused(true)}
           onMouseLeave={() => setIsPaused(false)}
         >
@@ -186,33 +186,36 @@ export function LatestProjectSection() {
           })}
         </div>
 
-        <div ref={contentRef} className="mt-16 rounded-2xl px-0 py-0 md:px-8">
-          <p className="mx-auto max-w-[1088px] text-center text-xl leading-[1.25] text-[#404030] md:text-2xl">
+        <div
+          ref={contentRef}
+          className="mt-10 rounded-2xl px-0 py-0 sm:mt-12 md:mt-16 md:px-8"
+        >
+          <p className="mx-auto max-w-[1088px] text-center text-lg leading-[1.4] text-[#404030] sm:text-xl md:text-2xl md:leading-[1.25]">
             Experience Modern Living in Thawra El Khadra, Sheikh Zayed City,
             spanning 38.000 Square meters, we bring our ambitious vision to
             life.
           </p>
 
-          <div className="mx-auto mt-6 flex max-w-[715px] flex-col items-center justify-between gap-3 text-center text-xl leading-[1.25] text-civilia-red md:flex-row md:text-2xl">
-            <span>CIV West — A Community Built to Last</span>
+          <div className="mx-auto mt-6 flex max-w-[715px] flex-col items-center justify-between gap-3 text-center text-lg leading-[1.4] text-civilia-red sm:text-xl md:flex-row md:text-2xl md:leading-[1.25]">
+            <span>CIV West - A Community Built to Last</span>
             <span>Sheikh Zayed</span>
           </div>
 
-          <div className="mt-12 grid gap-8 text-center md:grid-cols-3">
+          <div className="mt-10 grid gap-8 text-center sm:mt-12 md:mt-12 md:grid-cols-3">
             {projectStats.map((item) => (
               <div key={item.label}>
-                <p className="text-[32px] font-semibold leading-none text-civilia-red">
+                <p className="text-[28px] font-semibold leading-none text-civilia-red sm:text-[30px] md:text-[32px]">
                   {item.value}
                 </p>
 
-                <p className="mx-auto mt-1 max-w-[130px] text-base leading-none text-civilia-red">
+                <p className="mx-auto mt-1 max-w-[130px] text-sm leading-none text-civilia-red md:text-base">
                   {item.label}
                 </p>
               </div>
             ))}
           </div>
 
-          <div className="mt-12 flex justify-end">
+          <div className="mt-10 flex justify-center md:mt-12 md:justify-end">
             <CiviliaButton href="/contact">View Project Details</CiviliaButton>
           </div>
         </div>
@@ -235,6 +238,16 @@ export function LatestProjectSection() {
             width: 100% !important;
             height: 100% !important;
             margin-top: 0 !important;
+          }
+
+          .center-card {
+            height: 320px !important;
+          }
+        }
+
+        @media (min-width: 768px) and (max-width: 1023px) {
+          .center-card {
+            height: 420px !important;
           }
         }
       `}</style>

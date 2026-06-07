@@ -59,11 +59,13 @@ export const proofPoints = [
 export const newsItems = [
   {
     image: "/assets/news-1.png",
-    title: "Discover the Luxurious Lifestyle at CIV.WEST By CIVILIA Developments",
+    title:
+      "Discover the Luxurious Lifestyle at CIV.WEST By CIVILIA Developments",
   },
   {
     image: "/assets/news-2.png",
-    title: "Discover the Luxurious Lifestyle at CIV.WEST By CIVILIA Developments",
+    title:
+      "Discover the Luxurious Lifestyle at CIV.WEST By CIVILIA Developments",
   },
   {
     image: "/assets/news-3.png",
@@ -75,17 +77,17 @@ export const homeQuestions = [
   {
     question: "What is CIVILIA Developments and what does the company do?",
     answer:
-      "CIVILIA Developments is a leading Egyptian real estate development company specializing in integrated construction and community building. We develop a diverse range of projects — from fully integrated residential compounds and commercial facilities to infrastructure and industrial projects — across Egypt's most in-demand locations.",
+      "CIVILIA Developments is a leading Egyptian real estate development company specializing in integrated construction and community building. We develop a diverse range of projects - from fully integrated residential compounds and commercial facilities to infrastructure and industrial projects - across Egypt's most in-demand locations.",
   },
   {
     question: "How many years of experience does CIVILIA have?",
     answer:
-      "CIVILIA brings over 20 years of expertise in the construction and real estate sector. This deep experience spans large-scale contracting, residential developments, commercial facilities, infrastructure projects, and mixed-use communities — giving us the insight to deliver projects that genuinely meet our clients' needs at every stage.",
+      "CIVILIA brings over 20 years of expertise in the construction and real estate sector. This deep experience spans large-scale contracting, residential developments, commercial facilities, infrastructure projects, and mixed-use communities - giving us the insight to deliver projects that genuinely meet our clients' needs at every stage.",
   },
   {
     question: "What is CIVILIA's vision and what values drive the company?",
     answer:
-      "CIVILIA's vision is to build communities — not just buildings. We design environments where people can truly live, connect, and thrive. Our three core values guide every decision we make: Sustainability, Human-Centric Design, and Family-Focused Living.",
+      "CIVILIA's vision is to build communities - not just buildings. We design environments where people can truly live, connect, and thrive. Our three core values guide every decision we make: Sustainability, Human-Centric Design, and Family-Focused Living.",
   },
   {
     question: "Who are CIVILIA's consulting and design partners?",
@@ -98,7 +100,7 @@ export const projectQuestions = [
   {
     question: "Where is CIV West Compound located?",
     answer:
-      "CIV West is located in Thawra El Khadra district, Sheikh Zayed City, West Cairo — minutes from Dandy Mega Mall, Hyper One, Abraj Zayed, and Al Ahly Club Sheikh Zayed branch. ",
+      "CIV West is located in Thawra El Khadra district, Sheikh Zayed City, West Cairo - minutes from Dandy Mega Mall, Hyper One, Abraj Zayed, and Al Ahly Club Sheikh Zayed branch. ",
   },
   {
     question: "Who is the developer of CIV West?",
@@ -123,7 +125,7 @@ export const projectQuestions = [
   {
     question: "What are the key amenities in CIV West?",
     answer:
-      "CIV West is a boutique compound spanning 9 acres, with just a 23% building footprint and 77% open landscape — so space, privacy, and greenery come first. At its heart is a clubhouse featuring a gym, a business lounge, a café, and padel courts on the rooftop. An on-site commercial area covers your everyday needs, with two separate entrances — one for residents and one for guests — alongside a dedicated kids area. The entire project sits above full underground parking, keeping the surface clean, safe, and traffic-free. Built on a master plan by ADC and constructed with premium Delta Block bricks, every amenity is backed by genuine planning and build quality.",
+      "CIV West is a boutique compound spanning 9 acres, with just a 23% building footprint and 77% open landscape - so space, privacy, and greenery come first. At its heart is a clubhouse featuring a gym, a business lounge, a café, and padel courts on the rooftop. An on-site commercial area covers your everyday needs, with two separate entrances - one for residents and one for guests - alongside a dedicated kids area. The entire project sits above full underground parking, keeping the surface clean, safe, and traffic-free. Built on a master plan by ADC and constructed with premium Delta Block bricks, every amenity is backed by genuine planning and build quality.",
   },
   {
     question: "How can I book a unit in CIV West? ",
@@ -137,7 +139,6 @@ export const contactMetrics = [
   { value: "Free", label: "CONSULTATION" },
   { value: "Expert", label: "MARKET DATA" },
 ];
-
 
 export const contactCards = [
   {
@@ -160,4 +161,10 @@ export const contactCards = [
   },
 ];
 
-export const serviceIcons = [Timer, ShieldCheck, Sparkles, Building2, MessageCircle];
+export const serviceIcons = [
+  Timer,
+  ShieldCheck,
+  Sparkles,
+  Building2,
+  MessageCircle,
+];

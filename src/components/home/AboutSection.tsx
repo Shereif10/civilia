@@ -52,7 +52,6 @@ export function AboutSection() {
           "-=0.5",
         );
 
-      // Parallax Effect
       gsap.to(imageRef.current, {
         y: 80,
         ease: "none",
@@ -72,10 +71,52 @@ export function AboutSection() {
     <section
       ref={sectionRef}
       id="about"
-      className="relative bg-civilia-ink pb-16 pt-20 md:h-[830px] md:pb-0 md:pt-[109px]"
+      className="relative overflow-hidden bg-civilia-ink  pt-20 md:h-[830px] md:pb-0 md:pt-[109px]"
     >
-      <div className="relative h-full w-full overflow-hidden">
-        {/* Building Image */}
+      {/* MOBILE + TABLET */}
+      <div className="flex flex-col md:hidden">
+        <div
+          ref={cardRef}
+          className="relative z-10 bg-[#CD0001] px-6 pb-40 pt-10 text-white"
+          style={{
+            borderBottomLeftRadius: "180px",
+          }}
+        >
+          <div ref={textRef} className="relative z-30 mx-auto max-w-[320px]">
+            <h2 className="text-[40px] font-semibold leading-[1.2]">
+              About Us
+            </h2>
+
+            <p className="mt-4 text-base leading-[1.5]">
+              CIVILIA Developments Our portfolio spans diverse projects, from
+              integrated developments to infrastructure, industrial, and
+              commercial facilities, delivered in key areas like Sheikh Zayed,
+              New Cairo, and the New Administrative Capital.
+            </p>
+
+            <p className="mt-4 text-base leading-[1.5]">
+              Partnering with leading consultancy firms, we ensure every project
+              meets the highest standards.
+            </p>
+          </div>
+        </div>
+
+        <div
+          ref={imageRef}
+          className="relative z-20 -mt-32 h-[420px] w-full overflow-hidden"
+        >
+          <Image
+            src="/assets/about-building.png"
+            alt="CIVILIA residential building exterior"
+            fill
+            sizes="100vw"
+            className="object-fill object-center"
+          />
+        </div>
+      </div>
+
+      {/* DESKTOP - UNCHANGED */}
+      <div className="relative hidden h-full w-full overflow-hidden md:block">
         <div
           ref={imageRef}
           className="absolute left-0 top-6 h-[712px] w-[min(852px,74vw)]"
@@ -85,18 +126,16 @@ export function AboutSection() {
             alt="CIVILIA residential building exterior"
             fill
             sizes="(max-width: 768px) 100vw, 852px"
-            className="object-cover object-left"
+            className="object-fill object-left"
           />
 
           <div className="absolute inset-0 bg-gradient-to-r from-transparent to-civilia-ink" />
         </div>
 
-        {/* Glow */}
         <div className="absolute bottom-0 left-0 h-[261px] w-[669px] opacity-80">
           <Image src="/assets/about-glow.svg" alt="" fill sizes="669px" />
         </div>
 
-        {/* Content Card */}
         <div
           ref={cardRef}
           className="absolute right-0 top-0 bg-[#CD0001] text-white shadow-soft"
