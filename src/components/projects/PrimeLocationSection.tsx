@@ -5,7 +5,6 @@ const locations = [
     time: "3",
     place: "Dandy mega mall.",
     variant: "light",
-    
   },
   {
     time: "5",
@@ -27,12 +26,13 @@ const locations = [
 export function PrimeLocationSection() {
   return (
     <section className="bg-civilia-paper py-16 md:py-24">
-      <div className="mx-auto  overflow-hidden rounded-[32px]">
+      <div className="mx-auto overflow-hidden rounded-[32px]">
         {/* Header */}
-        <div className="rounded-bl-[285px] bg-[#F0E459] px-8 py-10 md:px-16 md:py-12">
+        <div className="rounded-bl-[160px] bg-[#F0E459] px-8 py-10 md:px-16 md:py-12">
           <h2
             data-animate="fade-up"
             className="text-center text-[48px] font-light leading-none text-[#031286] md:text-[72px]"
+            style={{ fontFamily: "Badgline" }}
           >
             Prime Location
           </h2>
@@ -40,64 +40,56 @@ export function PrimeLocationSection() {
 
         {/* Content */}
         <div className="px-8 py-10 md:px-16 md:py-16">
-          <div className="grid gap-10 lg:grid-cols-[480px_1fr]">
+          <div className="mx-auto max-w-[1150px] grid items-center gap-16 lg:grid-cols-[340px_520px] lg:justify-between">
             {/* Map */}
             <div
               data-animate="fade-right"
-              className="relative h-[360px] overflow-hidden rounded-[16px]"
+              className="relative mx-auto h-[290px] w-full max-w-[340px] overflow-hidden rounded-[12px]"
             >
               <Image
                 src="/assets/location-map.webp"
                 alt="CIV West Location Map"
                 fill
-                sizes="480px"
+                sizes="340px"
                 className="object-cover"
               />
             </div>
 
             {/* Text */}
-            <div
-              data-animate="fade-left"
-              className="flex flex-col justify-center"
-            >
-              <p className="text-[22px] leading-[1.7] text-[#3D3D3D]">
-                <span className="font-medium text-[#031286]">CIV West</span> is
-                strategically positioned in the heart of{" "}
-                <span className="font-semibold">
-                  Thawra El Khadra, Sheikh Zayed City
+            <div data-animate="fade-left">
+              <p className="max-w-[520px] text-[22px] leading-[1.3] text-[#4A4A4A] md:text-[24px]">
+                <span
+                  className="text-[#031286]"
+                  style={{ fontFamily: "Badgline" }}
+                >
+                  CIV West
                 </span>{" "}
-                one of West Cairo`&apos;`s most promising upscale residential
+                sits at the center of Thawra El Khadra in Sheikh Zayed City—one
+                of West Cairo&apos;s most sought-after upscale residential
                 districts.
-              </p>
-
-              <p className="mt-8 text-[22px] leading-[1.7] text-[#3D3D3D]">
-                The area is characterized by organized urban planning, abundant
-                green and water surfaces, and{" "}
-                <span className="font-semibold">
-                  seamless access to the major road axes connecting Sheikh Zayed
-                  to Greater Cairo
-                </span>
-                , New Sheikh Zayed, and 6th of October City.
               </p>
             </div>
           </div>
 
           {/* Distance Cards */}
           <div
-            className="mt-12 grid gap-6 md:grid-cols-2"
+            className="mt-16 grid gap-8 md:grid-cols-2"
             data-animate="stagger"
           >
             {locations.map((item) => (
               <article
                 key={item.place}
-                className={`rounded-bl-[64px] rounded-br-[16px] rounded-tl-[16px] rounded-tr-[16px] border-[3px] p-8 transition-all duration-300 ${
+                className={`min-h-[124px] rounded-bl-[64px] rounded-br-[16px] rounded-tl-[16px] rounded-tr-[16px] border-[3px] px-10 py-6 transition-all duration-300 ${
                   item.variant === "yellow"
                     ? "border-[#D8C93E] bg-[#F0E459]"
                     : "border-[#031286] bg-white"
                 }`}
               >
                 <div className="flex items-start">
-                  <span className="text-[72px] font-light leading-none text-[#031286]">
+                  <span
+                    className="text-[64px] leading-none text-[#031286] md:text-[72px]"
+                    style={{ fontFamily: "Badgline" }}
+                  >
                     {item.time}
                   </span>
 
@@ -113,10 +105,10 @@ export function PrimeLocationSection() {
                 </div>
 
                 <p
-                  className={`mt-4 text-[28px] font-medium leading-[1.2] ${
+                  className={`mt-2 text-[20px] font-medium leading-[1.2] md:text-[22px] ${
                     item.variant === "yellow"
                       ? "text-[#031286]"
-                      : "text-[#3D3D3D]"
+                      : "text-[#4A4A4A]"
                   }`}
                 >
                   {item.place}

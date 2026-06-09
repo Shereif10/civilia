@@ -8,6 +8,7 @@ export function MasterPlanSection() {
           <h2
             data-animate="fade-up"
             className="text-[48px] font-light leading-none text-[#031286] md:text-[72px]"
+            style={{ fontFamily: "Badgline" }}
           >
             Master Plan
           </h2>

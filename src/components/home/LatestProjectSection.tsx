@@ -18,7 +18,13 @@ const projects = [
   { src: "/assets/project-6.png", alt: "Project 6" },
 ];
 
-export function LatestProjectSection() {
+type LatestProjectSectionProps = {
+  variant?: "default" | "project";
+};
+
+export function LatestProjectSection({
+  variant = "default",
+}: LatestProjectSectionProps) {
   const [centerIndex, setCenterIndex] = useState(1);
   const [isPaused, setIsPaused] = useState(false);
 
@@ -132,24 +138,28 @@ export function LatestProjectSection() {
       id="projects"
       className="bg-civilia-paper pb-16 md:pb-32"
     >
-      <SectionTitle
-        align="left"
-        className="latest-project-title mx-auto w-full justify-start"
-      >
-        Latest Project
-      </SectionTitle>
+      {variant === "default" && (
+        <>
+          <SectionTitle
+            align="left"
+            className="latest-project-title mx-auto w-full justify-start"
+          >
+            Latest Project
+          </SectionTitle>
 
-      <div className="project-banner mt-10 bg-[#f5e94b] py-6 text-center sm:mt-12 md:mt-16 md:py-8">
-        <h2
-          className="text-[42px] font-light leading-[1.2] text-[#031286] md:text-[50px]"
-          style={{
-            fontFamily: "Badgline",
-            fontSize: "clamp(48px, 8vw, 80px)",
-          }}
-        >
-          CIV West
-        </h2>
-      </div>
+          <div className="project-banner mt-10 bg-[#f5e94b] py-6 text-center sm:mt-12 md:mt-16 md:py-8">
+            <h2
+              className="text-[42px] font-light leading-[1.2] text-[#031286] md:text-[50px]"
+              style={{
+                fontFamily: "Badgline",
+                fontSize: "clamp(48px, 8vw, 80px)",
+              }}
+            >
+              CIV West
+            </h2>
+          </div>
+        </>
+      )}
 
       <div className="container-civilia mt-10 sm:mt-12 md:mt-16">
         <div
@@ -188,36 +198,69 @@ export function LatestProjectSection() {
 
         <div
           ref={contentRef}
-          className="mt-10 rounded-2xl px-0 py-0 sm:mt-12 md:mt-16 md:px-8"
+          className={`mt-10 ${
+            variant === "project"
+              ? "mx-auto max-w-[1280px]"
+              : "rounded-2xl px-0 py-0 sm:mt-12 md:mt-16 md:px-8"
+          }`}
         >
-          <p className="mx-auto max-w-[1088px] text-center text-lg leading-[1.4] text-[#404030] sm:text-xl md:text-2xl md:leading-[1.25]">
-            Experience Modern Living in Thawra El Khadra, Sheikh Zayed City,
-            spanning 38.000 Square meters, we bring our ambitious vision to
-            life.
-          </p>
-
-          <div className="mx-auto mt-6 flex max-w-[715px] flex-col items-center justify-between gap-3 text-center text-lg leading-[1.4] text-civilia-red sm:text-xl md:flex-row md:text-2xl md:leading-[1.25]">
-            <span>CIV West - A Community Built to Last</span>
-            <span>Sheikh Zayed</span>
-          </div>
-
-          <div className="mt-10 grid gap-8 text-center sm:mt-12 md:mt-12 md:grid-cols-3">
-            {projectStats.map((item) => (
-              <div key={item.label}>
-                <p className="text-[28px] font-semibold leading-none text-civilia-red sm:text-[30px] md:text-[32px]">
-                  {item.value}
-                </p>
-
-                <p className="mx-auto mt-1 max-w-[130px] text-sm leading-none text-civilia-red md:text-base">
-                  {item.label}
-                </p>
+          {variant === "default" ? (
+            <>
+              <p className="mx-auto max-w-[1088px] text-center text-lg leading-[1.4] text-[#404030] sm:text-xl md:text-2xl md:leading-[1.25]">
+                Experience Modern Living in Thawra El Khadra, Sheikh Zayed City,
+                spanning 38.000 Square meters, we bring our ambitious vision to
+                life.
+              </p>
+              <div className="mx-auto mt-6 flex max-w-[715px] flex-col items-center justify-between gap-3 text-center text-lg leading-[1.4] text-civilia-red sm:text-xl md:flex-row md:text-2xl md:leading-[1.25]">
+                <span>CIV West - A Community Built to Last</span>
+                <span>Sheikh Zayed</span>
               </div>
-            ))}
-          </div>
 
-          <div className="mt-10 flex justify-center md:mt-12 md:justify-end">
-            <CiviliaButton href="/contact">View Project Details</CiviliaButton>
-          </div>
+              <div className="mt-10 grid gap-8 text-center sm:mt-12 md:mt-12 md:grid-cols-3">
+                {projectStats.map((item) => (
+                  <div key={item.label}>
+                    <p className="text-[28px] font-semibold leading-none text-civilia-red sm:text-[30px] md:text-[32px]">
+                      {item.value}
+                    </p>
+
+                    <p className="mx-auto mt-1 max-w-[130px] text-sm leading-none text-civilia-red md:text-base">
+                      {item.label}
+                    </p>
+                  </div>
+                ))}
+              </div>
+
+              <div className="mt-10 flex justify-center md:mt-12 md:justify-end">
+                <CiviliaButton href="/projects">
+                  View Project Details
+                </CiviliaButton>
+              </div>
+            </>
+          ) : (
+            <div className="rounded-[20px] bg-[#E7DD4B] px-6 py-8 md:px-12 md:py-10">
+              <p className="mx-auto max-w-[900px] text-center text-[18px] leading-[1.4] text-[#4A4A4A] md:text-[24px]">
+                Experience Modern Living in Thawra El Khadra, Sheikh Zayed City,
+                spanning 38.000 Square meters, we bring our ambitious vision to
+                life.
+              </p>
+
+              <div className="mt-8 flex flex-col items-center justify-center gap-4 text-center md:flex-row md:gap-20">
+                <span
+                  className="text-[24px] text-[#031286] md:text-[42px]"
+                  style={{ fontFamily: "Badgline" }}
+                >
+                  CIV West — A Community Built to Last
+                </span>
+
+                <span
+                  className="text-[24px] text-[#031286] md:text-[42px]"
+                  style={{ fontFamily: "Badgline" }}
+                >
+                  Sheikh Zayed
+                </span>
+              </div>
+            </div>
+          )}
         </div>
       </div>
 

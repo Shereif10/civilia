@@ -18,9 +18,22 @@ export const navItems = [
 ];
 
 export const stats = [
-  { value: "20+", label: "Years of Experience" },
-  { value: "50+", label: "Projects Delivered" },
-  { value: "5M+ sqm", label: "Built & Developed" },
+  {
+    value: "20+",
+    label: "Years of Experience",
+    icon: "/assets/experience-icon.svg",
+  },
+  {
+    value: "50+",
+    label: "Projects Delivered",
+    icon: "/assets/projects-delivered-icon.svg",
+  },
+  {
+    value: "5M+",
+    label: "Built & Developed",
+    suffix: "sqm",
+    icon: "/assets/sqm.svg",
+  },
 ];
 
 export const projectStats = [

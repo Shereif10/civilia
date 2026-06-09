@@ -5,7 +5,6 @@ import { useEffect, useRef } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 
-import { SectionTitle } from "@/components/ui/SectionTitle";
 import { stats } from "@/lib/data";
 
 export function ExperienceSection() {
@@ -95,44 +94,74 @@ export function ExperienceSection() {
   }, []);
 
   return (
-    <section
-      ref={sectionRef}
-      className="bg-civilia-paper py-12 sm:py-14 md:py-32 2xl:py-36"
-    >
-      <SectionTitle className="experience-title mx-auto w-full text-[38px] sm:text-[48px] md:text-[64px]">
-        Built on Experience
-      </SectionTitle>
+    <section ref={sectionRef} className="bg-civilia-paper py-16 md:py-24">
+      <div className="overflow-hidden rounded-bl-[180px] bg-civilia-red py-10 md:py-12">
+        <h2 className="experience-title text-center text-[42px] font-semibold text-white md:text-[72px]">
+          Built on Experience
+        </h2>
+      </div>
 
-      <div className="container-civilia mt-10 grid gap-5 sm:mt-12 sm:gap-6 md:mt-16 md:grid-cols-3 md:gap-8 2xl:gap-10">
+      <div className="container-civilia mt-16 grid gap-8 md:grid-cols-3 ">
         {stats.map((item, index) => (
           <article
             key={item.label}
             ref={(el) => {
               cardsRef.current[index] = el;
             }}
-            className="civilia-gradient-card flex min-h-[220px] flex-col justify-between rounded-2xl p-6 sm:min-h-[250px] sm:p-7 md:min-h-[308px] md:p-8"
+            className="
+              flex
+              min-h-[320px]
+              flex-col
+              justify-between
+              rounded-[24px]
+              border
+              border-[#E2DED7]
+              p-8
+            "
+            style={{
+              background:
+                "linear-gradient(90deg, #FFFDFA 0%, #FFF3E1 50%, #FFFDFA 100%)",
+            }}
           >
             <div>
-              <p
-                ref={(el) => {
-                  valuesRef.current[index] = el;
-                }}
-                data-value={item.value}
-                className="text-[40px] font-semibold leading-[1.2] text-[#252525] sm:text-[46px] md:text-[56px]"
-              >
-                0
-              </p>
+              {item.suffix ? (
+                <div className="flex items-start">
+                  <p
+                    ref={(el) => {
+                      valuesRef.current[index] = el;
+                    }}
+                    data-value={item.value}
+                    className="text-[56px] font-semibold leading-none text-[#252525] md:text-[64px]"
+                  >
+                    0
+                  </p>
 
-              <h3 className="mt-2 text-base font-medium leading-[1.2] text-[#3d3d3d] sm:text-lg">
+                  <span className="ml-2 mt-3 text-[18px] font-medium text-[#252525] md:text-[22px]">
+                    {item.suffix}
+                  </span>
+                </div>
+              ) : (
+                <p
+                  ref={(el) => {
+                    valuesRef.current[index] = el;
+                  }}
+                  data-value={item.value}
+                  className="text-[56px] font-semibold leading-none text-[#252525] md:text-[64px]"
+                >
+                  0
+                </p>
+              )}
+
+              <h3 className="mt-4 text-[18px] font-medium text-[#3D3D3D] md:text-[18px]">
                 {item.label}
               </h3>
             </div>
 
             <Image
-              src="/assets/metric-mark.svg"
-              alt=""
-              width={92}
-              height={102}
+              src={item.icon}
+              alt={item.label}
+              width={110}
+              height={110}
               className="metric-icon ml-auto"
             />
           </article>

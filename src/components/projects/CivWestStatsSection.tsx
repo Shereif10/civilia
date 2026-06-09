@@ -7,6 +7,7 @@ export function CivWestStatsSection() {
         <h2
           data-animate="fade-up"
           className="text-center text-[56px] font-light leading-none text-[#1D2D8C] md:text-[88px]"
+          style={{ fontFamily: "Badgline" }}
         >
           CIV WEST
         </h2>
@@ -16,9 +17,13 @@ export function CivWestStatsSection() {
             <article
               key={item.label}
               className="flex h-[138px] flex-col justify-center rounded-[16px] border-[3px] border-black/10 bg-[#F0E459] p-8"
+              // style={{ fontFamily: "Badgline" }}
             >
               <div className="flex items-start gap-1">
-                <span className="text-[48px] font-light leading-none text-[#1D2D8C]">
+                <span
+                  className="text-[48px] font-light leading-none text-[#1D2D8C]"
+                  style={{ fontFamily: "Badgline" }}
+                >
                   {item.value}
                 </span>
 
@@ -27,7 +32,7 @@ export function CivWestStatsSection() {
                 </span> */}
               </div>
 
-              <p className="mt-2 text-[18px] leading-none text-[#2F2F2F]">
+              <p className="mt-2 text-[18px] leading-none text-[#2F2F2F]" >
                 {item.label}
               </p>
             </article>

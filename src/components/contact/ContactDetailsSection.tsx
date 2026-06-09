@@ -368,8 +368,8 @@ export function ContactDetailsSection() {
           transition={{ duration: 0.2 }}
           className={`fixed bottom-6 left-1/2 z-[9999] -translate-x-1/2 rounded-2xl border px-5 py-3 text-sm font-medium shadow-2xl backdrop-blur-xl sm:px-6 sm:py-4 ${
             submitStatus === "success"
-              ? "border-green-400/20 bg-green-500/10 text-green-300"
-              : "border-red-400/20 bg-red-500/10 text-red-300"
+              ? "border-green-400/20 bg-green-500/10 text-green-600"
+              : "border-red-400/20 bg-red-500/10 text-red-600"
           }`}
         >
           {submitStatus === "success"

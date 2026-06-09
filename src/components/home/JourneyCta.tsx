@@ -20,11 +20,11 @@ const ctaContent = {
       variant: "red" as const,
       href: "/contact",
     },
-    secondaryButton: {
-      label: "Request a Call",
-      variant: "light" as const,
-      href: "/contact",
-    },
+    // secondaryButton: {
+    //   label: "Request a Call",
+    //   variant: "light" as const,
+    //   href: "/contact",
+    // },
   },
 
   project: {
@@ -60,11 +60,11 @@ const ctaContent = {
       variant: "yellow" as const,
       href: "/contact",
     },
-    secondaryButton: {
-      label: "Request a Call",
-      variant: "light" as const,
-      href: "/contact",
-    },
+    // secondaryButton: {
+    //   label: "Request a Call",
+    //   variant: "light" as const,
+    //   href: "/contact",
+    // },
   },
 
   careers: {
@@ -75,12 +75,7 @@ const ctaContent = {
     titleClass:
       "text-[36px] font-semibold text-white sm:text-[48px] md:text-[88px]",
     descriptionClass:
-      "mx-auto max-w-[700px] text-[16px] font-medium leading-[1.5] text-civilia-red sm:text-[18px] md:text-[24px]",
-    primaryButton: {
-      label: "View Our Rules",
-      variant: "red" as const,
-      href: "/careers-rules",
-    },
+      "mx-auto text-[16px] font-medium leading-[1.5] text-civilia-red sm:text-[18px] md:text-[24px]",
   },
 };
 
@@ -118,44 +113,44 @@ export function JourneyCta({ variant = "home" }: JourneyCtaProps) {
             {content.description}
           </p>
 
-          <div
-            className="
-              mt-8
-              flex
-              flex-col
-              justify-center
-              gap-4
+          {"primaryButton" in content && content.primaryButton && (
+            <div
+              className="
+        mt-8
+        flex
+        flex-col
+        justify-center
+        gap-4
 
-              sm:mt-10
-              sm:flex-row
+        sm:mt-10
+        sm:flex-row
 
-              md:gap-8
-            "
-          >
-            <CiviliaButton
-              href={content.primaryButton.href}
-              className={
-                variant === "careers"
-                  ? "w-full sm:min-w-[280px] sm:w-auto"
-                  : "w-full sm:w-[319px]"
-              }
-              variant={content.primaryButton.variant}
-              withArrow={false}
+        md:gap-8
+      "
             >
-              {content.primaryButton.label}
-            </CiviliaButton>
-
-            {"secondaryButton" in content && content.secondaryButton && (
               <CiviliaButton
-                href={content.secondaryButton.href}
+                href={content.primaryButton.href}
                 className="w-full sm:w-[319px]"
-                variant={content.secondaryButton.variant}
+                variant={content.primaryButton.variant}
                 withArrow={false}
               >
-                {content.secondaryButton.label}
+                {content.primaryButton.label}
               </CiviliaButton>
-            )}
-          </div>
+
+              {"secondaryButton" in content && content.secondaryButton && (
+                <CiviliaButton
+                  href={content.secondaryButton.href}
+                  className="w-full sm:w-[319px]"
+                  variant={content.secondaryButton.variant}
+                  withArrow={false}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  {content.secondaryButton.label}
+                </CiviliaButton>
+              )}
+            </div>
+          )}
         </div>
       </div>
     </section>

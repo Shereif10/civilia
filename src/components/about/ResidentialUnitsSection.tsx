@@ -5,21 +5,21 @@ import { useState } from "react";
 
 const residentialUnits = [
   {
-    icon: "/assets/Residential.png",
+    icon: "/assets/nasr-city.svg",
     value: "40",
     label: "Units",
     location: "Nasr City",
     type: "Residential tower",
   },
   {
-    icon: "/assets/Residential.png",
+    icon: "/assets/maadi.svg",
     value: "25",
     label: "Units",
     location: "Maadi",
     type: "Residential tower",
   },
   {
-    icon: "/assets/Residential.png",
+    icon: "/assets/khamayel.svg",
     value: "18",
     label: "Units",
     location: "Al-Khamayel",
@@ -29,11 +29,6 @@ const residentialUnits = [
 
 export function ResidentialUnitsSection() {
   const [activeIndex, setActiveIndex] = useState(0);
-
-  const orderedCards = [
-    residentialUnits[activeIndex],
-    ...residentialUnits.filter((_, index) => index !== activeIndex),
-  ];
 
   return (
     <section className="bg-civilia-paper pb-20 md:pb-32">
@@ -82,21 +77,22 @@ export function ResidentialUnitsSection() {
             xl:h-[380px]
           "
         >
-          {orderedCards.map((item, visualIndex) => {
-            const originalIndex = residentialUnits.findIndex(
-              (card) => card.location === item.location,
-            );
-
-            const isActive = visualIndex === 0;
+          {residentialUnits.map((item, index) => {
+            const distance =
+              index === activeIndex
+                ? 0
+                : index > activeIndex
+                  ? index - activeIndex
+                  : residentialUnits.length - activeIndex + index;
 
             return (
               <button
                 key={item.location}
                 type="button"
-                onClick={() => setActiveIndex(originalIndex)}
+                onClick={() => setActiveIndex(index)}
                 data-animate="fade-up"
                 className={`
-                  ${visualIndex > 0 ? "mt-4 xl:mt-0" : ""}
+                  ${distance > 0 ? "mt-4 xl:mt-0" : ""}
 
                   xl:absolute
                   left-0
@@ -106,7 +102,6 @@ export function ResidentialUnitsSection() {
                   rounded-[24px]
                   border-[3px]
                   border-black/[0.05]
-                  bg-[#fffdfa]
                   text-left
 
                   shadow-[0_8px_20px_rgba(0,0,0,0.10)]
@@ -114,20 +109,16 @@ export function ResidentialUnitsSection() {
                   duration-500
                   ease-out
 
-                  ${
-                    isActive
-                      ? "z-30 xl:h-[228px]"
-                      : visualIndex === 1
-                        ? "z-20 xl:h-[228px]"
-                        : "z-10 xl:h-[228px]"
-                  }
+                  xl:h-[228px]
+
+                  ${distance === 0 ? "z-30" : ""}
+                  ${distance === 1 ? "z-20" : ""}
+                  ${distance === 2 ? "z-10" : ""}
                 `}
                 style={{
-                  top: visualIndex === 0 ? 0 : visualIndex === 1 ? 85 : 170,
-                  transform:
-                    typeof window !== "undefined" && window.innerWidth >= 1280
-                      ? `scale(${1 - visualIndex * 0.07})`
-                      : undefined,
+                  top: distance === 0 ? 0 : distance === 1 ? 85 : 170,
+                  transform: `scale(${distance === 0 ? 1 : distance === 1 ? 0.93 : 0.86})`,
+                  transformOrigin: "top center",
                   background:
                     "linear-gradient(90deg, #FFFDFA 0%, #FFF3E1 50%, #FFFDFA 100%)",
                 }}
@@ -167,23 +158,23 @@ export function ResidentialUnitsSection() {
                     <div
                       className="
                         relative
-                        h-[90px]
-                        w-[90px]
+                        h-[110px]
+                        w-[110px]
                         shrink-0
 
-                        sm:h-[110px]
-                        sm:w-[110px]
+                        sm:h-[130px]
+                        sm:w-[130px]
 
-                        xl:h-[128px]
-                        xl:w-[128px]
+                        xl:h-[160px]
+                        xl:w-[160px]
                       "
                     >
                       <Image
                         src={item.icon}
                         alt={item.location}
                         fill
-                        sizes="128px"
-                        className="object-contain"
+                        sizes="160px"
+                        className="object-fill"
                       />
                     </div>
 

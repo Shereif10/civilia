@@ -32,6 +32,7 @@ export function PaymentPlanSection() {
           <h2
             data-animate="fade-up"
             className="text-center text-[48px] font-light leading-none text-[#031286] md:text-[72px]"
+            style={{ fontFamily: "Badgline" }}
           >
             Payment Plan
           </h2>
@@ -50,7 +51,10 @@ export function PaymentPlanSection() {
                 }`}
               >
                 <div className="flex items-start">
-                  <span className="text-[72px] font-light leading-none text-[#031286]">
+                  <span
+                    className="text-[72px] font-light leading-none text-[#031286]"
+                    style={{ fontFamily: "Badgline" }}
+                  >
                     {item.value}
                   </span>
 
@@ -61,6 +65,7 @@ export function PaymentPlanSection() {
                           ? "text-[#031286]"
                           : "text-[#D8C93E]"
                       }`}
+                      style={{ fontFamily: "Badgline" }}
                     >
                       {item.suffix}
                     </span>
@@ -73,6 +78,7 @@ export function PaymentPlanSection() {
                       ? "text-[#031286]"
                       : "text-[#3D3D3D]"
                   }`}
+                  // style={{ fontFamily: "Badgline" }}
                 >
                   {item.title}
                 </p>
