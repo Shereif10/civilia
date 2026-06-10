@@ -1,29 +1,21 @@
-import Image from "next/image";
+"use client";
 
-const locations = [
-  {
-    time: "3",
-    place: "Dandy mega mall.",
-    variant: "light",
-  },
-  {
-    time: "5",
-    place: "HYPER One.",
-    variant: "yellow",
-  },
-  {
-    time: "5",
-    place: "ZED Towers.",
-    variant: "light",
-  },
-  {
-    time: "10",
-    place: "AHLY Sporting Club.",
-    variant: "yellow",
-  },
-];
+import Image from "next/image";
+import { useLocale, useTranslations } from "next-intl";
+
+type LocationItem = {
+  time: string;
+  place: string;
+  variant: "light" | "yellow";
+};
 
 export function PrimeLocationSection() {
+  const t = useTranslations("primeLocation");
+  const locale = useLocale();
+  const isArabic = locale === "ar";
+
+  const locations = t.raw("locations") as LocationItem[];
+
   return (
     <section className="bg-civilia-paper py-16 md:py-24">
       <div className="mx-auto overflow-hidden rounded-[32px]">
@@ -34,13 +26,13 @@ export function PrimeLocationSection() {
             className="text-center text-[48px] font-light leading-none text-[#031286] md:text-[72px]"
             style={{ fontFamily: "Badgline" }}
           >
-            Prime Location
+            {t("title")}
           </h2>
         </div>
 
         {/* Content */}
         <div className="px-8 py-10 md:px-16 md:py-16">
-          <div className="mx-auto max-w-[1150px] grid items-center gap-16 lg:grid-cols-[340px_520px] lg:justify-between">
+          <div className="mx-auto grid max-w-[1150px] items-center gap-16 lg:grid-cols-[340px_520px] lg:justify-between">
             {/* Map */}
             <div
               data-animate="fade-right"
@@ -56,17 +48,18 @@ export function PrimeLocationSection() {
             </div>
 
             {/* Text */}
-            <div data-animate="fade-left">
+            <div
+              data-animate="fade-left"
+              className={isArabic ? "text-right" : ""}
+            >
               <p className="max-w-[520px] text-[22px] leading-[1.3] text-[#4A4A4A] md:text-[24px]">
                 <span
                   className="text-[#031286]"
                   style={{ fontFamily: "Badgline" }}
                 >
-                  CIV West
+                  {t("highlight")}
                 </span>{" "}
-                sits at the center of Thawra El Khadra in Sheikh Zayed City—one
-                of West Cairo&apos;s most sought-after upscale residential
-                districts.
+                {t("description")}
               </p>
             </div>
           </div>
@@ -85,8 +78,9 @@ export function PrimeLocationSection() {
                     : "border-[#031286] bg-white"
                 }`}
               >
-                <div className="flex items-start">
+                <div className="flex items-start gap-1">
                   <span
+                    dir="ltr"
                     className="text-[64px] leading-none text-[#031286] md:text-[72px]"
                     style={{ fontFamily: "Badgline" }}
                   >
@@ -100,7 +94,7 @@ export function PrimeLocationSection() {
                         : "text-[#D8C93E]"
                     }`}
                   >
-                    MINS
+                    {t("mins")}
                   </span>
                 </div>
 
@@ -109,7 +103,7 @@ export function PrimeLocationSection() {
                     item.variant === "yellow"
                       ? "text-[#031286]"
                       : "text-[#4A4A4A]"
-                  }`}
+                  } ${isArabic ? "text-right" : ""}`}
                 >
                   {item.place}
                 </p>

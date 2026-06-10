@@ -1,25 +1,26 @@
-import Image from "next/image";
+"use client";
 
-const visionMissionItems = [
-  {
-    title: "Our Vision",
-    description:
-      "To be the leading real estate company, transforming communities through innovative and sustainable living solutions, while fostering trust and excellence in every interaction.",
-    icon: "/assets/vision-icon.svg",
-  },
-  {
-    title: "Our Mission",
-    description:
-      "Our mission is to provide exceptional real estate services by prioritizing client satisfaction, leveraging cutting-edge technology, and promoting responsible development.",
-    icon: "/assets/mission-icon.svg",
-  },
-];
+import Image from "next/image";
+import { useLocale, useTranslations } from "next-intl";
+
+const icons = ["/assets/vision-icon.svg", "/assets/mission-icon.svg"];
+
+type VisionMissionItem = {
+  title: string;
+  description: string;
+};
 
 export function VisionMissionSection() {
+  const t = useTranslations("visionMission");
+  const locale = useLocale();
+  const isArabic = locale === "ar";
+
+  const items = t.raw("items") as VisionMissionItem[];
+
   return (
     <section className="bg-civilia-paper pb-20 md:pb-32">
       <div className="container-civilia flex flex-col gap-6 md:gap-8">
-        {visionMissionItems.map((item) => (
+        {items.map((item, index) => (
           <article
             key={item.title}
             data-animate="fade-up"
@@ -55,7 +56,11 @@ export function VisionMissionSection() {
             }}
           >
             <div className="flex flex-col gap-6 md:gap-8">
-              <div className="flex items-center justify-between gap-4">
+              <div
+                className={`flex items-center justify-between gap-4 ${
+                  isArabic ? "flex-row-reverse" : ""
+                }`}
+              >
                 <h2
                   className="
                     text-[28px]
@@ -78,7 +83,7 @@ export function VisionMissionSection() {
 
                 <div className="shrink-0">
                   <Image
-                    src={item.icon}
+                    src={icons[index]}
                     alt=""
                     width={42}
                     height={42}
@@ -98,7 +103,7 @@ export function VisionMissionSection() {
               </div>
 
               <p
-                className="
+                className={`
                   text-[16px]
                   leading-[1.5]
                   text-[#2a2a2a]
@@ -110,7 +115,9 @@ export function VisionMissionSection() {
                   lg:text-[22px]
 
                   2xl:text-[24px]
-                "
+
+                  ${isArabic ? "text-right" : "text-left"}
+                `}
               >
                 “{item.description}”
               </p>

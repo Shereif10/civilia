@@ -1,7 +1,14 @@
+"use client";
+
 import Image from "next/image";
+import { useLocale, useTranslations } from "next-intl";
 import { Header } from "@/components/layout/Header";
 
 export function ContactHero() {
+  const t = useTranslations("contactHero");
+  const locale = useLocale();
+  const isArabic = locale === "ar";
+
   return (
     <section className="bg-civilia-paper pb-16 md:pb-24">
       <Header active="contact" />
@@ -47,14 +54,14 @@ export function ContactHero() {
               lg:text-[96px]
             "
           >
-            Contact Us
+            {t("title")}
           </h1>
         </div>
 
         {/* Description */}
         <div className="relative mt-8 md:mt-12 lg:mt-14">
           <p
-            className="
+            className={`
               max-w-[1040px]
               text-[18px]
               leading-[1.5]
@@ -66,11 +73,11 @@ export function ContactHero() {
 
               lg:text-[24px]
               lg:leading-[1.3]
-            "
+
+              ${isArabic ? "text-right" : ""}
+            `}
           >
-            We&apos;re here to help you find your perfect property. Let our
-            experts guide your next investment with the architectural precision
-            Civilia is known for.
+            {t("description")}
           </p>
 
           <Image

@@ -1,6 +1,13 @@
+"use client";
+
 import Image from "next/image";
+import { useLocale, useTranslations } from "next-intl";
 
 export function MasterPlanSection() {
+  const t = useTranslations("masterPlan");
+  const locale = useLocale();
+  const isArabic = locale === "ar";
+
   return (
     <section className="bg-civilia-paper py-16 md:py-24">
       <div className="mx-auto max-w-[1280px]">
@@ -10,17 +17,25 @@ export function MasterPlanSection() {
             className="text-[48px] font-light leading-none text-[#031286] md:text-[72px]"
             style={{ fontFamily: "Badgline" }}
           >
-            Master Plan
+            {t("title")}
           </h2>
 
           <p
             data-animate="fade-up"
-            className="mx-auto mt-8 max-w-[1120px] text-[18px] leading-[1.7] text-[#555555] md:text-[22px]"
+            className={`
+              mx-auto
+              mt-8
+              max-w-[1120px]
+              text-[18px]
+              leading-[1.7]
+              text-[#555555]
+
+              md:text-[22px]
+
+              ${isArabic ? "text-right" : "text-center"}
+            `}
           >
-            In collaboration with ADC – Architecture and Design consultant We
-            have carefully considered every aspect of modern living, From the
-            layout of streets and parks to the design of homes and amenities to
-            create a community where every detail enhances your life style.
+            {t("description")}
           </p>
         </div>
 

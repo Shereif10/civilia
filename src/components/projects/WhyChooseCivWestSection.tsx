@@ -1,47 +1,20 @@
-import Image from "next/image";
+"use client";
 
-const reasons = [
-  {
-    title: "Strategic Location",
-    description:
-      "Heart of Thawra El Khadra-close to malls, clubs, and major road axRs",
-  },
-  {
-    title: "Contemporary Master Plan",
-    description: "Designed by ADC with panoramic views and modern architecture",
-  },
-  {
-    title: "Expansive Green Spaces",
-    description:
-      "Majority of the compound dedicated to greens, lakes & walkways",
-  },
-  {
-    title: "Integrated Amenities",
-    description:
-      "Club house, gym, yoga, padel, retail mall, kids areas & running tracks",
-  },
-  {
-    title: "Smart Security",
-    description: "Smart gates, CCTV, 24/7 guards, and underground parking",
-  },
-  {
-    title: "Trusted Developer",
-    description:
-      "CIVILIA Developments-20+ years in construction & large-scale projects",
-  },
-  {
-    title: "Master-planned by ADC",
-    description:
-      "Streets, parks & homes designed with ADC-modern architecture and panoramic views",
-  },
-  {
-    title: "Delta Block construction",
-    description:
-      "Premium Delta Sand Brick for real structural strength, thermal & sound comfort",
-  },
-];
+import Image from "next/image";
+import { useLocale, useTranslations } from "next-intl";
+
+type Reason = {
+  title: string;
+  description: string;
+};
 
 export function WhyChooseCivWestSection() {
+  const t = useTranslations("whyChooseCivWest");
+  const locale = useLocale();
+  const isArabic = locale === "ar";
+
+  const reasons = t.raw("reasons") as Reason[];
+
   return (
     <section className="bg-civilia-paper py-16 md:py-24">
       <div className="container-civilia">
@@ -59,7 +32,7 @@ export function WhyChooseCivWestSection() {
             md:text-[72px]
           "
         >
-          Why Choose CIV West
+          {t("title")}
         </h2>
 
         <div
@@ -100,8 +73,11 @@ export function WhyChooseCivWestSection() {
                 hover:-translate-y-1
               "
             >
-              {/* Header */}
-              <div className="flex items-center gap-4">
+              <div
+                className={`flex items-center gap-4 ${
+                  isArabic ? "text-right" : ""
+                }`}
+              >
                 <Image
                   src="/assets/why-icon.svg"
                   alt=""
@@ -125,10 +101,9 @@ export function WhyChooseCivWestSection() {
                 </h3>
               </div>
 
-              {/* Description */}
               <div className="mt-5 flex flex-1 items-center">
                 <p
-                  className="
+                  className={`
                     text-[15px]
                     leading-[1.7]
                     text-[#5A5A5A]
@@ -136,7 +111,9 @@ export function WhyChooseCivWestSection() {
                     sm:text-[16px]
 
                     md:text-[18px]
-                  "
+
+                    ${isArabic ? "text-right" : ""}
+                  `}
                 >
                   {item.description}
                 </p>

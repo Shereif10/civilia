@@ -1,6 +1,7 @@
 "use client";
 
 import Image from "next/image";
+import { useTranslations } from "next-intl";
 
 const achievements = [
   {
@@ -27,6 +28,8 @@ const achievements = [
 ];
 
 export function LegacyProjectsSection() {
+  const t = useTranslations("legacyProjects");
+
   return (
     <section className="overflow-hidden py-16 md:py-24">
       <div className="container-civilia">
@@ -40,13 +43,12 @@ export function LegacyProjectsSection() {
             md:text-[52px]
           "
         >
-          <span className="text-civilia-red">CIVILIA</span> also participated in
-          the construction of many Banks, Hospitals Separate buildings.
+          <span className="text-civilia-red">{t("title.highlight")}</span>{" "}
+          {t("title.text")}
         </h2>
       </div>
 
-      {/* Infinite Carousel */}
-      <div className="mt-16 overflow-hidden">
+      <div className="mt-16 overflow-hidden" dir="ltr">
         <div className="animate-marquee flex w-max items-center">
           {[...achievements, ...achievements, ...achievements].map(
             (item, index) => (
@@ -65,7 +67,7 @@ export function LegacyProjectsSection() {
               >
                 <Image
                   src={item.icon}
-                  alt=""
+                  alt={`Achievement ${index + 1}`}
                   width={225}
                   height={40}
                   className="h-auto shrink-0 object-contain"

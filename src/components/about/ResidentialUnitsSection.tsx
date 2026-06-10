@@ -2,33 +2,35 @@
 
 import Image from "next/image";
 import { useState } from "react";
+import { useLocale, useTranslations } from "next-intl";
 
-const residentialUnits = [
-  {
-    icon: "/assets/nasr-city.svg",
-    value: "40",
-    label: "Units",
-    location: "Nasr City",
-    type: "Residential tower",
-  },
-  {
-    icon: "/assets/maadi.svg",
-    value: "25",
-    label: "Units",
-    location: "Maadi",
-    type: "Residential tower",
-  },
-  {
-    icon: "/assets/khamayel.svg",
-    value: "18",
-    label: "Units",
-    location: "Al-Khamayel",
-    type: "Residential Complex 6",
-  },
+type ResidentialUnit = {
+  icon: string;
+  value: string;
+  label: string;
+  location: string;
+  type: string;
+};
+
+const residentialIcons = [
+  "/assets/nasr-city.svg",
+  "/assets/maadi.svg",
+  "/assets/khamayel.svg",
 ];
 
 export function ResidentialUnitsSection() {
   const [activeIndex, setActiveIndex] = useState(0);
+
+  const t = useTranslations("residentialUnits");
+  const locale = useLocale();
+  const isArabic = locale === "ar";
+
+  const residentialUnits = t.raw("items") as Omit<ResidentialUnit, "icon">[];
+
+  const units: ResidentialUnit[] = residentialUnits.map((item, index) => ({
+    ...item,
+    icon: residentialIcons[index],
+  }));
 
   return (
     <section className="bg-civilia-paper pb-20 md:pb-32">
@@ -50,8 +52,8 @@ export function ResidentialUnitsSection() {
               xl:text-[72px]
             "
           >
-            <span className="block">Our Residential</span>
-            <span className="block">units</span>
+            <span className="block">{t("title.line1")}</span>
+            <span className="block">{t("title.line2")}</span>
           </h2>
 
           <div className="hidden pt-10 md:block">
@@ -77,13 +79,13 @@ export function ResidentialUnitsSection() {
             xl:h-[380px]
           "
         >
-          {residentialUnits.map((item, index) => {
+          {units.map((item, index) => {
             const distance =
               index === activeIndex
                 ? 0
                 : index > activeIndex
                   ? index - activeIndex
-                  : residentialUnits.length - activeIndex + index;
+                  : units.length - activeIndex + index;
 
             return (
               <button
@@ -102,7 +104,8 @@ export function ResidentialUnitsSection() {
                   rounded-[24px]
                   border-[3px]
                   border-black/[0.05]
-                  text-left
+
+                  ${isArabic ? "text-right" : "text-left"}
 
                   shadow-[0_8px_20px_rgba(0,0,0,0.10)]
                   transition-all
@@ -117,7 +120,9 @@ export function ResidentialUnitsSection() {
                 `}
                 style={{
                   top: distance === 0 ? 0 : distance === 1 ? 85 : 170,
-                  transform: `scale(${distance === 0 ? 1 : distance === 1 ? 0.93 : 0.86})`,
+                  transform: `scale(${
+                    distance === 0 ? 1 : distance === 1 ? 0.93 : 0.86
+                  })`,
                   transformOrigin: "top center",
                   background:
                     "linear-gradient(90deg, #FFFDFA 0%, #FFF3E1 50%, #FFFDFA 100%)",
@@ -140,20 +145,25 @@ export function ResidentialUnitsSection() {
                   "
                 >
                   <div
-                    className="
-                      flex
-                      flex-col
-                      items-center
-                      gap-4
-                      text-center
+                    className={`
+    flex
+    flex-col
+    items-center
+    gap-4
+    text-center
 
-                      sm:flex-row
-                      sm:items-center
-                      sm:text-left
-                      sm:gap-6
+    sm:flex-row
+    sm:items-center
+    sm:gap-6
 
-                      xl:gap-8
-                    "
+    xl:gap-8
+
+    ${
+      isArabic
+        ? "sm:flex-row xl:flex-row sm:text-right"
+        : "sm:text-left"
+    }
+  `}
                   >
                     <div
                       className="
@@ -179,8 +189,15 @@ export function ResidentialUnitsSection() {
                     </div>
 
                     <div className="flex flex-col justify-center">
-                      <div className="flex items-end justify-center gap-2 sm:justify-start">
+                      <div
+                        className={`flex items-end gap-2 ${
+                          isArabic
+                            ? "justify-center sm:justify-end"
+                            : "justify-center sm:justify-start"
+                        }`}
+                      >
                         <span
+                          dir="ltr"
                           className="
                             text-[56px]
                             font-semibold
@@ -244,7 +261,7 @@ export function ResidentialUnitsSection() {
                     "
                   >
                     <p
-                      className="
+                      className={`
                         text-center
                         text-[24px]
                         font-medium
@@ -252,11 +269,12 @@ export function ResidentialUnitsSection() {
                         tracking-[-1px]
                         text-[#202020]
 
-                        sm:text-left
                         sm:text-[28px]
 
                         xl:text-[38px]
-                      "
+
+                        ${isArabic ? "sm:text-right" : "sm:text-left"}
+                      `}
                     >
                       {item.type}
                     </p>
@@ -282,7 +300,7 @@ export function ResidentialUnitsSection() {
               xl:text-[40px]
             "
           >
-            Built by engineers. Delivered with precision.
+            {t("bottomText")}
           </p>
         </div>
       </div>

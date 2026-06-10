@@ -2,7 +2,7 @@
 
 import Image from "next/image";
 import { useRef, useState } from "react";
-import { CiviliaButton } from "@/components/ui/CiviliaButton";
+import { useLocale, useTranslations } from "next-intl";
 
 import { useForm } from "react-hook-form";
 import { z } from "zod";
@@ -11,35 +11,6 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { motion } from "framer-motion";
 import { Loader2 } from "lucide-react";
 
-// ─────────────────────────────────────────────
-// Validation Schema
-// ─────────────────────────────────────────────
-
-const applicationSchema = z.object({
-  name: z.string().min(2, "Name must be at least 2 characters"),
-
-  email: z.string().email("Please enter a valid email"),
-
-  phone: z
-    .string()
-    .min(7, "Please enter a valid phone number")
-    .regex(/^\+?[0-9\s\-().]{7,20}$/, "Please enter a valid phone number"),
-
-  jobTitle: z.string().min(2, "Job title is required"),
-
-  department: z.string().min(2, "Department is required"),
-
-  // resume: z
-  //   .any()
-  //   .refine((file) => file?.length === 1, "Resume is required")
-  //   .refine(
-  //     (file) => !file?.[0] || file[0].size <= 10 * 1024 * 1024,
-  //     "Resume must be less than 2MB",
-  //   ),
-});
-
-type ApplicationFormData = z.infer<typeof applicationSchema>;
-
 type SubmitStatus =
   | "idle"
   | "loading"
@@ -47,6 +18,27 @@ type SubmitStatus =
   | "error";
 
 export function JoinOurTeamSection() {
+  const t = useTranslations("joinOurTeam");
+  const locale = useLocale();
+  const isArabic = locale === "ar";
+
+  const applicationSchema = z.object({
+    name: z.string().min(2, t("validation.name")),
+
+    email: z.string().email(t("validation.email")),
+
+    phone: z
+      .string()
+      .min(7, t("validation.phoneMin"))
+      .regex(/^\+?[0-9\s\-().]{7,20}$/, t("validation.phoneRegex")),
+
+    jobTitle: z.string().min(2, t("validation.jobTitle")),
+
+    department: z.string().min(2, t("validation.department")),
+  });
+
+  type ApplicationFormData = z.infer<typeof applicationSchema>;
+
   const [submitStatus, setSubmitStatus] = useState<SubmitStatus>("idle");
 
   const [showPopup, setShowPopup] = useState(false);
@@ -91,6 +83,7 @@ export function JoinOurTeamSection() {
 
   const borderClass = (hasError: boolean) =>
     hasError ? "border-red-500" : "border-civilia-red";
+
   const onSubmit = async (data: ApplicationFormData) => {
     setSubmitStatus("loading");
 
@@ -103,11 +96,9 @@ export function JoinOurTeamSection() {
       );
 
       formData.append("subject", `New Job Application - ${data.name}`);
-
       formData.append("name", data.name);
       formData.append("email", data.email);
 
-      // مهم
       formData.append("replyto", data.email);
       formData.append("from_name", data.name);
 
@@ -115,18 +106,12 @@ export function JoinOurTeamSection() {
       formData.append("jobTitle", data.jobTitle);
       formData.append("department", data.department);
 
-      // if (data.resume?.[0]) {
-      //   formData.append("resume", data.resume[0]);
-      // }
-
       const response = await fetch("https://api.web3forms.com/submit", {
         method: "POST",
         body: formData,
       });
 
       const result = await response.json();
-
-      console.log("Web3Forms Result:", result);
 
       if (!result.success) {
         throw new Error(result.message || "Submission failed");
@@ -155,7 +140,7 @@ export function JoinOurTeamSection() {
               lg:text-[72px]
             "
           >
-            Join Our Team
+            {t("title")}
           </h2>
 
           <p
@@ -171,9 +156,7 @@ export function JoinOurTeamSection() {
               lg:text-[22px]
             "
           >
-            At Civilia Developments, we are dedicated to transforming visions
-            into reality, creating communities that inspire and elevate daily
-            living.
+            {t("description")}
           </p>
         </div>
 
@@ -212,7 +195,9 @@ export function JoinOurTeamSection() {
 
           <div
             data-animate="fade-left"
-            className="flex flex-col justify-center"
+            className={`flex flex-col justify-center ${
+              isArabic ? "text-right" : ""
+            }`}
           >
             <h3
               className="
@@ -225,7 +210,7 @@ export function JoinOurTeamSection() {
                 lg:text-[64px]
               "
             >
-              Job Application
+              {t("applicationTitle")}
             </h3>
 
             <p
@@ -241,7 +226,7 @@ export function JoinOurTeamSection() {
                 lg:text-[22px]
               "
             >
-              Submit your application and our HR team will review it shortly.
+              {t("applicationDescription")}
             </p>
 
             <form
@@ -251,14 +236,15 @@ export function JoinOurTeamSection() {
               noValidate
               className="mt-10 md:mt-14"
             >
-              {/* Name */}
               <div className="flex flex-col gap-2">
                 <input
                   type="text"
-                  placeholder="Name"
+                  placeholder={t("fields.name")}
                   disabled={isLoading}
                   {...register("name")}
-                  className={`${inputClass} ${borderClass(!!errors.name)}`}
+                  className={`${inputClass} ${borderClass(
+                    !!errors.name,
+                  )} ${isArabic ? "text-right" : ""}`}
                 />
 
                 {errors.name && (
@@ -268,15 +254,16 @@ export function JoinOurTeamSection() {
                 )}
               </div>
 
-              {/* Email + Phone */}
               <div className="mt-8 grid gap-8 md:mt-10 md:grid-cols-2">
                 <div className="flex flex-col gap-2">
                   <input
                     type="email"
-                    placeholder="Email"
+                    placeholder={t("fields.email")}
                     disabled={isLoading}
                     {...register("email")}
-                    className={`${inputClass} ${borderClass(!!errors.email)}`}
+                    className={`${inputClass} ${borderClass(
+                      !!errors.email,
+                    )} ${isArabic ? "text-right" : ""}`}
                   />
 
                   {errors.email && (
@@ -289,10 +276,12 @@ export function JoinOurTeamSection() {
                 <div className="flex flex-col gap-2">
                   <input
                     type="tel"
-                    placeholder="Phone"
+                    placeholder={t("fields.phone")}
                     disabled={isLoading}
                     {...register("phone")}
-                    className={`${inputClass} ${borderClass(!!errors.phone)}`}
+                    className={`${inputClass} ${borderClass(
+                      !!errors.phone,
+                    )} ${isArabic ? "text-right" : ""}`}
                   />
 
                   {errors.phone && (
@@ -303,17 +292,16 @@ export function JoinOurTeamSection() {
                 </div>
               </div>
 
-              {/* Job Title + Department */}
               <div className="mt-8 grid gap-8 md:mt-10 md:grid-cols-2">
                 <div className="flex flex-col gap-2">
                   <input
                     type="text"
-                    placeholder="Job Title"
+                    placeholder={t("fields.jobTitle")}
                     disabled={isLoading}
                     {...register("jobTitle")}
                     className={`${inputClass} ${borderClass(
                       !!errors.jobTitle,
-                    )}`}
+                    )} ${isArabic ? "text-right" : ""}`}
                   />
 
                   {errors.jobTitle && (
@@ -326,12 +314,12 @@ export function JoinOurTeamSection() {
                 <div className="flex flex-col gap-2">
                   <input
                     type="text"
-                    placeholder="Department"
+                    placeholder={t("fields.department")}
                     disabled={isLoading}
                     {...register("department")}
                     className={`${inputClass} ${borderClass(
                       !!errors.department,
-                    )}`}
+                    )} ${isArabic ? "text-right" : ""}`}
                   />
 
                   {errors.department && (
@@ -342,76 +330,37 @@ export function JoinOurTeamSection() {
                 </div>
               </div>
 
-              {/* Resume */}
-              {/* <div className="mt-8 md:mt-10">
-                <label className="block text-[18px] text-[#7A7A7A]">
-                  Resume
-                </label>
-
-                <input
-                  type="file"
-                  accept=".pdf,.doc,.docx"
-                  disabled={isLoading}
-                  {...register("resume")}
-                  className={`
-      mt-2
-      w-full
-      border-b
-      pb-4
-      text-sm
-      text-civilia-ink
-      file:mr-4
-      file:border-0
-      file:bg-transparent
-      file:text-sm
-      file:font-medium
-      ${borderClass(!!errors.resume)}
-    `}
-                />
-
-                <p className="mt-1 text-sm text-[#888]">
-                  Accepted formats: PDF, DOC, DOCX (Max 2MB)
-                </p>
-
-                {errors.resume && (
-                  <span className="mt-2 block text-sm text-red-500">
-                    {String(errors.resume.message)}
-                  </span>
-                )}
-              </div> */}
-
-              {/* Submit */}
               <div className="mt-10 flex justify-stretch md:mt-14 md:justify-end">
                 <button
                   type="submit"
                   disabled={isLoading}
                   className="
-      inline-flex
-      h-16
-      w-full
-      items-center
-      justify-center
-      gap-3
-      rounded-civilia
-      bg-civilia-red
-      px-8
-      text-[22px]
-      font-medium
-      text-white
-      transition
-      hover:bg-[#b71114]
-      disabled:cursor-not-allowed
-      disabled:opacity-70
-      md:w-[320px]
-    "
+                    inline-flex
+                    h-16
+                    w-full
+                    items-center
+                    justify-center
+                    gap-3
+                    rounded-civilia
+                    bg-civilia-red
+                    px-8
+                    text-[22px]
+                    font-medium
+                    text-white
+                    transition
+                    hover:bg-[#b71114]
+                    disabled:cursor-not-allowed
+                    disabled:opacity-70
+                    md:w-[320px]
+                  "
                 >
                   {isLoading ? (
                     <>
-                      Sending...
+                      {t("buttons.sending")}
                       <Loader2 className="h-5 w-5 animate-spin" />
                     </>
                   ) : (
-                    "Submit Application"
+                    t("buttons.submit")
                   )}
                 </button>
               </div>
@@ -432,8 +381,8 @@ export function JoinOurTeamSection() {
           }`}
         >
           {submitStatus === "success"
-            ? "Application submitted successfully ✨"
-            : "Something went wrong. Please try again."}
+            ? t("messages.success")
+            : t("messages.error")}
         </motion.div>
       )}
     </section>

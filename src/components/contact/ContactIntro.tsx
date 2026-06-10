@@ -1,6 +1,17 @@
-import { contactMetrics } from "@/lib/data";
+"use client";
+
+import { useTranslations } from "next-intl";
+
+type Metric = {
+  value: string;
+  label: string;
+};
 
 export function ContactIntro() {
+  const t = useTranslations("contactIntro");
+
+  const metrics = t.raw("metrics") as Metric[];
+
   return (
     <section
       className="my-8 bg-civilia-paper py-12 md:my-12 md:py-24"
@@ -25,7 +36,7 @@ export function ContactIntro() {
               lg:text-[58px]
             "
           >
-            We&apos;re here for you
+            {t("title")}
           </h2>
 
           <p
@@ -43,8 +54,7 @@ export function ContactIntro() {
               lg:leading-[1.25]
             "
           >
-            Our commitment to excellence extends beyond our builds. Experience a
-            standard of service that mirrors our architectural integrity.
+            {t("description")}
           </p>
         </div>
 
@@ -62,7 +72,7 @@ export function ContactIntro() {
           "
           data-animate="stagger"
         >
-          {contactMetrics.map((metric) => (
+          {metrics.map((metric) => (
             <div key={metric.label} className="text-center">
               <p
                 className="
@@ -75,6 +85,7 @@ export function ContactIntro() {
 
                   md:text-5xl
                 "
+                dir="ltr"
               >
                 {metric.value}
               </p>

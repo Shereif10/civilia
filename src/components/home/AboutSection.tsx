@@ -2,10 +2,12 @@
 
 import Image from "next/image";
 import { useEffect, useRef } from "react";
+import { useTranslations } from "next-intl";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 
 export function AboutSection() {
+  const t = useTranslations("about");
   const sectionRef = useRef<HTMLElement>(null);
   const imageRef = useRef<HTMLDivElement>(null);
   const cardRef = useRef<HTMLDivElement>(null);
@@ -71,7 +73,7 @@ export function AboutSection() {
     <section
       ref={sectionRef}
       id="about"
-      className="relative overflow-hidden bg-civilia-ink  pt-20 md:h-[830px] md:pb-0 md:pt-[109px]"
+      className="relative overflow-hidden bg-civilia-ink pt-20 md:h-[830px] md:pb-0 md:pt-[109px]"
     >
       {/* MOBILE + TABLET */}
       <div className="flex flex-col md:hidden">
@@ -84,20 +86,12 @@ export function AboutSection() {
         >
           <div ref={textRef} className="relative z-30 mx-auto max-w-[320px]">
             <h2 className="text-[40px] font-semibold leading-[1.2]">
-              About Us
+              {t("title")}
             </h2>
 
-            <p className="mt-4 text-base leading-[1.5]">
-              CIVILIA Developments Our portfolio spans diverse projects, from
-              integrated developments to infrastructure, industrial, and
-              commercial facilities, delivered in key areas like Sheikh Zayed,
-              New Cairo, and the New Administrative Capital.
-            </p>
+            <p className="mt-4 text-base leading-[1.5]">{t("p1")}</p>
 
-            <p className="mt-4 text-base leading-[1.5]">
-              Partnering with leading consultancy firms, we ensure every project
-              meets the highest standards.
-            </p>
+            <p className="mt-4 text-base leading-[1.5]">{t("p2")}</p>
           </div>
         </div>
 
@@ -154,20 +148,12 @@ export function AboutSection() {
         >
           <div ref={textRef} className="flex flex-col gap-4">
             <h2 className="text-[40px] font-semibold leading-[1.2]">
-              About Us
+              {t("title")}
             </h2>
 
-            <p className="text-base leading-[1.5]">
-              CIVILIA Developments Our portfolio spans diverse projects, from
-              integrated developments to infrastructure, industrial, and
-              commercial facilities, delivered in key areas like Sheikh Zayed,
-              New Cairo, and the New Administrative Capital.
-            </p>
+            <p className="text-base leading-[1.5]">{t("p1")}</p>
 
-            <p className="text-base leading-[1.5]">
-              Partnering with leading consultancy firms, we ensure every project
-              meets the highest standards.
-            </p>
+            <p className="text-base leading-[1.5]">{t("p2")}</p>
           </div>
         </div>
       </div>

@@ -4,6 +4,7 @@ import { useState, useEffect, useCallback, useRef } from "react";
 import Image from "next/image";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { useTranslations } from "next-intl";
 
 import { CiviliaButton } from "@/components/ui/CiviliaButton";
 import { SectionTitle } from "@/components/ui/SectionTitle";
@@ -18,6 +19,8 @@ const projects = [
   { src: "/assets/project-6.png", alt: "Project 6" },
 ];
 
+const projectStatKeys = ["units", "experience", "project"] as const;
+
 type LatestProjectSectionProps = {
   variant?: "default" | "project";
 };
@@ -25,6 +28,7 @@ type LatestProjectSectionProps = {
 export function LatestProjectSection({
   variant = "default",
 }: LatestProjectSectionProps) {
+  const t = useTranslations("latestProject");
   const [centerIndex, setCenterIndex] = useState(1);
   const [isPaused, setIsPaused] = useState(false);
 
@@ -144,7 +148,7 @@ export function LatestProjectSection({
             align="left"
             className="latest-project-title mx-auto w-full justify-start"
           >
-            Latest Project
+            {t("sectionTitle")}
           </SectionTitle>
 
           <div className="project-banner mt-10 bg-[#f5e94b] py-6 text-center sm:mt-12 md:mt-16 md:py-8">
@@ -207,41 +211,39 @@ export function LatestProjectSection({
           {variant === "default" ? (
             <>
               <p className="mx-auto max-w-[1088px] text-center text-lg leading-[1.4] text-[#404030] sm:text-xl md:text-2xl md:leading-[1.25]">
-                Experience Modern Living in Thawra El Khadra, Sheikh Zayed City,
-                spanning 38.000 Square meters, we bring our ambitious vision to
-                life.
+                {t("description")}
               </p>
+
               <div className="mx-auto mt-6 flex max-w-[715px] flex-col items-center justify-between gap-3 text-center text-lg leading-[1.4] text-civilia-red sm:text-xl md:flex-row md:text-2xl md:leading-[1.25]">
-                <span>CIV West - A Community Built to Last</span>
-                <span>Sheikh Zayed</span>
+                <span>{t("tagline")}</span>
+                <span>{t("location")}</span>
               </div>
 
-              <div className="mt-10 grid gap-8 text-center sm:mt-12 md:mt-12 md:grid-cols-3">
-                {projectStats.map((item) => (
+              <div
+                className="mt-10 grid gap-8 text-center sm:mt-12 md:mt-12 md:grid-cols-3"
+                dir="ltr"
+              >
+                {projectStats.map((item, index) => (
                   <div key={item.label}>
                     <p className="text-[28px] font-semibold leading-none text-civilia-red sm:text-[30px] md:text-[32px]">
                       {item.value}
                     </p>
 
                     <p className="mx-auto mt-1 max-w-[130px] text-sm leading-none text-civilia-red md:text-base">
-                      {item.label}
+                      {t(`stats.${projectStatKeys[index]}`)}
                     </p>
                   </div>
                 ))}
               </div>
 
               <div className="mt-10 flex justify-center md:mt-12 md:justify-end">
-                <CiviliaButton href="/projects">
-                  View Project Details
-                </CiviliaButton>
+                <CiviliaButton href="/projects">{t("cta")}</CiviliaButton>
               </div>
             </>
           ) : (
             <div className="rounded-[20px] bg-[#E7DD4B] px-6 py-8 md:px-12 md:py-10">
               <p className="mx-auto max-w-[900px] text-center text-[18px] leading-[1.4] text-[#4A4A4A] md:text-[24px]">
-                Experience Modern Living in Thawra El Khadra, Sheikh Zayed City,
-                spanning 38.000 Square meters, we bring our ambitious vision to
-                life.
+                {t("description")}
               </p>
 
               <div className="mt-8 flex flex-col items-center justify-center gap-4 text-center md:flex-row md:gap-20">
@@ -249,14 +251,14 @@ export function LatestProjectSection({
                   className="text-[24px] text-[#031286] md:text-[42px]"
                   style={{ fontFamily: "Badgline" }}
                 >
-                  CIV West — A Community Built to Last
+                  {t("tagline")}
                 </span>
 
                 <span
                   className="text-[24px] text-[#031286] md:text-[42px]"
                   style={{ fontFamily: "Badgline" }}
                 >
-                  Sheikh Zayed
+                  {t("location")}
                 </span>
               </div>
             </div>

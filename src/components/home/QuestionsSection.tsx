@@ -1,13 +1,12 @@
+import { useTranslations } from "next-intl";
 import { AccordionList } from "@/components/ui/AccordionList";
-import { homeQuestions, projectQuestions } from "@/lib/data";
 
 type QuestionsSectionProps = {
   variant?: "default" | "project";
 };
 
-const variants = {
+const variantStyles = {
   default: {
-    items: homeQuestions,
     titleClass:
       "text-center text-[36px] font-semibold leading-none text-civilia-red sm:text-[42px] md:text-[72px]",
     wrapperClass:
@@ -16,9 +15,7 @@ const variants = {
       "linear-gradient(90deg, rgba(255,255,255,0.95) 0%, rgba(255,243,225,0.9) 50%, rgba(255,255,255,0.95) 100%)",
     marginTop: "mt-8 md:mt-16",
   },
-
   project: {
-    items: projectQuestions,
     titleClass:
       "text-center text-[42px] font-light leading-none text-[#031286] md:text-[72px]",
     wrapperClass:
@@ -31,26 +28,29 @@ const variants = {
 export function QuestionsSection({
   variant = "default",
 }: QuestionsSectionProps) {
-  const config = variants[variant];
+  const t = useTranslations("questions");
+  const config = variantStyles[variant];
+  const items = t.raw(variant === "default" ? "home" : "project") as {
+    question: string;
+    answer: string;
+  }[];
 
   return (
     <section className="bg-civilia-paper py-16 md:py-24">
       <div
         className={config.wrapperClass}
-        style={{
-          background: config.background,
-        }}
+        style={{ background: config.background }}
       >
         <h2
           className={config.titleClass}
           style={variant === "project" ? { fontFamily: "Badgline" } : undefined}
         >
-          Questions & Answers
+          {t("title")}
         </h2>
       </div>
 
       <div className={`container-civilia ${config.marginTop}`}>
-        <AccordionList items={config.items} variant={variant} />
+        <AccordionList items={items} variant={variant} />
       </div>
     </section>
   );

@@ -2,18 +2,23 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import { usePathname } from "next/navigation";
+import { usePathname } from "@/i18n/navigation";
 import { Menu, X } from "lucide-react";
 import { useState } from "react";
-import { navItems } from "@/lib/data";
+import { useTranslations } from "next-intl";
+import { LanguageSwitcher } from "../shared/LanguageSwitcher";
 
-type HeaderProps = {
-  active?: "home" | "contact" | "projects" | "news" | "careers";
-};
-
-export function Header({ active }: HeaderProps) {
+export function Header() {
   const [isOpen, setIsOpen] = useState(false);
   const pathname = usePathname();
+  const t = useTranslations("nav");
+
+  const navItems = [
+    { key: "home", href: "/" },
+    { key: "about", href: "/about" },
+    { key: "projects", href: "/projects" },
+    { key: "careers", href: "/careers" },
+  ];
 
   return (
     <header className="absolute inset-x-0 top-0 z-40">
@@ -75,7 +80,7 @@ export function Header({ active }: HeaderProps) {
 
             return (
               <Link
-                key={item.label}
+                key={item.key}
                 href={item.href}
                 className={`px-3 py-2 text-base leading-[1.5] transition hover:text-civilia-red xl:px-4 xl:text-lg ${
                   isActive
@@ -83,7 +88,7 @@ export function Header({ active }: HeaderProps) {
                     : "text-[#191919]"
                 }`}
               >
-                {item.label}
+                {t(item.key)}
               </Link>
             );
           })}
@@ -96,8 +101,10 @@ export function Header({ active }: HeaderProps) {
                 : "bg-civilia-red text-[#f3f3f3] hover:bg-[#b91114]"
             }`}
           >
-            Contact
+            {t("contact")}
           </Link>
+
+          <LanguageSwitcher />
         </nav>
 
         {/* Mobile & Tablet Menu Button */}
@@ -133,22 +140,26 @@ export function Header({ active }: HeaderProps) {
         }`}
       >
         <nav className="flex flex-col p-4" aria-label="Mobile navigation">
-          {[...navItems, { label: "Contact", href: "/contact" }].map((item) => {
+          {[...navItems, { key: "contact", href: "/contact" }].map((item) => {
             const isActive = pathname === item.href;
 
             return (
               <Link
-                key={item.label}
+                key={item.key}
                 href={item.href}
                 onClick={() => setIsOpen(false)}
                 className={`border-b border-black/5 px-2 py-3 text-base last:border-b-0 sm:text-lg ${
                   isActive ? "font-medium text-civilia-red" : "text-civilia-ink"
                 }`}
               >
-                {item.label}
+                {t(item.key)}
               </Link>
             );
           })}
+
+          <div className="pt-2">
+            <LanguageSwitcher />
+          </div>
         </nav>
       </div>
     </header>

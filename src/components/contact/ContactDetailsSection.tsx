@@ -1,34 +1,91 @@
 "use client";
 
 import { useRef, useState } from "react";
+import { useLocale, useTranslations } from "next-intl";
+
 import { useForm } from "react-hook-form";
 import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
+
 import { motion } from "framer-motion";
 import { Send, Loader2 } from "lucide-react";
-import { contactCards } from "@/lib/data";
 
-// ─── Schema ───────────────────────────────────────────────────────────────────
+import {
+  Phone,
+  Mail,
+  MapPin,
+} from "lucide-react";
 
-const contactSchema = z.object({
-  name: z.string().min(2, "Name must be at least 2 characters."),
-  email: z.string().email("Please enter a valid email address."),
-  phone: z
-    .string()
-    .min(7, "Please enter a valid phone number.")
-    .regex(/^\+?[0-9\s\-().]{7,20}$/, "Please enter a valid phone number."),
-  message: z.string().min(10, "Message must be at least 10 characters."),
-});
+type SubmitStatus =
+  | "idle"
+  | "loading"
+  | "success"
+  | "error";
 
-type ContactFormData = z.infer<typeof contactSchema>;
-type SubmitStatus = "idle" | "loading" | "success" | "error";
-
-// ─── Component ────────────────────────────────────────────────────────────────
+type ContactCard = {
+  title: string;
+  note: string;
+  value: string;
+};
 
 export function ContactDetailsSection() {
-  const [submitStatus, setSubmitStatus] = useState<SubmitStatus>("idle");
-  const [showPopup, setShowPopup] = useState(false);
-  const popupTimerRef = useRef<ReturnType<typeof setTimeout> | null>(null); 
+  const t = useTranslations("contactDetails");
+  const locale = useLocale();
+  const isArabic = locale === "ar";
+
+  const cards = [
+    {
+      icon: Phone,
+      title: t("cards.0.title"),
+      note: t("cards.0.note"),
+      value: t("cards.0.value"),
+    },
+    {
+      icon: Mail,
+      title: t("cards.1.title"),
+      note: t("cards.1.note"),
+      value: t("cards.1.value"),
+    },
+    {
+      icon: MapPin,
+      title: t("cards.2.title"),
+      note: t("cards.2.note"),
+      value: t("cards.2.value"),
+    },
+  ];
+
+  const contactSchema = z.object({
+    name: z.string().min(2, t("validation.name")),
+
+    email: z.string().email(t("validation.email")),
+
+    phone: z
+      .string()
+      .min(7, t("validation.phoneMin"))
+      .regex(
+        /^\+?[0-9\s\-().]{7,20}$/,
+        t("validation.phoneRegex"),
+      ),
+
+    message: z.string().min(
+      10,
+      t("validation.message"),
+    ),
+  });
+
+  type ContactFormData =
+    z.infer<typeof contactSchema>;
+
+  const [submitStatus, setSubmitStatus] =
+    useState<SubmitStatus>("idle");
+
+  const [showPopup, setShowPopup] =
+    useState(false);
+
+  const popupTimerRef =
+    useRef<ReturnType<typeof setTimeout> | null>(
+      null,
+    );
 
   const {
     register,
@@ -39,37 +96,54 @@ export function ContactDetailsSection() {
     resolver: zodResolver(contactSchema),
   });
 
-  // ─── Helpers ─────────────────────────────────────────────────────────────────
+  const triggerPopup = (
+    status: "success" | "error",
+  ) => {
+    if (popupTimerRef.current) {
+      clearTimeout(popupTimerRef.current);
+    }
 
-  const triggerPopup = (status: "success" | "error") => {
-    if (popupTimerRef.current) clearTimeout(popupTimerRef.current);
     setSubmitStatus(status);
     setShowPopup(true);
+
     popupTimerRef.current = setTimeout(() => {
       setShowPopup(false);
       setSubmitStatus("idle");
     }, 4000);
   };
-
-  // ─── Submit ──────────────────────────────────────────────────────────────────
-
-  const onSubmit = async (data: ContactFormData) => {
+    const onSubmit = async (
+    data: ContactFormData,
+  ) => {
     setSubmitStatus("loading");
+
     try {
-      const response = await fetch("https://api.web3forms.com/submit", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          access_key: process.env.NEXT_PUBLIC_WEB3FORMS_KEY,
-          name: data.name,
-          email: data.email,
-          phone: data.phone,
-          message: data.message,
-          subject: `New Website Message - ${data.name}`,
-        }),
-      });
+      const response = await fetch(
+        "https://api.web3forms.com/submit",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            access_key:
+              process.env.NEXT_PUBLIC_WEB3FORMS_KEY,
+
+            name: data.name,
+            email: data.email,
+            phone: data.phone,
+            message: data.message,
+
+            subject: `New Website Message - ${data.name}`,
+          }),
+        },
+      );
+
       const result = await response.json();
-      if (!result.success) throw new Error("Failed");
+
+      if (!result.success) {
+        throw new Error("Failed");
+      }
+
       reset();
       triggerPopup("success");
     } catch {
@@ -77,9 +151,8 @@ export function ContactDetailsSection() {
     }
   };
 
-  const isLoading = submitStatus === "loading";
-
-  // ─── Input Class Helper ───────────────────────────────────────────────────────
+  const isLoading =
+    submitStatus === "loading";
 
   const inputBase = `
     h-[58px]
@@ -95,10 +168,12 @@ export function ContactDetailsSection() {
     md:text-[21px]
   `;
 
-  const borderClass = (hasError: boolean) =>
-    hasError ? "border-red-500" : "border-[#CD1417]";
-
-  // ─── Render ──────────────────────────────────────────────────────────────────
+  const borderClass = (
+    hasError: boolean,
+  ) =>
+    hasError
+      ? "border-red-500"
+      : "border-[#CD1417]";
 
   return (
     <section className="bg-civilia-paper pb-20 md:pb-32">
@@ -125,7 +200,7 @@ export function ContactDetailsSection() {
                 md:text-[58px]
               "
             >
-              Contact Now
+              {t("title")}
             </h2>
 
             <p
@@ -139,8 +214,7 @@ export function ContactDetailsSection() {
                 md:leading-[1.5]
               "
             >
-              Submit your details and a specialized real estate consultant will
-              reach out to curate your experience.
+              {t("description")}
             </p>
           </div>
 
@@ -153,13 +227,20 @@ export function ContactDetailsSection() {
           >
             {/* Name */}
             <div className="flex flex-col gap-1.5">
-              <input
-                aria-label="Name"
-                placeholder="Name"
+                            <input
+                aria-label={t("fields.name")}
+                placeholder={t("fields.name")}
                 disabled={isLoading}
                 {...register("name")}
-                className={`${inputBase} ${borderClass(!!errors.name)}`}
+                className={`${inputBase} ${borderClass(
+                  !!errors.name,
+                )} ${
+                  isArabic
+                    ? "text-right"
+                    : ""
+                }`}
               />
+
               {errors.name && (
                 <span className="text-sm text-red-500">
                   {errors.name.message}
@@ -171,13 +252,20 @@ export function ContactDetailsSection() {
             <div className="grid gap-6 md:grid-cols-2 md:gap-10">
               <div className="flex flex-col gap-1.5">
                 <input
-                  aria-label="Email"
+                  aria-label={t("fields.email")}
                   type="email"
-                  placeholder="Email"
+                  placeholder={t("fields.email")}
                   disabled={isLoading}
                   {...register("email")}
-                  className={`${inputBase} ${borderClass(!!errors.email)}`}
+                  className={`${inputBase} ${borderClass(
+                    !!errors.email,
+                  )} ${
+                    isArabic
+                      ? "text-right"
+                      : ""
+                  }`}
                 />
+
                 {errors.email && (
                   <span className="text-sm text-red-500">
                     {errors.email.message}
@@ -187,13 +275,20 @@ export function ContactDetailsSection() {
 
               <div className="flex flex-col gap-1.5">
                 <input
-                  aria-label="Phone"
+                  aria-label={t("fields.phone")}
                   type="tel"
-                  placeholder="Phone"
+                  placeholder={t("fields.phone")}
                   disabled={isLoading}
                   {...register("phone")}
-                  className={`${inputBase} ${borderClass(!!errors.phone)}`}
+                  className={`${inputBase} ${borderClass(
+                    !!errors.phone,
+                  )} ${
+                    isArabic
+                      ? "text-right"
+                      : ""
+                  }`}
                 />
+
                 {errors.phone && (
                   <span className="text-sm text-red-500">
                     {errors.phone.message}
@@ -205,8 +300,8 @@ export function ContactDetailsSection() {
             {/* Message */}
             <div className="flex flex-col gap-1.5">
               <textarea
-                aria-label="Message"
-                placeholder="Message"
+                aria-label={t("fields.message")}
+                placeholder={t("fields.message")}
                 disabled={isLoading}
                 {...register("message")}
                 className={`
@@ -223,17 +318,24 @@ export function ContactDetailsSection() {
                   disabled:opacity-50
                   disabled:cursor-not-allowed
                   md:text-2xl
-                  ${borderClass(!!errors.message)}
+                  ${borderClass(
+                    !!errors.message,
+                  )}
+                  ${
+                    isArabic
+                      ? "text-right"
+                      : ""
+                  }
                 `}
               />
+
               {errors.message && (
                 <span className="text-sm text-red-500">
                   {errors.message.message}
                 </span>
               )}
             </div>
-
-            {/* Submit Button */}
+                        {/* Submit Button */}
             <div className="flex justify-center md:justify-end">
               <button
                 type="submit"
@@ -266,7 +368,8 @@ export function ContactDetailsSection() {
               >
                 {isLoading ? (
                   <>
-                    Sending...
+                    {t("buttons.sending")}
+
                     <Loader2
                       className="h-5 w-5 animate-spin"
                       aria-hidden="true"
@@ -274,9 +377,14 @@ export function ContactDetailsSection() {
                   </>
                 ) : (
                   <>
-                    Send Message
+                    {t("buttons.send")}
+
                     <Send
-                      className="h-5 w-5 transition group-hover:translate-x-1"
+                      className={`h-5 w-5 transition ${
+                        isArabic
+                          ? "group-hover:-translate-x-1"
+                          : "group-hover:translate-x-1"
+                      }`}
                       aria-hidden="true"
                     />
                   </>
@@ -297,8 +405,9 @@ export function ContactDetailsSection() {
           "
           data-animate="stagger"
         >
-          {contactCards.map((card) => {
+          {cards.map((card) => {
             const Icon = card.icon;
+
             return (
               <article
                 key={card.title}
@@ -319,11 +428,18 @@ export function ContactDetailsSection() {
                 }}
               >
                 <div className="w-full max-w-[233px]">
-                  <div className="flex items-center gap-4">
+                  <div
+                    className={`flex items-center gap-4 ${
+                      isArabic
+                        ? "flex-row-reverse text-right"
+                        : ""
+                    }`}
+                  >
                     <Icon
                       className="h-5 w-5 text-civilia-red md:h-6 md:w-6"
                       aria-hidden="true"
                     />
+
                     <h3
                       className="
                         text-[22px]
@@ -336,11 +452,20 @@ export function ContactDetailsSection() {
                       {card.title}
                     </h3>
                   </div>
-                  <p className="mt-1 text-sm leading-none text-[#8e8e8e]">
+
+                  <p
+                    className={`mt-1 text-sm leading-none text-[#8e8e8e] ${
+                      isArabic
+                        ? "text-right"
+                        : ""
+                    }`}
+                  >
                     {card.note}
                   </p>
+
                   <p
-                    className="
+                    dir="ltr"
+                    className={`
                       mt-3
                       break-words
                       text-[16px]
@@ -348,7 +473,12 @@ export function ContactDetailsSection() {
                       text-civilia-red
                       md:text-[18px]
                       md:whitespace-nowrap
-                    "
+                      ${
+                        isArabic
+                          ? "text-right"
+                          : ""
+                      }
+                    `}
                   >
                     {card.value}
                   </p>
@@ -359,13 +489,24 @@ export function ContactDetailsSection() {
         </div>
       </div>
 
-      {/* ── Popup ────────────────────────────────────────────────────────────── */}
+      {/* Popup */}
       {showPopup && (
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          exit={{ opacity: 0, y: 20 }}
-          transition={{ duration: 0.2 }}
+          initial={{
+            opacity: 0,
+            y: 20,
+          }}
+          animate={{
+            opacity: 1,
+            y: 0,
+          }}
+          exit={{
+            opacity: 0,
+            y: 20,
+          }}
+          transition={{
+            duration: 0.2,
+          }}
           className={`fixed bottom-6 left-1/2 z-[9999] -translate-x-1/2 rounded-2xl border px-5 py-3 text-sm font-medium shadow-2xl backdrop-blur-xl sm:px-6 sm:py-4 ${
             submitStatus === "success"
               ? "border-green-400/20 bg-green-500/10 text-green-600"
@@ -373,8 +514,8 @@ export function ContactDetailsSection() {
           }`}
         >
           {submitStatus === "success"
-            ? "Your message has been sent successfully ✨"
-            : "Something went wrong. Please try again."}
+            ? t("messages.success")
+            : t("messages.error")}
         </motion.div>
       )}
     </section>

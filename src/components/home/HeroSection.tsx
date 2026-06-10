@@ -5,16 +5,19 @@ import { useRef } from "react";
 import { Header } from "@/components/layout/Header";
 import { CiviliaButton } from "@/components/ui/CiviliaButton";
 import { useGSAP } from "@gsap/react";
+import { useTranslations, useLocale } from "next-intl";
 import gsap from "gsap";
 
 export function HeroSection() {
+  const t = useTranslations("hero");
+  const locale = useLocale();
+  const isArabic = locale === "ar";
   const wordmarkRef = useRef<HTMLDivElement>(null);
   const shineRef = useRef<HTMLDivElement>(null);
 
   useGSAP(() => {
     if (!wordmarkRef.current || !shineRef.current) return;
 
-    // Reveal Animation
     gsap.from(wordmarkRef.current, {
       y: 80,
       opacity: 0,
@@ -22,7 +25,6 @@ export function HeroSection() {
       ease: "power4.out",
     });
 
-    // Breathing Effect
     gsap.to(wordmarkRef.current, {
       scale: 1.02,
       duration: 4,
@@ -31,10 +33,7 @@ export function HeroSection() {
       ease: "sine.inOut",
     });
 
-    // Shine Effect
-    gsap.set(shineRef.current, {
-      xPercent: -300,
-    });
+    gsap.set(shineRef.current, { xPercent: -300 });
 
     gsap.to(shineRef.current, {
       xPercent: 900,
@@ -43,25 +42,6 @@ export function HeroSection() {
       repeatDelay: 4,
       ease: "power2.inOut",
     });
-
-    // Mouse Parallax
-    // const move = (e: MouseEvent) => {
-    //   const x = (e.clientX / window.innerWidth - 0.5) * 20;
-    //   const y = (e.clientY / window.innerHeight - 0.5) * 10;
-
-    //   gsap.to(wordmarkRef.current, {
-    //     x,
-    //     y,
-    //     duration: 1.2,
-    //     ease: "power3.out",
-    //   });
-    // };
-
-    // window.addEventListener("mousemove", move);
-
-    // return () => {
-    //   window.removeEventListener("mousemove", move);
-    // };
   }, []);
 
   return (
@@ -136,33 +116,32 @@ export function HeroSection() {
         >
           <h1
             data-animate="fade-up"
-            className="
+            className={`
               text-civilia-warm
               text-[28px]
               font-semibold
               leading-none
-              tracking-[2px]
 
               sm:text-[34px]
-              sm:tracking-[3px]
 
               md:whitespace-nowrap
               md:text-[56px]
-              md:tracking-[5.6px]
-            "
+
+              ${isArabic ? "tracking-normal" : "tracking-[2px] sm:tracking-[3px] md:tracking-[5.6px]"}
+            `}
           >
             <span className="block text-[24px] font-light sm:text-[30px] md:text-[40px]">
-              FROM
+              {t("from")}
             </span>
 
             <span className="block">
-              LAND{" "}
+              {t("land")}{" "}
               <span className="text-[24px] font-light sm:text-[30px] md:text-[40px]">
-                TO
+                {t("to")}
               </span>
             </span>
 
-            <span className="block">LANDMARK</span>
+            <span className="block">{t("landmark")}</span>
           </h1>
 
           <div
@@ -190,12 +169,10 @@ export function HeroSection() {
                 md:leading-[1.25]
               "
             >
-              A new standard of living, developed by real construction
-              expertise, built for those who value certainty, quality, and calm
-              living.
+              {t("description")}
             </p>
 
-            <CiviliaButton href="/contact">Book a Visit</CiviliaButton>
+            <CiviliaButton href="/contact">{t("bookVisit")}</CiviliaButton>
           </div>
         </div>
       </div>

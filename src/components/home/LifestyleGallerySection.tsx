@@ -2,28 +2,18 @@
 
 import Image from "next/image";
 import { useEffect, useRef, useState } from "react";
+import { useTranslations } from "next-intl";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 
 const slides = [
-  {
-    image: "/assets/slide-1.png",
-    quote:
-      "We literally and conceptually know how to build urban communities and how to maintain it to meet the customers’ needs.",
-  },
-  {
-    image: "/assets/slide-2.png",
-    quote:
-      "Every development is planned with a long-term vision focused on quality, comfort, and sustainable value.",
-  },
-  {
-    image: "/assets/slide-3.png",
-    quote:
-      "From concept to delivery, our expertise ensures every detail is executed with precision and care.",
-  },
+  { image: "/assets/slide-1.png" },
+  { image: "/assets/slide-2.png" },
+  { image: "/assets/slide-3.png" },
 ];
 
 export function LifestyleGallerySection() {
+  const t = useTranslations("lifestyle");
   const [activeSlide, setActiveSlide] = useState(0);
 
   const sectionRef = useRef<HTMLElement>(null);
@@ -83,16 +73,8 @@ export function LifestyleGallerySection() {
   useEffect(() => {
     gsap.fromTo(
       quoteRef.current,
-      {
-        y: 30,
-        opacity: 0,
-      },
-      {
-        y: 0,
-        opacity: 1,
-        duration: 0.8,
-        ease: "power3.out",
-      },
+      { y: 30, opacity: 0 },
+      { y: 0, opacity: 1, duration: 0.8, ease: "power3.out" },
     );
   }, [activeSlide]);
 
@@ -107,7 +89,6 @@ export function LifestyleGallerySection() {
             relative
             h-[320px]
             overflow-hidden
-
             rounded-bl-[48px]
             rounded-br-[20px]
             rounded-tl-[20px]
@@ -177,7 +158,7 @@ export function LifestyleGallerySection() {
                       md:leading-[1.3]
                     "
                   >
-                    {slide.quote}
+                    {t(`slides.${index}`)}
                   </p>
                 )}
               </div>

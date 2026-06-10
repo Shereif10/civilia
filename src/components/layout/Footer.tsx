@@ -2,8 +2,9 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import { usePathname } from "next/navigation";
+import { usePathname } from "@/i18n/navigation";
 import { useEffect, useRef } from "react";
+import { useTranslations } from "next-intl";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faFacebookF,
@@ -16,15 +17,15 @@ import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 
 const quickLinks = [
-  { label: "Home", href: "/" },
-  { label: "About Civilia", href: "/about" },
-  { label: "Our Projects", href: "/projects" },
-  // { label: "Latest News", href: "/news" },
-  { label: "Careers", href: "/careers" },
-  { label: "Contact Us", href: "/contact" },
+  { key: "home", href: "/" },
+  { key: "about", href: "/about" },
+  { key: "projects", href: "/projects" },
+  { key: "careers", href: "/careers" },
+  { key: "contact", href: "/contact" },
 ];
 
 export function Footer() {
+  const t = useTranslations("footer");
   const pathname = usePathname();
 
   const footerRef = useRef<HTMLElement>(null);
@@ -69,16 +70,16 @@ export function Footer() {
       <div className="container-civilia">
         <div
           className="
-    grid
-    gap-10
+            grid
+            gap-10
 
-    md:gap-12
+            md:gap-12
 
-    xl:grid-cols-[380px_1fr_349px]
-    xl:gap-16
+            xl:grid-cols-[380px_1fr_349px]
+            xl:gap-16
 
-    2xl:grid-cols-[420px_1fr_380px]
-  "
+            2xl:grid-cols-[420px_1fr_380px]
+          "
         >
           {/* Column 1 */}
           <div
@@ -108,64 +109,27 @@ export function Footer() {
               </div>
 
               <div>
-                <h2
-                  className="
-                    text-[22px]
-                    font-medium
-                    leading-[1.5]
-
-                    md:text-2xl
-                  "
-                >
-                  Built on Experience. Designed for Living.
+                <h2 className="text-[22px] font-medium leading-[1.5] md:text-2xl">
+                  {t("tagline")}
                 </h2>
 
-                <p
-                  className="
-                    mt-1
-                    max-w-[380px]
-                    text-base
-                    leading-[1.5]
-                    text-civilia-red
-
-                    md:text-lg
-                  "
-                >
-                  With over 20 years of real construction expertise, Civilia
-                  delivers developments built on precision, reliability, and
-                  long-term value.
+                <p className="mt-1 max-w-[380px] text-base leading-[1.5] text-civilia-red md:text-lg">
+                  {t("description")}
                 </p>
               </div>
             </div>
 
             <div>
-              <h3
-                className="
-                  text-xl
-                  font-semibold
-                  leading-none
-
-                  md:text-2xl
-                "
-              >
-                Talk to Our Team
+              <h3 className="text-xl font-semibold leading-none md:text-2xl">
+                {t("talkToTeam")}
               </h3>
 
-              <p
-                className="
-                  text-[28px]
-                  font-semibold
-                  leading-[1.5]
-                  text-civilia-red
-
-                  md:text-[32px]
-                "
-              >
+              <p className="text-[28px] font-semibold leading-[1.5] text-civilia-red md:text-[32px]">
                 16727
               </p>
 
               <p className="max-w-[216px] text-xs leading-[1.5] text-[#d9d9d9]">
-                Available daily to support you with all inquiries and bookings.
+                {t("phoneAvailability")}
               </p>
             </div>
           </div>
@@ -177,16 +141,8 @@ export function Footer() {
             }}
             className="xl:px-8"
           >
-            <h3
-              className="
-                text-[28px]
-                font-semibold
-                leading-none
-
-                md:text-[32px]
-              "
-            >
-              Quick Links
+            <h3 className="text-[28px] font-semibold leading-none md:text-[32px]">
+              {t("quickLinks")}
             </h3>
 
             <ul
@@ -206,7 +162,7 @@ export function Footer() {
                 const isActive = pathname === link.href;
 
                 return (
-                  <li key={link.label}>
+                  <li key={link.key}>
                     <Link
                       href={link.href}
                       className={
@@ -215,7 +171,7 @@ export function Footer() {
                           : "text-[#8e8e8e] transition hover:text-white"
                       }
                     >
-                      {link.label}
+                      {t(`links.${link.key}`)}
                     </Link>
                   </li>
                 );
@@ -232,7 +188,7 @@ export function Footer() {
           >
             <div className="xl:px-8">
               <h3 className="text-lg font-semibold leading-none">
-                Contact Info
+                {t("contactInfo")}
               </h3>
 
               <div
@@ -274,14 +230,13 @@ export function Footer() {
 
             <div className="xl:px-8">
               <h3 className="text-lg font-semibold leading-none">
-                Stay Updated with CIVILIA
+                {t("stayUpdated")}
               </h3>
 
               <p
                 className="
                   mt-3
                   max-w-[285px]
-                  text-left
                   text-xs
                   leading-[1.5]
                   text-[#8e8e8e]
@@ -290,17 +245,16 @@ export function Footer() {
                   md:leading-[1.25]
                 "
               >
-                Get the latest project updates, construction progress, and real
-                estate insights directly from our team.
+                {t("stayUpdatedDesc")}
               </p>
             </div>
 
-            <form className="xl:px-8">
+            <div className="xl:px-8">
               <label
                 htmlFor="footer-email"
                 className="text-lg font-semibold leading-none text-[#8e8e8e]"
               >
-                Enter your email
+                {t("emailLabel")}
               </label>
 
               <div className="mt-1 flex w-full max-w-[285px] border-b border-[#f3f3f3] py-2">
@@ -308,11 +262,11 @@ export function Footer() {
                   id="footer-email"
                   type="email"
                   className="w-full bg-transparent text-sm text-white outline-none placeholder:text-civilia-red"
-                  placeholder="Subscribe"
-                  aria-label="Enter your email"
+                  placeholder={t("emailPlaceholder")}
+                  aria-label={t("emailLabel")}
                 />
               </div>
-            </form>
+            </div>
           </div>
         </div>
 
@@ -333,10 +287,10 @@ export function Footer() {
             "
           >
             <p className="text-xs font-semibold leading-[1.5]">
-              All Copyrights Reserved © 2026 CIVILIA Developments
+              {t("copyright")}
             </p>
 
-            <div className="flex items-center gap-4 ">
+            <div className="flex items-center gap-4">
               <Link
                 href="https://web.facebook.com/Civiliadevelopments/?mibextid=wwXIfr&rdid=TmGMZuKbsg3L1PN0&share_url=https%3A%2F%2Fwww.facebook.com%2Fshare%2F15UPe8wLxH%2F%3Fmibextid%3DwwXIfr"
                 target="_blank"
@@ -372,6 +326,7 @@ export function Footer() {
               >
                 <FontAwesomeIcon icon={faYoutube} className="h-6 w-6" />
               </Link>
+
               <Link
                 href="https://www.tiktok.com/@civilia.developments?_t=8sgdnG77lp7&_r=1"
                 target="_blank"

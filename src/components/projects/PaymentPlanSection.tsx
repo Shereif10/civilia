@@ -1,29 +1,21 @@
-const paymentPlans = [
-  {
-    value: "5",
-    suffix: "%",
-    title: "Down payment",
-    variant: "light",
-  },
-  {
-    value: "8",
-    title: "Over Years Installments",
-    variant: "yellow",
-  },
-  {
-    value: "10",
-    suffix: "%",
-    title: "Down payment",
-    variant: "light",
-  },
-  {
-    value: "10",
-    title: "Over Years Installments",
-    variant: "yellow",
-  },
-];
+"use client";
+
+import { useLocale, useTranslations } from "next-intl";
+
+type PaymentPlan = {
+  value: string;
+  suffix?: string;
+  title: string;
+  variant: "light" | "yellow";
+};
 
 export function PaymentPlanSection() {
+  const t = useTranslations("paymentPlan");
+  const locale = useLocale();
+  const isArabic = locale === "ar";
+
+  const paymentPlans = t.raw("plans") as PaymentPlan[];
+
   return (
     <section className="bg-civilia-paper py-16 md:py-24">
       <div className="mx-auto overflow-hidden rounded-[32px]">
@@ -34,7 +26,7 @@ export function PaymentPlanSection() {
             className="text-center text-[48px] font-light leading-none text-[#031286] md:text-[72px]"
             style={{ fontFamily: "Badgline" }}
           >
-            Payment Plan
+            {t("title")}
           </h2>
         </div>
 
@@ -50,7 +42,7 @@ export function PaymentPlanSection() {
                     : "border-[#031286] bg-white"
                 }`}
               >
-                <div className="flex items-start">
+                <div className="flex items-start" dir="ltr">
                   <span
                     className="text-[72px] font-light leading-none text-[#031286]"
                     style={{ fontFamily: "Badgline" }}
@@ -77,8 +69,7 @@ export function PaymentPlanSection() {
                     item.variant === "yellow"
                       ? "text-[#031286]"
                       : "text-[#3D3D3D]"
-                  }`}
-                  // style={{ fontFamily: "Badgline" }}
+                  } ${isArabic ? "text-right" : ""}`}
                 >
                   {item.title}
                 </p>

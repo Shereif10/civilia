@@ -2,10 +2,12 @@
 
 import Image from "next/image";
 import { useEffect, useRef } from "react";
+import { useTranslations } from "next-intl";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 
 export function TestimonialSection() {
+  const t = useTranslations("testimonial");
   const sectionRef = useRef<HTMLElement>(null);
   const cardRef = useRef<HTMLDivElement>(null);
   const quoteRef = useRef<HTMLParagraphElement>(null);
@@ -86,13 +88,13 @@ export function TestimonialSection() {
           px-5
           py-8
 
+          sm:rounded-[32px]
           sm:px-8
           sm:py-10
-          sm:rounded-[32px]
 
+          md:rounded-[48px]
           md:px-10
           md:py-16
-          md:rounded-[48px]
         "
         style={{
           background:
@@ -134,8 +136,7 @@ export function TestimonialSection() {
               lg:text-[38px]
             "
           >
-            Civilia stands out because of their construction background. You can
-            clearly see the difference in how things are planned and executed.
+            {t("quote")}
           </p>
 
           <footer
@@ -161,7 +162,7 @@ export function TestimonialSection() {
                 md:text-[26px]
               "
             >
-              Engineer Saad Al-Otaibi
+              {t("name")}
             </cite>
 
             <span
@@ -175,7 +176,7 @@ export function TestimonialSection() {
                 md:text-[19px]
               "
             >
-              Role / Investor
+              {t("role")}
             </span>
           </footer>
         </blockquote>

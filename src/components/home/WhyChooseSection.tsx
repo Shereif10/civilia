@@ -2,13 +2,17 @@
 
 import Image from "next/image";
 import { useEffect, useRef } from "react";
+import { useTranslations } from "next-intl";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 
 import { SectionTitle } from "@/components/ui/SectionTitle";
 import { reasons } from "@/lib/data";
 
+const reasonKeys = ["expertise", "transparent", "value", "delivery"] as const;
+
 export function WhyChooseSection() {
+  const t = useTranslations("whyChoose");
   const sectionRef = useRef<HTMLElement>(null);
   const cardsRef = useRef<(HTMLElement | null)[]>([]);
 
@@ -50,7 +54,7 @@ export function WhyChooseSection() {
   return (
     <section ref={sectionRef} className="bg-civilia-paper pb-16 md:pb-32">
       <SectionTitle className="why-title mx-auto w-full">
-        Why Choose CIVILIA
+        {t("title")}
       </SectionTitle>
 
       <div className="container-civilia mt-10 sm:mt-12 md:mt-16">
@@ -114,7 +118,7 @@ export function WhyChooseSection() {
                   md:text-[40px]
                 "
               >
-                {reason.title}
+                {t(`reasons.${reasonKeys[index]}`)}
               </h3>
             </article>
           ))}

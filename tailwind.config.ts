@@ -21,6 +21,7 @@ const config: Config = {
       fontFamily: {
         display: ["var(--font-civilia)", "Georgia", "serif"],
         body: ["var(--font-civilia)", "Georgia", "serif"],
+        arabic: ["var(--font-ibm-plex-arabic)", "sans-serif"],
       },
       boxShadow: {
         soft: "0 24px 80px rgba(25, 25, 25, 0.08)",

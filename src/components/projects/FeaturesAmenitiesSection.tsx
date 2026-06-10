@@ -1,57 +1,30 @@
-import Image from "next/image";
+"use client";
 
-const amenities = [
-  {
-    title: "Kids Area",
-    icon: "/assets/kids-area.svg",
-  },
-  {
-    title: "ClubHouse",
-    icon: "/assets/clubhouse.svg",
-  },
-  {
-    title: "Meditation & Yoga Center",
-    icon: "/assets/yoga.svg",
-  },
-  {
-    title: "Protection System",
-    icon: "/assets/protection.svg",
-  },
-  {
-    title: "Padel Courts",
-    icon: "/assets/padel.svg",
-  },
-  {
-    title: "Jogging Track",
-    icon: "/assets/jogging.svg",
-  },
-  {
-    title: "Commercial Mall",
-    icon: "/assets/mall.svg",
-  },
-  {
-    title: "Electric Car Charger",
-    icon: "/assets/charger.svg",
-  },
-  {
-    title: "Lakes",
-    icon: "/assets/lake.svg",
-  },
-  {
-    title: "Gym Halls",
-    icon: "/assets/gym.svg",
-  },
-  {
-    title: "Smart Gates For Buildings",
-    icon: "/assets/gates.svg",
-  },
-  {
-    title: "Landscapes",
-    icon: "/assets/landscape.svg",
-  },
+import Image from "next/image";
+import { useLocale, useTranslations } from "next-intl";
+
+const amenityIcons = [
+  "/assets/kids-area.svg",
+  "/assets/clubhouse.svg",
+  "/assets/yoga.svg",
+  "/assets/protection.svg",
+  "/assets/padel.svg",
+  "/assets/jogging.svg",
+  "/assets/mall.svg",
+  "/assets/charger.svg",
+  "/assets/lake.svg",
+  "/assets/gym.svg",
+  "/assets/gates.svg",
+  "/assets/landscape.svg",
 ];
 
 export function FeaturesAmenitiesSection() {
+  const t = useTranslations("featuresAmenities");
+  const locale = useLocale();
+  const isArabic = locale === "ar";
+
+  const amenities = t.raw("items") as string[];
+
   return (
     <section className="bg-civilia-paper py-16 md:py-24">
       <div className="overflow-hidden rounded-[32px] border border-[#1D2D8C]/20">
@@ -62,7 +35,7 @@ export function FeaturesAmenitiesSection() {
             className="text-center text-[42px] font-light leading-none text-[#1D2D8C] md:text-[72px]"
             style={{ fontFamily: "Badgline" }}
           >
-            Features And Amenities
+            {t("title")}
           </h2>
         </div>
 
@@ -71,8 +44,8 @@ export function FeaturesAmenitiesSection() {
           data-animate="stagger"
           className="
             grid
-            gap-y-12
             gap-x-8
+            gap-y-12
             px-8
             py-12
 
@@ -83,10 +56,15 @@ export function FeaturesAmenitiesSection() {
             lg:py-16
           "
         >
-          {amenities.map((item) => (
-            <div key={item.title} className="flex items-start gap-5">
+          {amenities.map((title, index) => (
+            <div
+              key={title}
+              className={`flex items-start gap-5 ${
+                isArabic ? "text-right" : ""
+              }`}
+            >
               <Image
-                src={item.icon}
+                src={amenityIcons[index]}
                 alt=""
                 width={44}
                 height={44}
@@ -102,7 +80,7 @@ export function FeaturesAmenitiesSection() {
                   md:text-[28px]
                 "
               >
-                {item.title}
+                {title}
               </p>
             </div>
           ))}

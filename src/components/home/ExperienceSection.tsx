@@ -2,14 +2,16 @@
 
 import Image from "next/image";
 import { useEffect, useRef } from "react";
+import { useTranslations } from "next-intl";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-
 import { stats } from "@/lib/data";
 
-export function ExperienceSection() {
-  const sectionRef = useRef<HTMLElement>(null);
+const statKeys = ["years", "projects", "sqm"] as const;
 
+export function ExperienceSection() {
+  const t = useTranslations("experience");
+  const sectionRef = useRef<HTMLElement>(null);
   const cardsRef = useRef<(HTMLElement | null)[]>([]);
   const valuesRef = useRef<(HTMLParagraphElement | null)[]>([]);
 
@@ -42,7 +44,6 @@ export function ExperienceSection() {
 
       cardsRef.current.forEach((card) => {
         const icon = card?.querySelector(".metric-icon");
-
         if (!icon) return;
 
         gsap.from(icon, {
@@ -62,7 +63,6 @@ export function ExperienceSection() {
 
         const finalValue = el.dataset.value || "";
         const numericValue = parseFloat(finalValue.replace(/[^\d.]/g, ""));
-
         const counter = { value: 0 };
 
         gsap.to(counter, {
@@ -97,11 +97,11 @@ export function ExperienceSection() {
     <section ref={sectionRef} className="bg-civilia-paper py-16 md:py-24">
       <div className="overflow-hidden rounded-bl-[180px] bg-civilia-red py-10 md:py-12">
         <h2 className="experience-title text-center text-[42px] font-semibold text-white md:text-[72px]">
-          Built on Experience
+          {t("title")}
         </h2>
       </div>
 
-      <div className="container-civilia mt-16 grid gap-8 md:grid-cols-3 ">
+      <div className="container-civilia mt-16 grid gap-8 md:grid-cols-3">
         {stats.map((item, index) => (
           <article
             key={item.label}
@@ -112,6 +112,7 @@ export function ExperienceSection() {
               flex
               min-h-[320px]
               flex-col
+              items-center
               justify-between
               rounded-[24px]
               border
@@ -123,9 +124,9 @@ export function ExperienceSection() {
                 "linear-gradient(90deg, #FFFDFA 0%, #FFF3E1 50%, #FFFDFA 100%)",
             }}
           >
-            <div>
+            <div dir="ltr" className="text-center">
               {item.suffix ? (
-                <div className="flex items-start">
+                <div className="flex items-start justify-center">
                   <p
                     ref={(el) => {
                       valuesRef.current[index] = el;
@@ -152,17 +153,17 @@ export function ExperienceSection() {
                 </p>
               )}
 
-              <h3 className="mt-4 text-[18px] font-medium text-[#3D3D3D] md:text-[18px]">
-                {item.label}
+              <h3 className="mt-4 text-[18px] font-medium text-[#3D3D3D]">
+                {t(`stats.${statKeys[index]}`)}
               </h3>
             </div>
 
             <Image
               src={item.icon}
-              alt={item.label}
+              alt={t(`stats.${statKeys[index]}`)}
               width={110}
               height={110}
-              className="metric-icon ml-auto"
+              className="metric-icon"
             />
           </article>
         ))}

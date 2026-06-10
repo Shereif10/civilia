@@ -1,0 +1,542 @@
+{
+  "nav": {
+    "home": "Home",
+    "about": "About",
+    "projects": "Projects",
+    "contact": "Contact",
+    "careers": "Careers"
+  },
+  "hero": {
+    "from": "FROM",
+    "land": "LAND",
+    "to": "TO",
+    "landmark": "LANDMARK",
+    "description": "A new standard of living, developed by real construction expertise, built for those who value certainty, quality, and calm living.",
+    "bookVisit": "Book a Visit"
+  },
+  "about": {
+    "title": "About Us",
+    "p1": "CIVILIA Developments Our portfolio spans diverse projects, from integrated developments to infrastructure, industrial, and commercial facilities, delivered in key areas like Sheikh Zayed, New Cairo, and the New Administrative Capital.",
+    "p2": "Partnering with leading consultancy firms, we ensure every project meets the highest standards."
+  },
+  "experience": {
+    "title": "Built on Experience",
+    "stats": {
+      "years": "Years of Experience",
+      "projects": "Projects Delivered",
+      "sqm": "Built & Developed"
+    }
+  },
+  "latestProject": {
+    "sectionTitle": "Latest Project",
+    "description": "Experience Modern Living in Thawra El Khadra, Sheikh Zayed City, spanning 38.000 Square meters, we bring our ambitious vision to life.",
+    "tagline": "CIV West - A Community Built to Last",
+    "location": "Sheikh Zayed",
+    "cta": "View Project Details",
+    "stats": {
+      "units": "Residential Units",
+      "experience": "Years of Experience",
+      "project": "Project"
+    }
+  },
+  "whyChoose": {
+    "title": "Why Choose CIVILIA",
+    "reasons": {
+      "expertise": "Real Construction Expertise",
+      "transparent": "Transparent Progress",
+      "value": "Better Value",
+      "delivery": "Trusted Delivery"
+    }
+  },
+  "testimonial": {
+    "quote": "Civilia stands out because of their construction background. You can clearly see the difference in how things are planned and executed.",
+    "name": "Engineer Saad Al-Otaibi",
+    "role": "Role / Investor"
+  },
+  "lifestyle": {
+    "slides": [
+      "We literally and conceptually know how to build urban communities and how to maintain it to meet the customers' needs.",
+      "Every development is planned with a long-term vision focused on quality, comfort, and sustainable value.",
+      "From concept to delivery, our expertise ensures every detail is executed with precision and care."
+    ]
+  },
+  "proofList": {
+    "points": [
+      "20 years of expertise in construction and real estate development",
+      "Ellite partnerships with leading engineering and design consultancies",
+      "Prime presence in Sheikh Zayed, New Cairo & the New Administrative Capital",
+      "Rigorous quality standards applied at every stage of execution",
+      "Integrated team: design, construction, and real estate marketing under one roof"
+    ]
+  },
+  "questions": {
+    "title": "Questions & Answers",
+    "home": [
+      {
+        "question": "What is CIVILIA Developments and what does the company do?",
+        "answer": "CIVILIA Developments is a leading Egyptian real estate development company specializing in integrated construction and community building. We develop a diverse range of projects - from fully integrated residential compounds and commercial facilities to infrastructure and industrial projects - across Egypt's most in-demand locations."
+      },
+      {
+        "question": "How many years of experience does CIVILIA have?",
+        "answer": "CIVILIA brings over 20 years of expertise in the construction and real estate sector. This deep experience spans large-scale contracting, residential developments, commercial facilities, infrastructure projects, and mixed-use communities - giving us the insight to deliver projects that genuinely meet our clients' needs at every stage."
+      },
+      {
+        "question": "What is CIVILIA's vision and what values drive the company?",
+        "answer": "CIVILIA's vision is to build communities - not just buildings. We design environments where people can truly live, connect, and thrive. Our three core values guide every decision we make: Sustainability, Human-Centric Design, and Family-Focused Living."
+      },
+      {
+        "question": "Who are CIVILIA's consulting and design partners?",
+        "answer": "CIVILIA collaborates with top-tier engineering and design consultancy firms to ensure the highest standards of execution on every project. For CIV West, the master plan was designed in partnership with ADC, one of Egypt's leading architecture and planning consultancies."
+      }
+    ],
+    "project": [
+      {
+        "question": "Where is CIV West Compound located?",
+        "answer": "CIV West is located in Thawra El Khadra district, Sheikh Zayed City, West Cairo - minutes from Dandy Mega Mall, Hyper One, Abraj Zayed, and Al Ahly Club Sheikh Zayed branch."
+      },
+      {
+        "question": "Who is the developer of CIV West?",
+        "answer": "The developer is CIVILIA Developments, a company with extensive experience in construction and contracting before entering the real estate development field."
+      },
+      {
+        "question": "What is the total area of CIV West?",
+        "answer": "The total area of CIV West is approximately 38,000 square meters, the majority of which is dedicated to green spaces, artificial lakes, and recreational facilities to maximize privacy and open views for residents."
+      },
+      {
+        "question": "What unit types are available in CIV West?",
+        "answer": "The project offers residential apartments in various sizes suitable for small, medium, and large families, featuring modern designs and balconies overlooking the landscaping and water features within the compound."
+      },
+      {
+        "question": "Is there an installment plan available?",
+        "answer": "Yes. CIVILIA offers flexible payment plans for CIV West including a low down payment and multi-year installments. Contact the sales team for the latest available offers."
+      },
+      {
+        "question": "What are the key amenities in CIV West?",
+        "answer": "CIV West is a boutique compound spanning 9 acres, with just a 23% building footprint and 77% open landscape - so space, privacy, and greenery come first. At its heart is a clubhouse featuring a gym, a business lounge, a café, and padel courts on the rooftop. An on-site commercial area covers your everyday needs, with two separate entrances - one for residents and one for guests - alongside a dedicated kids area. The entire project sits above full underground parking, keeping the surface clean, safe, and traffic-free. Built on a master plan by ADC and constructed with premium Delta Block bricks, every amenity is backed by genuine planning and build quality."
+      },
+      {
+        "question": "How can I book a unit in CIV West?",
+        "answer": "Contact CIVILIA's sales team via 16727 or through the contact form on the official website. A site visit will be arranged and all available payment plans reviewed with you."
+      }
+    ]
+  },
+  "cta": {
+    "home": {
+      "title": "Start Your Journey to CIV West",
+      "description": "Our team is ready to guide you through every detail, from booking to ownership.",
+      "primaryButton": "Book a Visit"
+    },
+    "project": {
+      "title": "Your Ideal Community Awaits...",
+      "description": "Experience the Modern Living in Thawra El Khadra, Sheikh Zayed City.",
+      "primaryButton": "Contact us",
+      "secondaryButton": "Brochure"
+    },
+    "projectJourney": {
+      "title": "Start Your Journey to CIV West",
+      "description": "Our team is ready to guide you through every detail, from booking to ownership.",
+      "primaryButton": "Book a Visit"
+    },
+    "careers": {
+      "title": "Ready to join us?",
+      "description": "Your next great architectural achievement starts with a single step. Join the team that is redefining Egypt's built environment."
+    }
+  },
+  "footer": {
+    "tagline": "Built on Experience. Designed for Living.",
+    "description": "With over 20 years of real construction expertise, Civilia delivers developments built on precision, reliability, and long-term value.",
+    "talkToTeam": "Talk to Our Team",
+    "phoneAvailability": "Available daily to support you with all inquiries and bookings.",
+    "quickLinks": "Quick Links",
+    "links": {
+      "home": "Home",
+      "about": "About Civilia",
+      "projects": "Our Projects",
+      "careers": "Careers",
+      "contact": "Contact Us"
+    },
+    "contactInfo": "Contact Info",
+    "stayUpdated": "Stay Updated with CIVILIA",
+    "stayUpdatedDesc": "Get the latest project updates, construction progress, and real estate insights directly from our team.",
+    "emailLabel": "Enter your email",
+    "emailPlaceholder": "Subscribe",
+    "copyright": "All Copyrights Reserved © 2026 CIVILIA Developments"
+  },
+  "reusableHero": {
+    "about": {
+      "title": ["About", "Civilia"]
+    },
+    "projects": {
+      "title": ["CIV WEST – Modern Living,", "Engineered Around You"]
+    },
+    "careers": {
+      "title": ["WE ARE", "HIRING"],
+      "subtitle": "Build the Future of Living",
+      "description": "Join the visionaries redefining Egypt's architectural landscape through precision, integrity, and sustainable luxury."
+    }
+  },
+  "ourStory": {
+    "title": "Our Story",
+    "paragraph1": "CIV West Compound is a fully integrated residential development by CIVILIA Developments, located in Thawra El Khadra, Sheikh Zayed City, spanning total area of 38,000 square meter.",
+    "paragraph2": "The project offers modern apartments with contemporary designs, expansive green spaces, artificial lakes, and a complete suite of leisure and sports facilities - all with flexible payment plans tailored for families seeking premium living in West Cairo.",
+    "paragraph3": "CIV West is designed to deliver a balanced lifestyle that harmonizes tranquility, luxury, and proximity to the essential services modern Egyptian families need - through thoughtful urban planning that dedicates the majority of the compound’s area to green spaces, water features, and open walkways.",
+    "paragraph4": "The project is a direct embodiment of CIVILIA's motto - From Land to Landmark - combining contemporary architecture, smart design details, and an integrated ecosystem of recreational, sports, and retail amenities within the compound."
+  },
+
+  "residentialUnits": {
+    "title": {
+      "line1": "Our Residential",
+      "line2": "units"
+    },
+    "items": [
+      {
+        "value": "40",
+        "label": "Units",
+        "location": "Nasr City",
+        "type": "Residential Tower"
+      },
+      {
+        "value": "25",
+        "label": "Units",
+        "location": "Maadi",
+        "type": "Residential Tower"
+      },
+      {
+        "value": "18",
+        "label": "Units",
+        "location": "Al-Khamayel",
+        "type": "Residential Complex 6"
+      }
+    ],
+    "bottomText": "Built by engineers. Delivered with precision."
+  },
+  "visionMission": {
+    "items": [
+      {
+        "title": "Our Vision",
+        "description": "To be the leading real estate company, transforming communities through innovative and sustainable living solutions, while fostering trust and excellence in every interaction."
+      },
+      {
+        "title": "Our Mission",
+        "description": "Our mission is to provide exceptional real estate services by prioritizing client satisfaction, leveraging cutting-edge technology, and promoting responsible development."
+      }
+    ]
+  },
+  "legacyProjects": {
+    "title": {
+      "highlight": "CIVILIA",
+      "text": "also participated in the construction of many Banks, Hospitals Separate buildings."
+    }
+  },
+  "approach": {
+    "title": "Our Approach",
+    "items": [
+      {
+        "number": "01",
+        "title": "Built on Engineering Expertise",
+        "description": "Technical precision is the core of everything we build."
+      },
+      {
+        "number": "02",
+        "title": "Focused on Real Execution",
+        "description": "Technical precision is the core of everything we build."
+      },
+      {
+        "number": "03",
+        "title": "Designed for Everyday Living",
+        "description": "Functional spaces that elevate the daily human experience."
+      },
+      {
+        "number": "04",
+        "title": "Driven by Long-Term Value",
+        "description": "Developments built to appreciate and serve for generations."
+      }
+    ]
+  },
+  "projectOverview": {
+    "title": "About CIV WEST",
+    "paragraph1": "At CIV WEST we didn't just build homes — we designed a way of life. Across 38,000 m² in the heart of Sheikh Zayed, we made room for greenery and calm, and cared for every detail — working with leading consultants and building to last.",
+    "paragraph2": "Here, privacy isn't a luxury; it's the feeling that this place is truly yours, and yours alone.",
+    "highlight": "At CIV WEST"
+  },
+  "civWestStats": {
+    "title": "CIV WEST",
+    "stats": [
+      {
+        "value": "38,000",
+        "label": "Square Meters"
+      },
+      {
+        "value": "77%",
+        "label": "Landscape Area"
+      },
+      {
+        "value": "23%",
+        "label": "Building Footprint"
+      }
+    ]
+  },
+  "featuresAmenities": {
+    "title": "Features And Amenities",
+    "items": [
+      "Kids Area",
+      "ClubHouse",
+      "Meditation & Yoga Center",
+      "Protection System",
+      "Padel Courts",
+      "Jogging Track",
+      "Commercial Mall",
+      "Electric Car Charger",
+      "Lakes",
+      "Gym Halls",
+      "Smart Gates For Buildings",
+      "Landscapes"
+    ]
+  },
+  "primeLocation": {
+    "title": "Prime Location",
+    "description": "sits at the center of Thawra El Khadra in Sheikh Zayed City—one of West Cairo's most sought-after upscale residential districts.",
+    "highlight": "CIV West",
+    "mins": "MINS",
+    "locations": [
+      {
+        "time": "3",
+        "place": "Dandy Mega Mall",
+        "variant": "light"
+      },
+      {
+        "time": "5",
+        "place": "Hyper One",
+        "variant": "yellow"
+      },
+      {
+        "time": "5",
+        "place": "ZED Towers",
+        "variant": "light"
+      },
+      {
+        "time": "10",
+        "place": "Al Ahly Sporting Club",
+        "variant": "yellow"
+      }
+    ]
+  },
+  "masterPlan": {
+    "title": "Master Plan",
+    "description": "In collaboration with ADC – Architecture and Design Consultant, we have carefully considered every aspect of modern living, from the layout of streets and parks to the design of homes and amenities, creating a community where every detail enhances your lifestyle."
+  },
+  "paymentPlan": {
+    "title": "Payment Plan",
+    "plans": [
+      {
+        "value": "5",
+        "suffix": "%",
+        "title": "Down Payment",
+        "variant": "light"
+      },
+      {
+        "value": "8",
+        "title": "Years Installments",
+        "variant": "yellow"
+      },
+      {
+        "value": "10",
+        "suffix": "%",
+        "title": "Down Payment",
+        "variant": "light"
+      },
+      {
+        "value": "10",
+        "title": "Years Installments",
+        "variant": "yellow"
+      }
+    ]
+  },
+  "whyChooseCivWest": {
+    "title": "Why Choose CIV West",
+    "reasons": [
+      {
+        "title": "Strategic Location",
+        "description": "Heart of Thawra El Khadra, close to malls, clubs, and major road axes."
+      },
+      {
+        "title": "Contemporary Master Plan",
+        "description": "Designed by ADC with panoramic views and modern architecture."
+      },
+      {
+        "title": "Expansive Green Spaces",
+        "description": "Majority of the compound dedicated to landscapes, lakes, and walkways."
+      },
+      {
+        "title": "Integrated Amenities",
+        "description": "Clubhouse, gym, yoga center, padel courts, retail mall, kids areas, and jogging tracks."
+      },
+      {
+        "title": "Smart Security",
+        "description": "Smart gates, CCTV surveillance, 24/7 security, and underground parking."
+      },
+      {
+        "title": "Trusted Developer",
+        "description": "CIVILIA Developments with more than 20 years of construction expertise."
+      },
+      {
+        "title": "Master-Planned by ADC",
+        "description": "Streets, parks, and residences carefully designed with modern architecture and panoramic views."
+      },
+      {
+        "title": "Delta Block Construction",
+        "description": "Premium Delta Sand Brick providing structural strength, thermal efficiency, and sound insulation."
+      }
+    ]
+  },
+  "aboutDeveloper": {
+    "title": "CIVILIA Developments",
+    "subtitle": "Building Communities, Shaping Landmarks",
+    "highlight": "CIVILIA Developments",
+    "paragraph1": "was founded as a natural extension of long-standing expertise in the construction and contracting sector in Egypt.",
+    "paragraph2": "Built on a simple yet profound philosophy, the company transforms raw land into distinctive architectural landmarks.",
+    "projectHighlight": "CIV West",
+    "paragraph3": "stands as one of CIVILIA's flagship real estate projects, a reflection of the company's commitment to quality execution, design excellence, and the finest details that elevate residents' quality of life."
+  },
+  "joinOurTeam": {
+    "title": "Join Our Team",
+    "description": "At Civilia Developments, we are dedicated to transforming visions into reality, creating communities that inspire and elevate daily living.",
+
+    "applicationTitle": "Job Application",
+    "applicationDescription": "Submit your application and our HR team will review it shortly.",
+
+    "fields": {
+      "name": "Name",
+      "email": "Email",
+      "phone": "Phone",
+      "jobTitle": "Job Title",
+      "department": "Department"
+    },
+
+    "validation": {
+      "name": "Name must be at least 2 characters",
+      "email": "Please enter a valid email",
+      "phoneMin": "Please enter a valid phone number",
+      "phoneRegex": "Please enter a valid phone number",
+      "jobTitle": "Job title is required",
+      "department": "Department is required"
+    },
+
+    "buttons": {
+      "submit": "Submit Application",
+      "sending": "Sending..."
+    },
+
+    "messages": {
+      "success": "Application submitted successfully ✨",
+      "error": "Something went wrong. Please try again."
+    }
+  },
+  "whyWorkWithUs": {
+    "title": "Why Work With Us",
+    "reasons": [
+      {
+        "title": "Growth",
+        "description": "Unparalleled pathways for rapid career advancement within Egypt's premier architectural firm."
+      },
+      {
+        "title": "Culture",
+        "description": "A collaborative environment built on shared excellence, creativity, and integrity."
+      },
+      {
+        "title": "Benefits",
+        "description": "Premium compensation packages, comprehensive health coverage, and flexible work arrangements."
+      },
+      {
+        "title": "Projects",
+        "description": "Shape the skyline of tomorrow by contributing to landmark developments across Egypt."
+      }
+    ]
+  },
+  "benefits": {
+    "title": "Unrivaled Benefits",
+    "items": [
+      {
+        "title": "Health &\nWellness"
+      },
+      {
+        "title": "Flexibility"
+      },
+      {
+        "title": "Elite\nTraining"
+      },
+      {
+        "title": "Performance\nBonuses"
+      }
+    ]
+  },
+  "contactHero": {
+    "title": "Contact Us",
+    "description": "We're here to help you find your perfect property. Let our experts guide your next investment with the architectural precision Civilia is known for."
+  },
+  "contactIntro": {
+    "title": "We're here for you",
+    "description": "Our commitment to excellence extends beyond our builds. Experience a standard of service that mirrors our architectural integrity.",
+    "metrics": [
+      {
+        "value": "24/7",
+        "label": "Customer Support"
+      },
+      {
+        "value": "20+",
+        "label": "Years Experience"
+      },
+      {
+        "value": "100%",
+        "label": "Client Focused"
+      }
+    ]
+  },
+  "contactDetails": {
+    "title": "Contact Now",
+    "description": "Submit your details and a specialized real estate consultant will reach out to curate your experience.",
+
+    "fields": {
+      "name": "Name",
+      "email": "Email",
+      "phone": "Phone",
+      "message": "Message"
+    },
+
+    "validation": {
+      "name": "Name must be at least 2 characters.",
+      "email": "Please enter a valid email address.",
+      "phoneMin": "Please enter a valid phone number.",
+      "phoneRegex": "Please enter a valid phone number.",
+      "message": "Message must be at least 10 characters."
+    },
+
+    "buttons": {
+      "send": "Send Message",
+      "sending": "Sending..."
+    },
+
+    "messages": {
+      "success": "Your message has been sent successfully ✨",
+      "error": "Something went wrong. Please try again."
+    },
+
+    "cards": [
+      {
+        "title": "Call Us",
+        "note": "Available Daily",
+        "value": "16727"
+      },
+      {
+        "title": "Email Us",
+        "note": "Business Inquiries",
+        "value": "Info@civiliadevelopments.com"
+      },
+      {
+        "title": "Visit Us",
+        "note": "Head Office",
+        "value": "Sheikh Zayed, Egypt"
+      }
+    ]
+  }
+}

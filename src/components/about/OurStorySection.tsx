@@ -1,6 +1,13 @@
+"use client";
+
 import Image from "next/image";
+import { useTranslations, useLocale } from "next-intl";
 
 export function OurStorySection() {
+  const t = useTranslations("ourStory");
+  const locale = useLocale();
+  const isArabic = locale === "ar";
+
   return (
     <section className="bg-civilia-paper pb-20 pt-6 md:pb-32 md:pt-10">
       <div className="mx-auto max-w-[1440px] overflow-hidden">
@@ -9,7 +16,7 @@ export function OurStorySection() {
           className="flex min-h-[118px] items-center justify-center rounded-bl-[120px] bg-civilia-red px-8 py-8 md:min-h-[174px] md:rounded-bl-[220px]"
         >
           <h2 className="text-center text-[40px] font-semibold leading-none text-civilia-paper md:text-[72px]">
-            Our Story
+            {t("title")}
           </h2>
         </div>
       </div>
@@ -23,43 +30,25 @@ export function OurStorySection() {
               "linear-gradient(90deg, #FFFDFA 0%, #FFF3E1 50%, #FFFDFA 100%)",
           }}
         >
-          <div className="max-w-[1120px] text-[15px] leading-[1.9] tracking-[-0.01em] text-[#2f2f2f] md:text-[19px]">
-            <p>
-              <span className="font-semibold text-civilia-red">CIV West</span>{" "}
-              Compound is a fully integrated residential development by{" "}
-              <span className="font-semibold text-civilia-red">
-                CIVILIA Developments
-              </span>
-              , located in Thawra El Khadra, Sheikh Zayed City, spanning total
-              area of <span className="font-semibold">38,000</span> square
-              meter.
-            </p>
+          <div
+            className={`max-w-[1120px] text-[15px] leading-[1.9] tracking-[-0.01em] text-[#2f2f2f] md:text-[19px] ${
+              isArabic ? "text-right" : "text-left"
+            }`}
+          >
+            <p>{t("paragraph1")}</p>
 
-            <p className="mt-8">
-              The project offers modern apartments with contemporary designs,
-              expansive green spaces, artificial lakes, and a complete suite of
-              leisure and sports facilities - all with flexible payment plans
-              tailored for families seeking premium living in West Cairo.
-            </p>
+            <p className="mt-8">{t("paragraph2")}</p>
 
-            <p className="mt-8">
-              <span className="font-semibold text-civilia-red">CIV West</span>{" "}
-              is designed to deliver a balanced lifestyle that harmonizes
-              tranquility, luxury, and proximity to the essential services
-              modern Egyptian families need - through thoughtful urban planning
-              that dedicates the majority of the compound’s area to green
-              spaces, water features, and open walkways.
-            </p>
+            <p className="mt-8">{t("paragraph3")}</p>
 
-            <p className="mt-8">
-              The project is a direct embodiment of CIVILIA&apos;s motto -
-              <span className="font-medium"> “From Land to Landmark”</span> -
-              combining contemporary architecture, smart design details, and an
-              integrated ecosystem of recreational, sports, and retail amenities
-              within the compound.
-            </p>
+            <p className="mt-8">{t("paragraph4")}</p>
           </div>
-          <div className="absolute bottom-8 right-8 hidden md:block">
+
+          <div
+            className={`absolute bottom-8 hidden md:block ${
+              isArabic ? "left-8" : "right-8"
+            }`}
+          >
             <Image
               src="/assets/story-accent.svg"
               alt=""

@@ -1,7 +1,18 @@
 import type { Metadata } from "next";
-import "./globals.css";
+import { NextIntlClientProvider, hasLocale } from "next-intl";
+import { getMessages } from "next-intl/server";
+import { notFound } from "next/navigation";
+import { routing } from "@/i18n/routing";
+import { IBM_Plex_Sans_Arabic } from "next/font/google";
+
+import "../globals.css";
 
 const siteUrl = "https://civilia-developments.com";
+const ibmPlexArabic = IBM_Plex_Sans_Arabic({
+  subsets: ["arabic"],
+  weight: ["300", "400", "500", "600", "700"],
+  variable: "--font-ibm-plex-arabic",
+});
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
@@ -36,6 +47,10 @@ export const metadata: Metadata = {
   },
   alternates: {
     canonical: siteUrl,
+    languages: {
+      en: siteUrl,
+      ar: `${siteUrl}/ar`,
+    },
   },
   openGraph: {
     title: "Civilia Developments | From Land To Landmark",
@@ -74,11 +89,22 @@ export const metadata: Metadata = {
   category: "real estate",
 };
 
-export default function RootLayout({
+export default async function LocaleLayout({
   children,
-}: Readonly<{
+  params,
+}: {
   children: React.ReactNode;
-}>) {
+  params: Promise<{ locale: string }>;
+}) {
+  const { locale } = await params;
+
+  if (!hasLocale(routing.locales, locale)) {
+    notFound();
+  }
+
+  const messages = await getMessages();
+  const isArabic = locale === "ar";
+
   const jsonLd = {
     "@context": "https://schema.org",
     "@type": "RealEstateAgent",
@@ -112,14 +138,22 @@ export default function RootLayout({
   };
 
   return (
-    <html lang="en">
+    <html
+      lang={locale}
+      dir={isArabic ? "rtl" : "ltr"}
+      className={ibmPlexArabic.variable}
+    >
       <head>
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
         />
       </head>
-      <body>{children}</body>
+      <body className={isArabic ? "font-arabic" : ""}>
+        <NextIntlClientProvider messages={messages}>
+          {children}
+        </NextIntlClientProvider>
+      </body>
     </html>
   );
 }

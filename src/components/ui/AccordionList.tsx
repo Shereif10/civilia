@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import { ChevronDown } from "lucide-react";
+import { useLocale } from "next-intl";
 
 type AccordionItem = {
   question: string;
@@ -15,7 +16,8 @@ type AccordionListProps = {
 
 export function AccordionList({ items, variant }: AccordionListProps) {
   const [openIndex, setOpenIndex] = useState<number | null>(0);
-
+  const locale = useLocale();
+  const isArabic = locale === "ar";
   const isProject = variant === "project";
 
   return (
@@ -28,7 +30,9 @@ export function AccordionList({ items, variant }: AccordionListProps) {
             key={item.question}
             type="button"
             onClick={() => setOpenIndex(isOpen ? null : index)}
-            className={`group rounded-[8px] p-5 text-left transition duration-300 md:p-8 ${
+            className={`group rounded-[8px] p-5 transition duration-300 md:p-8 ${
+              isArabic ? "text-right" : "text-left"
+            } ${
               isProject
                 ? "bg-[#031286] text-white hover:bg-[#02106f]"
                 : "bg-civilia-red text-white hover:bg-[#b91114]"
@@ -36,15 +40,25 @@ export function AccordionList({ items, variant }: AccordionListProps) {
             aria-expanded={isOpen}
           >
             <span className="flex items-center gap-5">
+              {isArabic && (
+                <ChevronDown
+                  className={`h-6 w-6 shrink-0 transition duration-300 ${
+                    isOpen ? "rotate-180" : ""
+                  }`}
+                />
+              )}
+
               <span className="flex-1 text-base leading-normal md:text-[22px] md:leading-[1.5]">
                 {item.question}
               </span>
 
-              <ChevronDown
-                className={`h-6 w-6 shrink-0 transition duration-300 ${
-                  isOpen ? "rotate-180" : ""
-                }`}
-              />
+              {!isArabic && (
+                <ChevronDown
+                  className={`h-6 w-6 shrink-0 transition duration-300 ${
+                    isOpen ? "rotate-180" : ""
+                  }`}
+                />
+              )}
             </span>
 
             <span

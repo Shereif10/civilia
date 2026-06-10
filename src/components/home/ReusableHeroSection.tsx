@@ -1,4 +1,5 @@
 import Image from "next/image";
+import { useTranslations } from "next-intl";
 import { Header } from "@/components/layout/Header";
 
 type HeroVariant = "about" | "projects" | "careers";
@@ -7,33 +8,21 @@ type HeroSectionProps = {
   variant?: HeroVariant;
 };
 
-const heroContent = {
+const heroStyles = {
   about: {
     image: "/assets/about-hero.png",
-    title: ["About", "Civilia"],
-    subtitle: "",
-    description: "",
     roundedBottom: false,
     overlay:
       "bg-[linear-gradient(90deg,rgba(24,24,24,0.48)_0%,rgba(24,24,24,0.18)_38%,rgba(24,24,24,0)_72%)]",
   },
-
   projects: {
     image: "/assets/projects-hero.png",
-    title: ["CIV WEST – Modern Living,", "Engineered Around You"],
-    subtitle: "",
-    description: "",
     roundedBottom: true,
     overlay:
       "bg-[linear-gradient(262.09deg,rgba(255,255,255,0)_-0.07%,rgba(0,0,0,0.5)_100%)]",
   },
-
   careers: {
     image: "/assets/careers-hero.jpg",
-    title: ["WE ARE", "HIRING"],
-    subtitle: "Build the Future of Living",
-    description:
-      "Join the visionaries redefining Egypt's architectural landscape through precision, integrity, and sustainable luxury.",
     roundedBottom: true,
     overlay:
       "bg-[linear-gradient(262.09deg,rgba(255,255,255,0)_-0.07%,rgba(0,0,0,0.5)_100%)]",
@@ -41,12 +30,14 @@ const heroContent = {
 } as const;
 
 export function ReusableHeroSection({ variant = "about" }: HeroSectionProps) {
-  const content = heroContent[variant];
+  const t = useTranslations("reusableHero");
+  const styles = heroStyles[variant];
+  const title = t.raw(`${variant}.title`) as string[];
 
   return (
     <section
       className={`relative overflow-hidden ${
-        content.roundedBottom
+        styles.roundedBottom
           ? "min-h-[100svh] rounded-b-[24px] md:rounded-b-[32px]"
           : "min-h-[100svh] bg-civilia-paper"
       }`}
@@ -56,7 +47,7 @@ export function ReusableHeroSection({ variant = "about" }: HeroSectionProps) {
       {/* Background */}
       <div className="absolute inset-0">
         <Image
-          src={content.image}
+          src={styles.image}
           alt=""
           fill
           priority
@@ -66,7 +57,7 @@ export function ReusableHeroSection({ variant = "about" }: HeroSectionProps) {
       </div>
 
       {/* Overlay */}
-      <div className={`absolute inset-0 ${content.overlay}`} />
+      <div className={`absolute inset-0 ${styles.overlay}`} />
 
       {/* ABOUT */}
       {variant === "about" && (
@@ -90,8 +81,8 @@ export function ReusableHeroSection({ variant = "about" }: HeroSectionProps) {
                     md:tracking-[-4px]
                   "
                 >
-                  <span className="block">{content.title[0]}</span>
-                  <span className="block">{content.title[1]}</span>
+                  <span className="block">{title[0]}</span>
+                  <span className="block">{title[1]}</span>
                 </h1>
               </div>
             </div>
@@ -106,28 +97,23 @@ export function ReusableHeroSection({ variant = "about" }: HeroSectionProps) {
             <div data-animate="fade-up">
               <h1
                 className="
-            max-w-[1200px]
-            text-white
-            font-light
-            leading-[1]
-            tracking-[-1px]
+                  max-w-[1200px]
+                  font-light
+                  leading-[1]
+                  tracking-[-1px]
+                  text-white
 
-            text-[32px]
+                  text-[32px]
 
-            sm:text-[44px]
+                  sm:text-[44px]
 
-            md:text-[64px]
+                  md:text-[64px]
 
-            lg:text-[84px]
-          "
+                  lg:text-[84px]
+                "
               >
-                <span className="block lg:whitespace-nowrap">
-                  {content.title[0]}
-                </span>
-
-                <span className="block lg:whitespace-nowrap">
-                  {content.title[1]}
-                </span>
+                <span className="block lg:whitespace-nowrap">{title[0]}</span>
+                <span className="block lg:whitespace-nowrap">{title[1]}</span>
               </h1>
             </div>
           </div>
@@ -154,8 +140,8 @@ export function ReusableHeroSection({ variant = "about" }: HeroSectionProps) {
                   md:tracking-[-4px]
                 "
               >
-                <span className="block">{content.title[0]}</span>
-                <span className="block">{content.title[1]}</span>
+                <span className="block">{title[0]}</span>
+                <span className="block">{title[1]}</span>
               </h1>
 
               <p
@@ -170,7 +156,7 @@ export function ReusableHeroSection({ variant = "about" }: HeroSectionProps) {
                   md:text-[40px]
                 "
               >
-                {content.subtitle}
+                {t("careers.subtitle")}
               </p>
 
               <p
@@ -188,7 +174,7 @@ export function ReusableHeroSection({ variant = "about" }: HeroSectionProps) {
                   lg:text-[32px]
                 "
               >
-                {content.description}
+                {t("careers.description")}
               </p>
             </div>
           </div>

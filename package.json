@@ -19,6 +19,7 @@
     "gsap": "^3.15.0",
     "lucide-react": "latest",
     "next": "latest",
+    "next-intl": "^4.13.0",
     "nodemailer": "^8.0.10",
     "react": "latest",
     "react-dom": "latest",

@@ -1,6 +1,13 @@
+"use client";
+
 import Image from "next/image";
+import { useLocale, useTranslations } from "next-intl";
 
 export function ProjectOverviewSection() {
+  const t = useTranslations("projectOverview");
+  const locale = useLocale();
+  const isArabic = locale === "ar";
+
   return (
     <section className="bg-civilia-paper py-16 md:py-24">
       <div className="container-civilia">
@@ -9,7 +16,7 @@ export function ProjectOverviewSection() {
           className="grid items-start gap-12 lg:grid-cols-[1fr_420px]"
         >
           {/* Content */}
-          <div>
+          <div className={isArabic ? "text-right" : ""}>
             <h2
               className="
                 text-[#031286]
@@ -24,7 +31,7 @@ export function ProjectOverviewSection() {
               "
               style={{ fontFamily: "Badgline" }}
             >
-              About CIV WEST
+              {t("title")}
             </h2>
 
             <div className="mt-8 max-w-[650px]">
@@ -39,12 +46,9 @@ export function ProjectOverviewSection() {
                 "
               >
                 <span className="font-semibold text-[#031286]">
-                  At CIV WEST
+                  {t("highlight")}
                 </span>{" "}
-                we didn&apos;t just build homes — we designed a way of life.
-                Across 38,000 m² in the heart of Sheikh Zayed, we made room for
-                greenery and calm, and cared for every detail — working with
-                leading consultants and building to last.
+                {t("paragraph1")}
               </p>
 
               <p
@@ -58,8 +62,7 @@ export function ProjectOverviewSection() {
                   md:text-[26px]
                 "
               >
-                Here, privacy isn&apos;t a luxury; it&apos;s the feeling that
-                this place is truly yours, and yours alone.
+                {t("paragraph2")}
               </p>
             </div>
           </div>

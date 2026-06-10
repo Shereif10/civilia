@@ -2,12 +2,14 @@
 
 import Image from "next/image";
 import { useEffect, useRef } from "react";
+import { useTranslations } from "next-intl";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 
-import { proofPoints } from "@/lib/data";
-
 export function ProofListSection() {
+  const t = useTranslations("proofList");
+  const points = t.raw("points") as string[];
+
   const sectionRef = useRef<HTMLElement>(null);
   const rowsRef = useRef<(HTMLDivElement | null)[]>([]);
 
@@ -34,9 +36,9 @@ export function ProofListSection() {
   return (
     <section ref={sectionRef} className="bg-civilia-paper pb-10 md:pb-16">
       <div className="mx-auto flex flex-col gap-[10px]">
-        {proofPoints.map((point, index) => (
+        {points.map((point, index) => (
           <div
-            key={point}
+            key={index}
             className="
               flex
               min-h-[112px]
@@ -49,9 +51,9 @@ export function ProofListSection() {
               py-5
               backdrop-blur-[100px]
 
+              sm:rounded-bl-[96px]
               sm:px-6
               sm:py-6
-              sm:rounded-bl-[96px]
 
               md:px-16
               md:py-8
