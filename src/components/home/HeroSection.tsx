@@ -46,7 +46,7 @@ export function HeroSection() {
 
   return (
     <section className="relative min-h-[760px] bg-civilia-paper md:h-[834px] 2xl:h-[920px]">
-      <Header active="home" />
+      <Header/>
 
       {/* Animated Wordmark */}
       <div

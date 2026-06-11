@@ -48,7 +48,10 @@ export function MasterPlanSection() {
             alt="CIV West Master Plan"
             width={1280}
             height={720}
-            className="h-auto w-full object-cover"
+            style={{
+              width: "100%",
+              height: "auto",
+            }}
             priority
           />
         </div>

@@ -5,7 +5,6 @@ import { CivWestStatsSection } from "@/components/projects/CivWestStatsSection";
 import { ProjectOverviewSection } from "@/components/projects/ProjectOverviewSection";
 import { FeaturesAmenitiesSection } from "@/components/projects/FeaturesAmenitiesSection";
 import { LatestProjectSection } from "@/components/home/LatestProjectSection";
-import { ProjectIntroBanner } from "@/components/projects/ProjectIntroBanner";
 import { JourneyCta } from "@/components/home/JourneyCta";
 import { PrimeLocationSection } from "@/components/projects/PrimeLocationSection";
 import { MasterPlanSection } from "@/components/projects/MasterPlanSection";
@@ -170,7 +169,6 @@ export default function ProjectsPage() {
         <CivWestStatsSection />
         <FeaturesAmenitiesSection />
         <LatestProjectSection variant="project" />
-        {/* <ProjectIntroBanner /> */}
         <JourneyCta variant="project" />
         <PrimeLocationSection />
         <MasterPlanSection />

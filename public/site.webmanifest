@@ -1,0 +1,8 @@
+{
+  "name": "Civilia Developments",
+  "short_name": "Civilia",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#fffdfa",
+  "theme_color": "#cd1417"
+}

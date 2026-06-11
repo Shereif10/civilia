@@ -1,6 +1,6 @@
 "use client";
 
-import { useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { useLocale, useTranslations } from "next-intl";
 
 import { useForm } from "react-hook-form";
@@ -10,23 +10,9 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { motion } from "framer-motion";
 import { Send, Loader2 } from "lucide-react";
 
-import {
-  Phone,
-  Mail,
-  MapPin,
-} from "lucide-react";
+import { Phone, Mail, MapPin } from "lucide-react";
 
-type SubmitStatus =
-  | "idle"
-  | "loading"
-  | "success"
-  | "error";
-
-type ContactCard = {
-  title: string;
-  note: string;
-  value: string;
-};
+type SubmitStatus = "idle" | "loading" | "success" | "error";
 
 export function ContactDetailsSection() {
   const t = useTranslations("contactDetails");
@@ -62,30 +48,18 @@ export function ContactDetailsSection() {
     phone: z
       .string()
       .min(7, t("validation.phoneMin"))
-      .regex(
-        /^\+?[0-9\s\-().]{7,20}$/,
-        t("validation.phoneRegex"),
-      ),
+      .regex(/^\+?[0-9\s\-().]{7,20}$/, t("validation.phoneRegex")),
 
-    message: z.string().min(
-      10,
-      t("validation.message"),
-    ),
+    message: z.string().min(10, t("validation.message")),
   });
 
-  type ContactFormData =
-    z.infer<typeof contactSchema>;
+  type ContactFormData = z.infer<typeof contactSchema>;
 
-  const [submitStatus, setSubmitStatus] =
-    useState<SubmitStatus>("idle");
+  const [submitStatus, setSubmitStatus] = useState<SubmitStatus>("idle");
 
-  const [showPopup, setShowPopup] =
-    useState(false);
+  const [showPopup, setShowPopup] = useState(false);
 
-  const popupTimerRef =
-    useRef<ReturnType<typeof setTimeout> | null>(
-      null,
-    );
+  const popupTimerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
 
   const {
     register,
@@ -96,9 +70,7 @@ export function ContactDetailsSection() {
     resolver: zodResolver(contactSchema),
   });
 
-  const triggerPopup = (
-    status: "success" | "error",
-  ) => {
+  const triggerPopup = (status: "success" | "error") => {
     if (popupTimerRef.current) {
       clearTimeout(popupTimerRef.current);
     }
@@ -111,32 +83,27 @@ export function ContactDetailsSection() {
       setSubmitStatus("idle");
     }, 4000);
   };
-    const onSubmit = async (
-    data: ContactFormData,
-  ) => {
+
+  const onSubmit = async (data: ContactFormData) => {
     setSubmitStatus("loading");
 
     try {
-      const response = await fetch(
-        "https://api.web3forms.com/submit",
-        {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify({
-            access_key:
-              process.env.NEXT_PUBLIC_WEB3FORMS_KEY,
-
-            name: data.name,
-            email: data.email,
-            phone: data.phone,
-            message: data.message,
-
-            subject: `New Website Message - ${data.name}`,
-          }),
+      const response = await fetch("https://api.web3forms.com/submit", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
         },
-      );
+        body: JSON.stringify({
+          access_key: "a1190a07-0021-4148-900a-93a3224fae5b",
+
+          name: data.name,
+          email: data.email,
+          phone: data.phone,
+          message: data.message,
+
+          subject: `New Website Message - ${data.name}`,
+        }),
+      });
 
       const result = await response.json();
 
@@ -151,8 +118,7 @@ export function ContactDetailsSection() {
     }
   };
 
-  const isLoading =
-    submitStatus === "loading";
+  const isLoading = submitStatus === "loading";
 
   const inputBase = `
     h-[58px]
@@ -168,12 +134,16 @@ export function ContactDetailsSection() {
     md:text-[21px]
   `;
 
-  const borderClass = (
-    hasError: boolean,
-  ) =>
-    hasError
-      ? "border-red-500"
-      : "border-[#CD1417]";
+  const borderClass = (hasError: boolean) =>
+    hasError ? "border-red-500" : "border-[#CD1417]";
+
+  useEffect(() => {
+    return () => {
+      if (popupTimerRef.current) {
+        clearTimeout(popupTimerRef.current);
+      }
+    };
+  }, []);
 
   return (
     <section className="bg-civilia-paper pb-20 md:pb-32">
@@ -227,17 +197,13 @@ export function ContactDetailsSection() {
           >
             {/* Name */}
             <div className="flex flex-col gap-1.5">
-                            <input
+              <input
                 aria-label={t("fields.name")}
                 placeholder={t("fields.name")}
                 disabled={isLoading}
                 {...register("name")}
-                className={`${inputBase} ${borderClass(
-                  !!errors.name,
-                )} ${
-                  isArabic
-                    ? "text-right"
-                    : ""
+                className={`${inputBase} ${borderClass(!!errors.name)} ${
+                  isArabic ? "text-right" : ""
                 }`}
               />
 
@@ -257,12 +223,8 @@ export function ContactDetailsSection() {
                   placeholder={t("fields.email")}
                   disabled={isLoading}
                   {...register("email")}
-                  className={`${inputBase} ${borderClass(
-                    !!errors.email,
-                  )} ${
-                    isArabic
-                      ? "text-right"
-                      : ""
+                  className={`${inputBase} ${borderClass(!!errors.email)} ${
+                    isArabic ? "text-right" : ""
                   }`}
                 />
 
@@ -280,12 +242,8 @@ export function ContactDetailsSection() {
                   placeholder={t("fields.phone")}
                   disabled={isLoading}
                   {...register("phone")}
-                  className={`${inputBase} ${borderClass(
-                    !!errors.phone,
-                  )} ${
-                    isArabic
-                      ? "text-right"
-                      : ""
+                  className={`${inputBase} ${borderClass(!!errors.phone)} ${
+                    isArabic ? "text-right" : ""
                   }`}
                 />
 
@@ -318,14 +276,8 @@ export function ContactDetailsSection() {
                   disabled:opacity-50
                   disabled:cursor-not-allowed
                   md:text-2xl
-                  ${borderClass(
-                    !!errors.message,
-                  )}
-                  ${
-                    isArabic
-                      ? "text-right"
-                      : ""
-                  }
+                  ${borderClass(!!errors.message)}
+                  ${isArabic ? "text-right" : ""}
                 `}
               />
 
@@ -335,7 +287,8 @@ export function ContactDetailsSection() {
                 </span>
               )}
             </div>
-                        {/* Submit Button */}
+
+            {/* Submit Button */}
             <div className="flex justify-center md:justify-end">
               <button
                 type="submit"
@@ -430,9 +383,7 @@ export function ContactDetailsSection() {
                 <div className="w-full max-w-[233px]">
                   <div
                     className={`flex items-center gap-4 ${
-                      isArabic
-                        ? "flex-row-reverse text-right"
-                        : ""
+                      isArabic ? "flex-row-reverse text-right" : ""
                     }`}
                   >
                     <Icon
@@ -455,9 +406,7 @@ export function ContactDetailsSection() {
 
                   <p
                     className={`mt-1 text-sm leading-none text-[#8e8e8e] ${
-                      isArabic
-                        ? "text-right"
-                        : ""
+                      isArabic ? "text-right" : ""
                     }`}
                   >
                     {card.note}
@@ -473,11 +422,7 @@ export function ContactDetailsSection() {
                       text-civilia-red
                       md:text-[18px]
                       md:whitespace-nowrap
-                      ${
-                        isArabic
-                          ? "text-right"
-                          : ""
-                      }
+                      ${isArabic ? "text-right" : ""}
                     `}
                   >
                     {card.value}

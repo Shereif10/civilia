@@ -11,7 +11,7 @@ export function ContactHero() {
 
   return (
     <section className="bg-civilia-paper pb-16 md:pb-24">
-      <Header active="contact" />
+      <Header />
 
       <div className="container-civilia pt-[120px] md:pt-[170px] lg:pt-[190px]">
         {/* Banner */}

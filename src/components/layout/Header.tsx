@@ -8,17 +8,26 @@ import { useState } from "react";
 import { useTranslations } from "next-intl";
 import { LanguageSwitcher } from "../shared/LanguageSwitcher";
 
+const navItems = [
+  { key: "home", href: "/" },
+  { key: "about", href: "/about" },
+  { key: "projects", href: "/projects" },
+  { key: "careers", href: "/careers" },
+] as const;
+
 export function Header() {
   const [isOpen, setIsOpen] = useState(false);
+
   const pathname = usePathname();
   const t = useTranslations("nav");
 
-  const navItems = [
-    { key: "home", href: "/" },
-    { key: "about", href: "/about" },
-    { key: "projects", href: "/projects" },
-    { key: "careers", href: "/careers" },
-  ];
+  const toggleMenu = () => {
+    setIsOpen((prev) => !prev);
+  };
+
+  const closeMenu = () => {
+    setIsOpen(false);
+  };
 
   return (
     <header className="absolute inset-x-0 top-0 z-40">
@@ -57,7 +66,7 @@ export function Header() {
             alt="CIVILIA"
             fill
             priority
-            sizes="150px"
+            sizes="(max-width: 640px) 130px, 190px"
           />
         </Link>
 
@@ -110,6 +119,10 @@ export function Header() {
         {/* Mobile & Tablet Menu Button */}
         <button
           type="button"
+          onClick={toggleMenu}
+          aria-label="Toggle navigation"
+          aria-expanded={isOpen}
+          aria-controls="mobile-menu"
           className="
             inline-flex
             h-10
@@ -125,9 +138,6 @@ export function Header() {
 
             xl:hidden
           "
-          onClick={() => setIsOpen((value) => !value)}
-          aria-label="Toggle navigation"
-          aria-expanded={isOpen}
         >
           {isOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
         </button>
@@ -135,6 +145,7 @@ export function Header() {
 
       {/* Mobile & Tablet Menu */}
       <div
+        id="mobile-menu"
         className={`container-civilia overflow-hidden rounded-b-2xl bg-civilia-paper shadow-soft transition-all duration-300 xl:hidden ${
           isOpen ? "max-h-[500px] border border-black/5" : "max-h-0"
         }`}
@@ -147,7 +158,7 @@ export function Header() {
               <Link
                 key={item.key}
                 href={item.href}
-                onClick={() => setIsOpen(false)}
+                onClick={closeMenu}
                 className={`border-b border-black/5 px-2 py-3 text-base last:border-b-0 sm:text-lg ${
                   isActive ? "font-medium text-civilia-red" : "text-civilia-ink"
                 }`}

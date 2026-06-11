@@ -59,55 +59,57 @@ export function LatestProjectSection({
     return () => clearInterval(interval);
   }, [isPaused]);
 
-  useEffect(() => {
-    gsap.registerPlugin(ScrollTrigger);
+useEffect(() => {
+  gsap.registerPlugin(ScrollTrigger);
 
-    const ctx = gsap.context(() => {
-      const tl = gsap.timeline({
-        scrollTrigger: {
-          trigger: sectionRef.current,
-          start: "top 70%",
-        },
-      });
+  const ctx = gsap.context(() => {
+    const tl = gsap.timeline({
+      scrollTrigger: {
+        trigger: sectionRef.current,
+        start: "top 70%",
+      },
+    });
 
+    if (variant === "default") {
       tl.from(".latest-project-title", {
         y: 60,
         opacity: 0,
         duration: 1,
         ease: "power3.out",
-      })
-        .from(
-          ".project-banner",
-          {
-            scaleX: 0,
-            transformOrigin: "center center",
-            duration: 0.8,
-            ease: "power3.out",
-          },
-          "-=0.4",
-        )
-        .from(
-          carouselRef.current,
-          {
-            y: 100,
-            opacity: 0,
-            duration: 1.2,
-            ease: "power4.out",
-          },
-          "-=0.2",
-        )
-        .from(
-          contentRef.current?.children || [],
-          {
-            y: 40,
-            opacity: 0,
-            stagger: 0.15,
-            duration: 0.8,
-            ease: "power3.out",
-          },
-          "-=0.6",
-        );
+      }).from(
+        ".project-banner",
+        {
+          scaleX: 0,
+          transformOrigin: "center center",
+          duration: 0.8,
+          ease: "power3.out",
+        },
+        "-=0.4",
+      );
+    }
 
+    tl.from(
+      carouselRef.current,
+      {
+        y: 100,
+        opacity: 0,
+        duration: 1.2,
+        ease: "power4.out",
+      },
+      "-=0.2",
+    ).from(
+      contentRef.current?.children ?? [],
+      {
+        y: 40,
+        opacity: 0,
+        stagger: 0.15,
+        duration: 0.8,
+        ease: "power3.out",
+      },
+      "-=0.6",
+    );
+
+    if (carouselRef.current) {
       gsap.to(".center-card", {
         y: -30,
         ease: "none",
@@ -118,10 +120,11 @@ export function LatestProjectSection({
           scrub: true,
         },
       });
-    }, sectionRef);
+    }
+  }, sectionRef);
 
-    return () => ctx.revert();
-  }, []);
+  return () => ctx.revert();
+}, [variant]);
 
   const positionClasses = (role: "left" | "center" | "right") => {
     switch (role) {
