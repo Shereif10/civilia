@@ -82,7 +82,7 @@ export function LanguageSwitcher() {
           xl:py-2
           text-sm
           xl:text-xs
-          font-medium
+          font-bold
           transition-all
           duration-300
 

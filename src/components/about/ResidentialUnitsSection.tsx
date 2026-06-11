@@ -56,14 +56,14 @@ export function ResidentialUnitsSection() {
             <span className="block">{t("title.line2")}</span>
           </h2>
 
-          <div className="hidden pt-10 md:block">
+          {/* <div className="hidden pt-10 md:block">
             <Image
               src="/assets/story-accent.svg"
               alt=""
               width={33}
               height={17}
             />
-          </div>
+          </div> */}
         </div>
 
         <div
