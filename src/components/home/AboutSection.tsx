@@ -100,7 +100,7 @@ export function AboutSection() {
           className="relative z-20 -mt-32 h-[420px] w-full overflow-hidden"
         >
           <Image
-            src="/assets/about-building.png"
+            src="/assets/about-building.webp"
             alt="CIVILIA residential building exterior"
             fill
             sizes="100vw"
@@ -116,7 +116,7 @@ export function AboutSection() {
           className="absolute left-0 top-6 h-[712px] w-[min(852px,74vw)]"
         >
           <Image
-            src="/assets/about-building.png"
+            src="/assets/about-building.webp"
             alt="CIVILIA residential building exterior"
             fill
             sizes="(max-width: 768px) 100vw, 852px"

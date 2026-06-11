@@ -71,17 +71,17 @@ export const proofPoints = [
 
 export const newsItems = [
   {
-    image: "/assets/news-1.png",
+    image: "/assets/news-1.webp",
     title:
       "Discover the Luxurious Lifestyle at CIV.WEST By CIVILIA Developments",
   },
   {
-    image: "/assets/news-2.png",
+    image: "/assets/news-2.webp",
     title:
       "Discover the Luxurious Lifestyle at CIV.WEST By CIVILIA Developments",
   },
   {
-    image: "/assets/news-3.png",
+    image: "/assets/news-3.webp",
     title: "Egypt's Real Estate Transforming Landscape: The Vision Of CIVILIA",
   },
 ];

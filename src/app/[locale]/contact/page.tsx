@@ -46,7 +46,7 @@ export const metadata: Metadata = {
     siteName: "Civilia Developments",
     images: [
       {
-        url: `${siteUrl}/assets/contact-og.jpg`,
+        url: `${siteUrl}/assets/contact-og.webp`,
         width: 1200,
         height: 630,
         alt: "Contact Civilia Developments",
@@ -60,13 +60,13 @@ export const metadata: Metadata = {
     title: "Contact Us | Civilia Developments - Bookings & Inquiries",
     description:
       "Get in touch with Civilia Developments for bookings, project consultations, and inquiries about CIV.WEST.",
-    images: [`${siteUrl}/assets/contact-og.jpg`],
+    images: [`${siteUrl}/assets/contact-og.webp`],
     creator: "@CiviliaDev",
     site: "@CiviliaDev",
   },
   icons: {
     icon: "/icon.svg",
-    apple: "/apple-touch-icon.png",
+    apple: "/apple-touch-icon.webp",
   },
   manifest: "/site.webmanifest",
   verification: {

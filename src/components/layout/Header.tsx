@@ -4,7 +4,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "@/i18n/navigation";
 import { Menu, X } from "lucide-react";
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { useTranslations } from "next-intl";
 import { LanguageSwitcher } from "../shared/LanguageSwitcher";
 
@@ -17,9 +17,43 @@ const navItems = [
 
 export function Header() {
   const [isOpen, setIsOpen] = useState(false);
+  const headerRef = useRef<HTMLElement>(null);
+  const [isScrolled, setIsScrolled] = useState(false);
 
   const pathname = usePathname();
   const t = useTranslations("nav");
+
+  useEffect(() => {
+    const handleScroll = () => {
+      setIsScrolled(window.scrollY > 50);
+    };
+
+    handleScroll();
+
+    window.addEventListener("scroll", handleScroll);
+
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, []);
+
+  useEffect(() => {
+    const handleClickOutside = (event: MouseEvent) => {
+      if (
+        isOpen &&
+        headerRef.current &&
+        !headerRef.current.contains(event.target as Node)
+      ) {
+        setIsOpen(false);
+      }
+    };
+
+    document.addEventListener("mousedown", handleClickOutside);
+
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, [isOpen]);
 
   const toggleMenu = () => {
     setIsOpen((prev) => !prev);
@@ -30,36 +64,42 @@ export function Header() {
   };
 
   return (
-    <header className="absolute inset-x-0 top-0 z-40">
+    <header
+      ref={headerRef}
+      className={`fixed inset-x-0 top-0 z-[999] transition-all duration-300 ${
+        isScrolled ? "bg-white/20 backdrop-blur-lg shadow-lg" : "bg-transparent"
+      }`}
+    >
       <div
-        className="
+        className={`
           container-civilia
           flex
-          h-[80px]
           items-center
           justify-between
+          transition-all
+          duration-300
 
-          sm:h-[92px]
-
-          md:h-[121px]
-
-          2xl:h-[140px]
-        "
+          ${
+            isScrolled
+              ? "h-[70px] sm:h-[78px] md:h-[85px] 2xl:h-[95px]"
+              : "h-[80px] sm:h-[92px] md:h-[121px] 2xl:h-[140px]"
+          }
+        `}
       >
         <Link
           href="/"
-          className="
-            relative
-            h-[18px]
-            w-[130px]
-
-            sm:h-[21px]
-            sm:w-[150px]
-
-            2xl:h-[26px]
-            2xl:w-[190px]
-          "
           aria-label="CIVILIA home"
+          className={`
+            relative
+            transition-all
+            duration-300
+
+            ${
+              isScrolled
+                ? "h-[16px] w-[115px] sm:h-[18px] sm:w-[135px] 2xl:h-[22px] 2xl:w-[170px]"
+                : "h-[18px] w-[130px] sm:h-[21px] sm:w-[150px] 2xl:h-[26px] 2xl:w-[190px]"
+            }
+          `}
         >
           <Image
             src="/assets/civilia-logo-small.svg"
@@ -70,7 +110,6 @@ export function Header() {
           />
         </Link>
 
-        {/* Desktop Navigation */}
         <nav
           className="
             hidden
@@ -116,7 +155,6 @@ export function Header() {
           <LanguageSwitcher />
         </nav>
 
-        {/* Mobile & Tablet Menu Button */}
         <button
           type="button"
           onClick={toggleMenu}
@@ -143,7 +181,6 @@ export function Header() {
         </button>
       </div>
 
-      {/* Mobile & Tablet Menu */}
       <div
         id="mobile-menu"
         className={`container-civilia overflow-hidden rounded-b-2xl bg-civilia-paper shadow-soft transition-all duration-300 xl:hidden ${

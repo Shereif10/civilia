@@ -60,7 +60,7 @@ export const metadata: Metadata = {
     siteName: "Civilia Developments",
     images: [
       {
-        url: "/assets/hero.png",
+        url: "/assets/hero.webp",
         width: 1200,
         height: 630,
         alt: "Civilia Developments - Real Estate Developer Egypt",
@@ -74,13 +74,13 @@ export const metadata: Metadata = {
     title: "Civilia Developments | From Land To Landmark",
     description:
       "Civilia Developments delivers real estate communities built on construction expertise, reliability, and long-term value.",
-    images: ["/assets/hero.png"],
+    images: ["/assets/hero.webp"],
     creator: "@CiviliaDev",
     site: "@CiviliaDev",
   },
   icons: {
     icon: "/icon.svg",
-    apple: "/apple-touch-icon.png",
+    apple: "/apple-touch-icon.webp",
   },
   manifest: "/site.webmanifest",
   verification: {
@@ -110,8 +110,8 @@ export default async function LocaleLayout({
     "@type": "RealEstateAgent",
     name: "Civilia Developments",
     url: siteUrl,
-    logo: `${siteUrl}/logo.png`,
-    image: `${siteUrl}/assets/hero.png`,
+    logo: `${siteUrl}/logo.webp`,
+    image: `${siteUrl}/assets/hero.webp`,
     description:
       "Civilia Developments is a leading real estate developer with over 20 years of expertise in construction and real estate development across Egypt.",
     foundingDate: "2004",

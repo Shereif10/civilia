@@ -56,7 +56,7 @@ export const metadata: Metadata = {
     siteName: "Civilia Developments",
     images: [
       {
-        url: `${siteUrl}/assets/projects-og.jpg`,
+        url: `${siteUrl}/assets/projects-og.webp`,
         width: 1200,
         height: 630,
         alt: "Civilia Developments - Real Estate Projects",
@@ -70,13 +70,13 @@ export const metadata: Metadata = {
     title: "Projects | Civilia Developments | CIV.WEST & Premium Real Estate",
     description:
       "Discover Civilia Developments' landmark projects. From master-planned communities to luxury residences.",
-    images: [`${siteUrl}/assets/projects-og.jpg`],
+    images: [`${siteUrl}/assets/projects-og.webp`],
     creator: "@CiviliaDev",
     site: "@CiviliaDev",
   },
   icons: {
     icon: "/icon.svg",
-    apple: "/apple-touch-icon.png",
+    apple: "/apple-touch-icon.webp",
   },
   manifest: "/site.webmanifest",
   verification: {

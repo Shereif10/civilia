@@ -10,19 +10,19 @@ type HeroSectionProps = {
 
 const heroStyles = {
   about: {
-    image: "/assets/about-hero.png",
+    image: "/assets/about-hero.webp",
     roundedBottom: false,
     overlay:
       "bg-[linear-gradient(90deg,rgba(24,24,24,0.48)_0%,rgba(24,24,24,0.18)_38%,rgba(24,24,24,0)_72%)]",
   },
   projects: {
-    image: "/assets/projects-hero.png",
+    image: "/assets/projects-hero.webp",
     roundedBottom: true,
     overlay:
       "bg-[linear-gradient(262.09deg,rgba(255,255,255,0)_-0.07%,rgba(0,0,0,0.5)_100%)]",
   },
   careers: {
-    image: "/assets/careers-hero.jpg",
+    image: "/assets/careers-hero.webp",
     roundedBottom: true,
     overlay:
       "bg-[linear-gradient(262.09deg,rgba(255,255,255,0)_-0.07%,rgba(0,0,0,0.5)_100%)]",

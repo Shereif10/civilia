@@ -5,7 +5,7 @@ export function ProjectsHeroSection() {
   return (
     <section className="relative h-[100vh] overflow-hidden rounded-b-[32px]">
       <Image
-        src="/assets/projects-hero.png"
+        src="/assets/projects-hero.webp"
         alt="CIV West Development"
         fill
         priority

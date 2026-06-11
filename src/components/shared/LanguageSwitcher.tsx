@@ -25,22 +25,33 @@ export function LanguageSwitcher() {
     <div
       className="
         flex
+        w-full
+        xl:w-auto
         items-center
         overflow-hidden
-        rounded-full
+        rounded-xl
+        xl:rounded-full
         border
         border-black/10
         bg-white/80
         backdrop-blur-sm
+        shadow-sm
       "
     >
       <button
+        type="button"
         onClick={() => switchLocale("en")}
         disabled={isPending}
         className={`
+          flex-1
+          xl:flex-none
+          min-w-[52px]
           px-4
-          py-2
+          py-3
+          xl:px-3
+          xl:py-2
           text-sm
+          xl:text-xs
           font-medium
           transition-all
           duration-300
@@ -50,18 +61,27 @@ export function LanguageSwitcher() {
               ? "bg-civilia-red text-white"
               : "text-civilia-ink hover:bg-black/5"
           }
+
+          ${isPending ? "opacity-70" : ""}
         `}
       >
         EN
       </button>
 
       <button
+        type="button"
         onClick={() => switchLocale("ar")}
         disabled={isPending}
         className={`
+          flex-1
+          xl:flex-none
+          min-w-[52px]
           px-4
-          py-2
+          py-3
+          xl:px-3
+          xl:py-2
           text-sm
+          xl:text-xs
           font-medium
           transition-all
           duration-300
@@ -71,9 +91,11 @@ export function LanguageSwitcher() {
               ? "bg-civilia-red text-white"
               : "text-civilia-ink hover:bg-black/5"
           }
+
+          ${isPending ? "opacity-70" : ""}
         `}
       >
-        العربية
+        ع
       </button>
     </div>
   );

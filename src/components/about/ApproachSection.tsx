@@ -130,7 +130,7 @@ export function ApproachSection() {
             "
           >
             <Image
-              src="/assets/approach-image.png"
+              src="/assets/approach-image.webp"
               alt="Civilia construction process"
               fill
               sizes="(max-width: 768px) 100vw, 420px"

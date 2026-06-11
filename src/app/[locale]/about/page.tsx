@@ -51,7 +51,7 @@ export const metadata: Metadata = {
     siteName: "Civilia Developments",
     images: [
       {
-        url: `${siteUrl}/assets/about-og.jpg`,
+        url: `${siteUrl}/assets/about-og.webp`,
         width: 1200,
         height: 630,
         alt: "About Civilia Developments",
@@ -65,13 +65,13 @@ export const metadata: Metadata = {
     title: "About Civilia Developments | Vision, Expertise & Legacy",
     description:
       "Discover the vision, construction expertise, and legacy behind Civilia Developments.",
-    images: [`${siteUrl}/assets/about-og.jpg`],
+    images: [`${siteUrl}/assets/about-og.webp`],
     creator: "@CiviliaDev",
     site: "@CiviliaDev",
   },
   icons: {
     icon: "/icon.svg",
-    apple: "/apple-touch-icon.png",
+    apple: "/apple-touch-icon.webp",
   },
   manifest: "/site.webmanifest",
   verification: {
@@ -89,7 +89,7 @@ export default function AboutPage() {
         "@id": `${siteUrl}/#business`,
         name: "Civilia Developments",
         url: siteUrl,
-        logo: `${siteUrl}/logo.png`,
+        logo: `${siteUrl}/logo.webp`,
         description:
           "Civilia Developments is a leading real estate developer with over 20 years of expertise in construction and real estate development across Egypt.",
         foundingDate: "2004",

@@ -46,7 +46,7 @@ export function HeroSection() {
 
   return (
     <section className="relative min-h-[760px] bg-civilia-paper md:h-[834px] 2xl:h-[920px]">
-      <Header/>
+      <Header />
 
       {/* Animated Wordmark */}
       <div
@@ -87,7 +87,7 @@ export function HeroSection() {
       {/* Hero Image */}
       <div className="absolute inset-x-0 bottom-0 top-[128px] overflow-hidden md:top-[355px]">
         <Image
-          src="/assets/hero.png"
+          src="/assets/hero.webp"
           alt="CIVILIA landmark residential development"
           fill
           priority

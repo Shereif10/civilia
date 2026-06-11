@@ -11,11 +11,7 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { motion } from "framer-motion";
 import { Loader2 } from "lucide-react";
 
-type SubmitStatus =
-  | "idle"
-  | "loading"
-  | "success"
-  | "error";
+type SubmitStatus = "idle" | "loading" | "success" | "error";
 
 export function JoinOurTeamSection() {
   const t = useTranslations("joinOurTeam");
@@ -185,7 +181,7 @@ export function JoinOurTeamSection() {
             "
           >
             <Image
-              src="/assets/careers-form-image.png"
+              src="/assets/careers-form-image.webp"
               alt="Join Civilia Team"
               fill
               sizes="(max-width:1024px) 100vw, 560px"

@@ -11,12 +11,12 @@ import { SectionTitle } from "@/components/ui/SectionTitle";
 import { projectStats } from "@/lib/data";
 
 const projects = [
-  { src: "/assets/project-1.png", alt: "Project 1" },
-  { src: "/assets/project-2.png", alt: "Project 2" },
-  { src: "/assets/project-3.png", alt: "Project 3" },
-  { src: "/assets/project-4.png", alt: "Project 4" },
-  { src: "/assets/project-5.png", alt: "Project 5" },
-  { src: "/assets/project-6.png", alt: "Project 6" },
+  { src: "/assets/project-1.webp", alt: "Project 1" },
+  { src: "/assets/project-2.webp", alt: "Project 2" },
+  { src: "/assets/project-3.webp", alt: "Project 3" },
+  { src: "/assets/project-4.webp", alt: "Project 4" },
+  { src: "/assets/project-5.webp", alt: "Project 5" },
+  { src: "/assets/project-6.webp", alt: "Project 6" },
 ];
 
 const projectStatKeys = ["units", "experience", "project"] as const;
@@ -59,72 +59,72 @@ export function LatestProjectSection({
     return () => clearInterval(interval);
   }, [isPaused]);
 
-useEffect(() => {
-  gsap.registerPlugin(ScrollTrigger);
+  useEffect(() => {
+    gsap.registerPlugin(ScrollTrigger);
 
-  const ctx = gsap.context(() => {
-    const tl = gsap.timeline({
-      scrollTrigger: {
-        trigger: sectionRef.current,
-        start: "top 70%",
-      },
-    });
+    const ctx = gsap.context(() => {
+      const tl = gsap.timeline({
+        scrollTrigger: {
+          trigger: sectionRef.current,
+          start: "top 70%",
+        },
+      });
 
-    if (variant === "default") {
-      tl.from(".latest-project-title", {
-        y: 60,
-        opacity: 0,
-        duration: 1,
-        ease: "power3.out",
-      }).from(
-        ".project-banner",
+      if (variant === "default") {
+        tl.from(".latest-project-title", {
+          y: 60,
+          opacity: 0,
+          duration: 1,
+          ease: "power3.out",
+        }).from(
+          ".project-banner",
+          {
+            scaleX: 0,
+            transformOrigin: "center center",
+            duration: 0.8,
+            ease: "power3.out",
+          },
+          "-=0.4",
+        );
+      }
+
+      tl.from(
+        carouselRef.current,
         {
-          scaleX: 0,
-          transformOrigin: "center center",
+          y: 100,
+          opacity: 0,
+          duration: 1.2,
+          ease: "power4.out",
+        },
+        "-=0.2",
+      ).from(
+        contentRef.current?.children ?? [],
+        {
+          y: 40,
+          opacity: 0,
+          stagger: 0.15,
           duration: 0.8,
           ease: "power3.out",
         },
-        "-=0.4",
+        "-=0.6",
       );
-    }
 
-    tl.from(
-      carouselRef.current,
-      {
-        y: 100,
-        opacity: 0,
-        duration: 1.2,
-        ease: "power4.out",
-      },
-      "-=0.2",
-    ).from(
-      contentRef.current?.children ?? [],
-      {
-        y: 40,
-        opacity: 0,
-        stagger: 0.15,
-        duration: 0.8,
-        ease: "power3.out",
-      },
-      "-=0.6",
-    );
+      if (carouselRef.current) {
+        gsap.to(".center-card", {
+          y: -30,
+          ease: "none",
+          scrollTrigger: {
+            trigger: carouselRef.current,
+            start: "top bottom",
+            end: "bottom top",
+            scrub: true,
+          },
+        });
+      }
+    }, sectionRef);
 
-    if (carouselRef.current) {
-      gsap.to(".center-card", {
-        y: -30,
-        ease: "none",
-        scrollTrigger: {
-          trigger: carouselRef.current,
-          start: "top bottom",
-          end: "bottom top",
-          scrub: true,
-        },
-      });
-    }
-  }, sectionRef);
-
-  return () => ctx.revert();
-}, [variant]);
+    return () => ctx.revert();
+  }, [variant]);
 
   const positionClasses = (role: "left" | "center" | "right") => {
     switch (role) {
@@ -195,7 +195,7 @@ useEffect(() => {
                   src={project.src}
                   alt={project.alt}
                   fill
-                  sizes="(max-width: 768px) 100vw, 386px"
+                  sizes="(max-width: 768px) 100vw, (max-width: 1024px) 560px, 560px"
                   className="project-image object-cover"
                 />
               </div>

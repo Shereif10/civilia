@@ -8,7 +8,7 @@ export function AboutHero() {
 
       <div className="absolute inset-0">
         <Image
-          src="/assets/about-hero.png"
+          src="/assets/about-hero.webp"
           alt="Modern CIVILIA architectural tower"
           fill
           priority
@@ -33,13 +33,8 @@ export function AboutHero() {
       </div>
 
       <div className="absolute bottom-8 right-8 hidden md:block">
-                  <Image
-                    src="/assets/story-accent.svg"
-                    alt=""
-                    width={33}
-                    height={17}
-                  />
-                </div>
+        <Image src="/assets/story-accent.svg" alt="" width={33} height={17} />
+      </div>
     </section>
   );
 }

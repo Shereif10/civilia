@@ -44,7 +44,7 @@ export function MasterPlanSection() {
           className="relative mt-12 overflow-hidden rounded-[24px]"
         >
           <Image
-            src="/assets/master-plan.png"
+            src="/assets/master-plan.webp"
             alt="CIV West Master Plan"
             width={1280}
             height={720}

@@ -82,7 +82,7 @@ export function ProjectOverviewSection() {
             "
           >
             <Image
-              src="/assets/project-overview.png"
+              src="/assets/project-overview.webp"
               alt="CIV WEST"
               fill
               sizes="(max-width:1024px) 100vw, 420px"

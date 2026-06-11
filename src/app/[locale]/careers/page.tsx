@@ -49,7 +49,7 @@ export const metadata: Metadata = {
     siteName: "Civilia Developments",
     images: [
       {
-        url: `${siteUrl}/assets/careers-og.jpg`,
+        url: `${siteUrl}/assets/careers-og.webp`,
         width: 1200,
         height: 630,
         alt: "Careers at Civilia Developments",
@@ -63,13 +63,13 @@ export const metadata: Metadata = {
     title: "Careers | Civilia Developments - Join Our Team",
     description:
       "Join Civilia Developments and build the future with a team driven by excellence, innovation, and engineering expertise.",
-    images: [`${siteUrl}/assets/careers-og.jpg`],
+    images: [`${siteUrl}/assets/careers-og.webp`],
     creator: "@CiviliaDev",
     site: "@CiviliaDev",
   },
   icons: {
     icon: "/icon.svg",
-    apple: "/apple-touch-icon.png",
+    apple: "/apple-touch-icon.webp",
   },
   manifest: "/site.webmanifest",
   verification: {
