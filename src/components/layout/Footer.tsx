@@ -125,7 +125,7 @@ export function Footer() {
               </h3>
 
               <p className="text-[28px] font-semibold leading-[1.5] text-civilia-red md:text-[32px]">
-                16727
+                17703
               </p>
 
               <p className="max-w-[216px] text-xs leading-[1.5] text-[#d9d9d9]">

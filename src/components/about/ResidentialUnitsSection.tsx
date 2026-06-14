@@ -16,6 +16,10 @@ const residentialIcons = [
   "/assets/nasr-city.svg",
   "/assets/maadi.svg",
   "/assets/khamayel.svg",
+  "/assets/First.svg",
+  "/assets/khamayel.svg",
+  "/assets/Capital.svg",
+  "/assets/khamayel.svg",
 ];
 
 export function ResidentialUnitsSection() {
@@ -81,18 +85,16 @@ export function ResidentialUnitsSection() {
         >
           {units.map((item, index) => {
             const distance =
-              index === activeIndex
-                ? 0
-                : index > activeIndex
-                  ? index - activeIndex
-                  : units.length - activeIndex + index;
+              (index - activeIndex + units.length) % units.length;
 
+            if (distance > 2) return null;
             return (
               <button
-                key={item.location}
+                key={`${item.location}-${index}`}
                 type="button"
-                onClick={() => setActiveIndex(index)}
-                data-animate="fade-up"
+onClick={() =>
+  setActiveIndex((prev) => (prev + 1) % units.length)
+}                data-animate="fade-up"
                 className={`
                   ${distance > 0 ? "mt-4 xl:mt-0" : ""}
 
@@ -114,16 +116,17 @@ export function ResidentialUnitsSection() {
 
                   xl:h-[228px]
 
-                  ${distance === 0 ? "z-30" : ""}
-                  ${distance === 1 ? "z-20" : ""}
-                  ${distance === 2 ? "z-10" : ""}
+                  
                 `}
                 style={{
-                  top: distance === 0 ? 0 : distance === 1 ? 85 : 170,
-                  transform: `scale(${
-                    distance === 0 ? 1 : distance === 1 ? 0.93 : 0.86
-                  })`,
+                  zIndex: units.length - distance,
+
+                  top: distance * 85,
+
+                  transform: `scale(${1 - distance * 0.07})`,
+
                   transformOrigin: "top center",
+
                   background:
                     "linear-gradient(90deg, #FFFDFA 0%, #FFF3E1 50%, #FFFDFA 100%)",
                 }}
@@ -158,11 +161,7 @@ export function ResidentialUnitsSection() {
 
     xl:gap-8
 
-    ${
-      isArabic
-        ? "sm:flex-row xl:flex-row sm:text-right"
-        : "sm:text-left"
-    }
+    ${isArabic ? "sm:flex-row xl:flex-row sm:text-right" : "sm:text-left"}
   `}
                   >
                     <div

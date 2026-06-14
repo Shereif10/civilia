@@ -167,14 +167,13 @@ export default function ProjectsPage() {
         <ReusableHeroSection variant="projects" />
         <ProjectOverviewSection />
         <CivWestStatsSection />
-        <FeaturesAmenitiesSection />
         <LatestProjectSection variant="project" />
-        <JourneyCta variant="project" />
+        <FeaturesAmenitiesSection />
         <PrimeLocationSection />
+        <JourneyCta variant="project" />
         <MasterPlanSection />
         <PaymentPlanSection />
         <WhyChooseCivWestSection />
-        <LegacyProjectsSection />
         <AboutDeveloperSection />
         <QuestionsSection variant="project" />
         <JourneyCta variant="projectJourney" />

@@ -158,7 +158,7 @@ export const contactCards = [
     icon: Phone,
     title: "Call Us",
     note: "Dedicated concierge support",
-    value: "16727",
+    value: "1",
   },
   {
     icon: Mail,

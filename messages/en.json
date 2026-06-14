@@ -177,10 +177,10 @@
   },
   "ourStory": {
     "title": "Our Story",
-    "paragraph1": "CIV West Compound is a fully integrated residential development by CIVILIA Developments, located in Thawra El Khadra, Sheikh Zayed City, spanning total area of 38,000 square meter.",
-    "paragraph2": "The project offers modern apartments with contemporary designs, expansive green spaces, artificial lakes, and a complete suite of leisure and sports facilities - all with flexible payment plans tailored for families seeking premium living in West Cairo.",
-    "paragraph3": "CIV West is designed to deliver a balanced lifestyle that harmonizes tranquility, luxury, and proximity to the essential services modern Egyptian families need - through thoughtful urban planning that dedicates the majority of the compound’s area to green spaces, water features, and open walkways.",
-    "paragraph4": "The project is a direct embodiment of CIVILIA's motto - From Land to Landmark - combining contemporary architecture, smart design details, and an integrated ecosystem of recreational, sports, and retail amenities within the compound."
+    "redParagraph": "CIVILIA Developments",
+    "locationParagraph": "Sheikh Zayed, New Cairo, and the New Administrative Capital.",
+    "paragraph1": " is a leading Egyptian company specialized in integrated construction and real estate development. Our portfolio spans diverse projects  from fully integrated residential communities to infrastructure, industrial, and commercial facilities  across Egypt's most prominent locations including ",
+    "paragraph2": "We collaborate with top-tier consultancy firms to ensure every project achieves the highest standards of quality, from the very first idea through to final delivery."
   },
 
   "residentialUnits": {
@@ -196,16 +196,40 @@
         "type": "Residential Tower"
       },
       {
-        "value": "25",
+        "value": "34",
         "label": "Units",
         "location": "Maadi",
         "type": "Residential Tower"
       },
       {
-        "value": "18",
+        "value": "136",
         "label": "Units",
         "location": "Al-Khamayel",
         "type": "Residential Complex 6"
+      },
+      {
+        "value": "76",
+        "label": "Units",
+        "location": "First Settlement",
+        "type": "Garden View residential complex"
+      },
+      {
+        "value": "88",
+        "label": "Units",
+        "location": "Al-Khamayel",
+        "type": "Residential Complex 7"
+      },
+      {
+        "value": "150",
+        "label": "Units",
+        "location": "Capital’s gardens ",
+        "type": "Residential complex"
+      },
+      {
+        "value": "224",
+        "label": "Units",
+        "location": "Al-Khamayel",
+        "type": "Residential Complex 16"
       }
     ],
     "bottomText": "Built by engineers. Delivered with precision."

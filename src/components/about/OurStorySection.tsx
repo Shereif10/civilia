@@ -35,13 +35,17 @@ export function OurStorySection() {
               isArabic ? "text-right" : "text-left"
             }`}
           >
-            <p>{t("paragraph1")}</p>
+            <p>
+              <span className="text-[#c20000] font-bold">
+                {t("redParagraph")}
+              </span>
+              {t("paragraph1")}
+              <span className=" font-bold">
+                {t("locationParagraph")}
+              </span>
+            </p>
 
-            <p className="mt-8">{t("paragraph2")}</p>
-
-            <p className="mt-8">{t("paragraph3")}</p>
-
-            <p className="mt-8">{t("paragraph4")}</p>
+            <p className="mt-8 font-bold">{t("paragraph2")}</p>
           </div>
 
           <div
