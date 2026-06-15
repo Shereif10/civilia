@@ -20,6 +20,7 @@ const quickLinks = [
   { key: "home", href: "/" },
   { key: "about", href: "/about" },
   { key: "projects", href: "/projects" },
+  { key: "news", href: "/news" },
   { key: "careers", href: "/careers" },
   { key: "contact", href: "/contact" },
 ];

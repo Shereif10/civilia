@@ -12,6 +12,7 @@ const navItems = [
   { key: "home", href: "/" },
   { key: "about", href: "/about" },
   { key: "projects", href: "/projects" },
+  { key: "news", href: "/news" },
   { key: "careers", href: "/careers" },
 ] as const;
 
@@ -114,12 +115,12 @@ export function Header() {
           className="
             hidden
             items-center
-            gap-2
+            gap-1
 
             xl:flex
-            xl:gap-4
+            xl:gap-1
 
-            2xl:gap-6
+            2xl:gap-2
           "
           aria-label="Main navigation"
         >
@@ -130,7 +131,7 @@ export function Header() {
               <Link
                 key={item.key}
                 href={item.href}
-                className={`px-3 py-2 text-base leading-[1.5] transition hover:text-civilia-red xl:px-4 xl:text-lg ${
+                className={`px-2 py-2 text-base leading-[1.5] transition hover:text-civilia-red xl:px-4 xl:text-lg ${
                   isActive
                     ? "border-b-2 border-civilia-red text-civilia-red"
                     : "text-[#191919]"
@@ -143,7 +144,7 @@ export function Header() {
 
           <Link
             href="/contact"
-            className={`rounded px-6 py-2 text-sm font-medium leading-[1.2] transition xl:px-8 xl:text-base ${
+            className={`rounded px-4 py-2 text-sm font-medium leading-[1.2] transition xl:px-8 xl:text-base ${
               pathname === "/contact"
                 ? "bg-civilia-ink text-white"
                 : "bg-civilia-red text-[#f3f3f3] hover:bg-[#b91114]"

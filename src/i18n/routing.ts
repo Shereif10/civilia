@@ -17,6 +17,10 @@ export const routing = defineRouting({
       en: "/contact",
       ar: "/تواصل-معنا",
     },
+    "/news": {
+      en: "/news",
+      ar: "/الأخبار",
+    },
     "/careers": {
       en: "/careers",
       ar: "/الوظائف",

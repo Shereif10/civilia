@@ -4,6 +4,7 @@
     "about": "About",
     "projects": "Projects",
     "contact": "Contact",
+    "news": "News",
     "careers": "Careers"
   },
   "hero": {
@@ -116,7 +117,7 @@
       },
       {
         "question": "How can I book a unit in CIV West?",
-        "answer": "Contact CIVILIA's sales team via 16727 or through the contact form on the official website. A site visit will be arranged and all available payment plans reviewed with you."
+        "answer": "Contact CIVILIA's sales team via 17703 or through the contact form on the official website. A site visit will be arranged and all available payment plans reviewed with you."
       }
     ]
   },
@@ -152,6 +153,7 @@
       "home": "Home",
       "about": "About Civilia",
       "projects": "Our Projects",
+      "news": "News",
       "careers": "Careers",
       "contact": "Contact Us"
     },
@@ -169,12 +171,15 @@
     "projects": {
       "title": ["CIV WEST – Modern Living,", "Engineered Around You"]
     },
+    "news": {
+      "title": ["NEWS &", "INSIGHTS"],
+      "description": "Discover the latest in architectural excellence, urban development strategies, and community progress across Egypt."
+    },
     "careers": {
       "title": ["WE ARE", "HIRING"],
       "subtitle": "Build the Future of Living",
       "description": "Join the visionaries redefining Egypt's architectural landscape through precision, integrity, and sustainable luxury."
-    }
-  },
+    }},
   "ourStory": {
     "title": "Our Story",
     "redParagraph": "CIVILIA Developments",
@@ -549,7 +554,7 @@
       {
         "title": "Call Us",
         "note": "Available Daily",
-        "value": "16727"
+        "value": "17703"
       },
       {
         "title": "Email Us",

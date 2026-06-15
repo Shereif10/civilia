@@ -2,7 +2,7 @@ import Image from "next/image";
 import { useTranslations } from "next-intl";
 import { Header } from "@/components/layout/Header";
 
-type HeroVariant = "about" | "projects" | "careers";
+type HeroVariant = "about" | "projects" | "careers" | "news";
 
 type HeroSectionProps = {
   variant?: HeroVariant;
@@ -23,6 +23,12 @@ const heroStyles = {
   },
   careers: {
     image: "/assets/careers-hero.webp",
+    roundedBottom: true,
+    overlay:
+      "bg-[linear-gradient(262.09deg,rgba(255,255,255,0)_-0.07%,rgba(0,0,0,0.5)_100%)]",
+  },
+  news: {
+    image: "/assets/news-hero.jpg",
     roundedBottom: true,
     overlay:
       "bg-[linear-gradient(262.09deg,rgba(255,255,255,0)_-0.07%,rgba(0,0,0,0.5)_100%)]",
@@ -122,7 +128,7 @@ export function ReusableHeroSection({ variant = "about" }: HeroSectionProps) {
 
       {/* CAREERS */}
       {variant === "careers" && (
-        <div className="container-civilia relative z-20 flex min-h-[100svh] items-center">
+        <div className="container-civilia relative z-20 flex min-h-[100svh] items-end pb-10">
           <div className="max-w-[1280px] pt-24 md:pt-32">
             <div data-animate="fade-up">
               <h1
@@ -162,7 +168,7 @@ export function ReusableHeroSection({ variant = "about" }: HeroSectionProps) {
               <p
                 className="
                   mt-3
-                  max-w-[900px]
+                  
                   text-[16px]
                   leading-[1.4]
                   text-[#f3f3f3]
@@ -181,8 +187,56 @@ export function ReusableHeroSection({ variant = "about" }: HeroSectionProps) {
         </div>
       )}
 
+
+      {/* NEWS */}
+      {variant === "news" && (
+        <div className="container-civilia relative z-20 flex min-h-[100vh] items-end pb-10">
+          <div className="max-w-[1280px] pt-24 md:pt-32">
+            <div data-animate="fade-up">
+              <h1
+                className="
+                  text-[52px]
+                  font-semibold
+                  uppercase
+                  leading-[0.9]
+                  tracking-[-2px]
+                  text-[#f3f3f3]
+
+                  sm:text-[72px]
+
+                  md:text-[120px]
+                  md:tracking-[-4px]
+                "
+              >
+                <span className="block">{title[0]}</span>
+                <span className="block">{title[1]}</span>
+              </h1>
+
+              
+
+              <p
+                className="
+                  mt-3
+                  text-[16px]
+                  leading-[1.4]
+                  text-[#f3f3f3]
+
+                  sm:text-[20px]
+
+                  md:text-[28px]
+
+                  lg:text-[32px]
+                "
+              >
+                {t("news.description")}
+              </p>
+            </div>
+          </div>
+        </div>
+      )}
+
       {/* Accent */}
-      <div className="absolute bottom-6 right-6 z-20 hidden lg:block">
+      <div className="absolute bottom-6 right-6 z-20 hidden lg:block pb-5">
         <Image src="/assets/story-accent.svg" alt="" width={33} height={17} />
       </div>
     </section>

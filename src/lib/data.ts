@@ -13,7 +13,7 @@ export const navItems = [
   { label: "Home", href: "/" },
   { label: "About us", href: "/about" },
   { label: "projects", href: "/projects" },
-  // { label: "News", href: "/news" },
+  { label: "News", href: "/news" },
   { label: "careers", href: "/careers" },
 ];
 
@@ -70,19 +70,39 @@ export const proofPoints = [
 ];
 
 export const newsItems = [
+  
   {
+    id: 1,
     image: "/assets/news-1.webp",
+    date: "20 MAY 2026",
     title:
       "Discover the Luxurious Lifestyle at CIV.WEST By CIVILIA Developments",
+    excerpt:
+      "Experience a new standard of living where engineering excellence meets modern luxury.",
+
+    content: `Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+Suspendisse potenti. Integer gravida magna at nibh luctus, sed feugiat risus gravida.
+Curabitur pretium velit vitae orci faucibus, nec posuere elit tempor.
+Mauris vitae erat sed risus tincidunt luctus.
+Donec euismod, neque eget porta faucibus, augue purus efficitur lorem, sit amet commodo lorem nulla sed erat.`,
   },
   {
+    id: 2,
     image: "/assets/news-2.webp",
+    date: "18 MAY 2026",
     title:
       "Discover the Luxurious Lifestyle at CIV.WEST By CIVILIA Developments",
+    excerpt: "...",
+    content: "...",
   },
+
   {
+    id: 3,
     image: "/assets/news-3.webp",
+    date: "10 MAY 2026",
     title: "Egypt's Real Estate Transforming Landscape: The Vision Of CIVILIA",
+    excerpt: "...",
+    content: "...",
   },
 ];
 
