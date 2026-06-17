@@ -166,9 +166,9 @@ export default function AboutPage() {
         <VisionMissionSection />
         <WhyChooseSection />
         <LegacyProjectsSection />
-        <LegacyProjectsSection />
+        
         <ApproachSection />
-        <TestimonialSection />
+        
         <JourneyCta />
       </main>
 
