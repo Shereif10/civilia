@@ -138,11 +138,6 @@ a {
   margin-inline: auto;
 }
 
-@media (min-width: 768px) {
-  .container-civilia {
-    width: 1152px;
-  }
-}
 
 p,
 h1,

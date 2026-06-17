@@ -10,8 +10,11 @@ import { QuestionsSection } from "@/components/home/QuestionsSection";
 import { WhyChooseSection } from "@/components/home/WhyChooseSection";
 import { Footer } from "@/components/layout/Footer";
 import { GsapProvider } from "@/components/motion/GsapProvider";
+import { fetchNewsItems } from "@/lib/api";
 
-export default function Home() {
+export default async function Home() {
+  const latestNews = await fetchNewsItems();
+
   return (
     <GsapProvider>
       <main className="overflow-hidden bg-civilia-paper text-civilia-ink">
@@ -23,7 +26,7 @@ export default function Home() {
         {/* <TestimonialSection /> */}
         <LifestyleGallerySection />
         <ProofListSection />
-        <LatestNewsSection/>
+        <LatestNewsSection articles={latestNews} />
         <QuestionsSection />
         <JourneyCta />
       </main>

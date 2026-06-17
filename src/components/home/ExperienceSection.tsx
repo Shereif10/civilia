@@ -164,6 +164,7 @@ export function ExperienceSection() {
               width={110}
               height={110}
               className="metric-icon"
+              style={{ height: "auto" }}
             />
           </article>
         ))}

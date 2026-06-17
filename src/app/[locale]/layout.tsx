@@ -83,9 +83,6 @@ export const metadata: Metadata = {
     apple: "/apple-touch-icon.webp",
   },
   manifest: "/site.webmanifest",
-  verification: {
-    google: "your-google-verification-code",
-  },
   category: "real estate",
 };
 

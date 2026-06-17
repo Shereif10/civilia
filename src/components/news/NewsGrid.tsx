@@ -3,7 +3,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { useRef, useState } from "react";
-import { NewsItem } from "./FeaturedArticle";
+import { NewsItem } from "@/lib/api";
 
 type NewsGridProps = {
   articles: NewsItem[];
@@ -48,7 +48,7 @@ export function NewsGrid({ articles }: NewsGridProps) {
         {currentArticles.map((article) => (
           <Link
             key={article.id}
-            href={`/news/${article.id}`}
+            href={`/news/${article.slug}`}
             className="
               group
               overflow-hidden
@@ -62,14 +62,16 @@ export function NewsGrid({ articles }: NewsGridProps) {
             "
           >
             {/* Image */}
-            <div className="relative aspect-[4/3]">
-              <Image
-                src={article.image}
-                alt={article.title}
-                fill
-                sizes="(max-width:768px)100vw,50vw"
-                className="object-cover"
-              />
+            <div className="relative aspect-[4/3] bg-[#F0EBE3]">
+              {article.image && (
+                <Image
+                  src={article.image}
+                  alt={article.title}
+                  fill
+                  sizes="(max-width:768px)100vw,50vw"
+                  className="object-cover"
+                />
+              )}
             </div>
 
             {/* Content */}

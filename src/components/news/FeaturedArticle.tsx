@@ -2,15 +2,7 @@
 
 import Image from "next/image";
 import Link from "next/link";
-
-export type NewsItem = {
-  id: number;
-  image: string;
-  title: string;
-  date: string;
-  excerpt: string;
-  content: string;
-};
+import { NewsItem } from "@/lib/api";
 
 type FeaturedArticleProps = {
   article: NewsItem;
@@ -29,16 +21,18 @@ export function FeaturedArticle({ article }: FeaturedArticleProps) {
         "
       >
         {/* Image */}
-        <div className="relative aspect-[16/9] w-full">
-          <Image
-            src={article.image}
-            alt={article.title}
-            fill
-            priority
-            sizes="100vw"
-            className="object-cover"
-          />
-        </div>
+        {article.image && (
+          <div className="relative aspect-[16/9] w-full">
+            <Image
+              src={article.image}
+              alt={article.title}
+              fill
+              priority
+              sizes="100vw"
+              className="object-cover"
+            />
+          </div>
+        )}
 
         {/* Content */}
         <div className="px-8 py-8 md:px-12 md:py-10">
@@ -81,7 +75,7 @@ export function FeaturedArticle({ article }: FeaturedArticleProps) {
 
           <div className="mt-8 flex justify-end">
             <Link
-              href={`/news/${article.id}`}
+              href={`/news/${article.slug}`}
               className="
     mt-10
     inline-flex

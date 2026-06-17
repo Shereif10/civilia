@@ -101,7 +101,8 @@ export function MasterPlanSection() {
               width={1280}
               height={720}
               priority
-              className="h-auto w-full"
+              className="w-full"
+              style={{ height: "auto" }}
             />
           </div>
         </div>
