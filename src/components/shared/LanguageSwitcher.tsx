@@ -15,7 +15,8 @@ export function LanguageSwitcher() {
     if (newLocale === locale) return;
 
     startTransition(() => {
-      router.replace(pathname, {
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+      router.replace(pathname as any, {
         locale: newLocale,
       });
     });
