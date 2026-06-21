@@ -73,13 +73,7 @@ export async function fetchNewsItemBySlug(
 function toMediaUrl(
   image: { url?: string; full_url?: string } | undefined
 ): string {
-  const raw = image?.full_url ?? image?.url ?? "";
-  if (!raw) return "";
-  try {
-    return new URL(raw).pathname;
-  } catch {
-    return raw;
-  }
+  return image?.full_url ?? image?.url ?? "";
 }
 
 function blocksToHtml(body: unknown): string {
@@ -97,7 +91,8 @@ function blocksToHtml(body: unknown): string {
             full_url?: string;
             alt?: string;
           };
-          return `<img src="${toMediaUrl(img)}" alt="${img.alt ?? ""}" style="max-width:100%;height:auto;border-radius:8px;margin:1.5rem 0;" />`;
+          const src = img.full_url ?? img.url ?? "";
+          return `<img src="${src}" alt="${img.alt ?? ""}" style="max-width:100%;height:auto;border-radius:8px;margin:1.5rem 0;" />`;
         }
         default:
           return "";
