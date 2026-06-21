@@ -73,7 +73,15 @@ export async function fetchNewsItemBySlug(
 function toMediaUrl(
   image: { url?: string; full_url?: string } | undefined
 ): string {
-  return image?.full_url ?? image?.url ?? "";
+  const raw = image?.full_url ?? image?.url ?? "";
+  if (!raw) return "";
+  try {
+    // Return only the pathname so the Next.js /media rewrite handles the fetch.
+    // Avoids next/image blocking absolute URLs that resolve to private IPs.
+    return new URL(raw).pathname;
+  } catch {
+    return raw; // already a relative path
+  }
 }
 
 function blocksToHtml(body: unknown): string {
