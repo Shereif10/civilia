@@ -3,7 +3,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "@/i18n/navigation";
-import { Menu, X } from "lucide-react";
+import { ChevronDown, Menu, X } from "lucide-react";
 import { useEffect, useRef, useState } from "react";
 import { useTranslations } from "next-intl";
 import { LanguageSwitcher } from "../shared/LanguageSwitcher";
@@ -11,14 +11,16 @@ import { LanguageSwitcher } from "../shared/LanguageSwitcher";
 const navItems = [
   { key: "home", href: "/" },
   { key: "about", href: "/about" },
-  { key: "projects", href: "/projects" },
+  { key: "projects", href: "/projects", hasDropdown: true },
   { key: "news", href: "/news" },
   { key: "careers", href: "/careers" },
 ] as const;
 
 export function Header() {
   const [isOpen, setIsOpen] = useState(false);
+  const [isProjectsOpen, setIsProjectsOpen] = useState(false);
   const headerRef = useRef<HTMLElement>(null);
+  const projectsDropdownRef = useRef<HTMLDivElement>(null);
   const [isScrolled, setIsScrolled] = useState(false);
 
   const pathname = usePathname();
@@ -47,6 +49,14 @@ export function Header() {
       ) {
         setIsOpen(false);
       }
+
+      if (
+        isProjectsOpen &&
+        projectsDropdownRef.current &&
+        !projectsDropdownRef.current.contains(event.target as Node)
+      ) {
+        setIsProjectsOpen(false);
+      }
     };
 
     document.addEventListener("mousedown", handleClickOutside);
@@ -54,7 +64,7 @@ export function Header() {
     return () => {
       document.removeEventListener("mousedown", handleClickOutside);
     };
-  }, [isOpen]);
+  }, [isOpen, isProjectsOpen]);
 
   const toggleMenu = () => {
     setIsOpen((prev) => !prev);
@@ -63,6 +73,9 @@ export function Header() {
   const closeMenu = () => {
     setIsOpen(false);
   };
+
+  const isProjectsActive =
+    pathname === "/projects" || pathname.startsWith("/projects/");
 
   return (
     <header
@@ -111,6 +124,7 @@ export function Header() {
           />
         </Link>
 
+        {/* Desktop nav */}
         <nav
           className="
             hidden
@@ -125,6 +139,55 @@ export function Header() {
           aria-label="Main navigation"
         >
           {navItems.map((item) => {
+            if (item.key === "projects") {
+              return (
+                <div
+                  key="projects"
+                  ref={projectsDropdownRef}
+                  className="relative"
+                  onMouseEnter={() => setIsProjectsOpen(true)}
+                  onMouseLeave={() => setIsProjectsOpen(false)}
+                >
+                  <Link
+                    href="/projects"
+                    className={`inline-flex items-center gap-1 px-2 py-2 text-base leading-[1.5] transition hover:text-civilia-red xl:px-4 xl:text-lg ${
+                      isProjectsActive
+                        ? "border-b-2 border-civilia-red text-civilia-red"
+                        : "text-[#191919]"
+                    }`}
+                  >
+                    {t("projects")}
+                    <ChevronDown
+                      className={`h-4 w-4 transition-transform duration-200 ${
+                        isProjectsOpen ? "rotate-180" : ""
+                      }`}
+                    />
+                  </Link>
+
+                  {/* Dropdown */}
+                  <div
+                    className={`absolute left-0 top-full z-50 min-w-[160px] overflow-hidden rounded-xl border border-black/5 bg-white shadow-soft transition-all duration-200 ${
+                      isProjectsOpen
+                        ? "translate-y-0 opacity-100"
+                        : "pointer-events-none -translate-y-2 opacity-0"
+                    }`}
+                  >
+                    <Link
+                      href="/projects/civ-west"
+                      className={`block px-5 py-3 text-sm font-medium transition hover:bg-civilia-cream hover:text-civilia-red ${
+                        pathname === "/projects/civ-west"
+                          ? "text-civilia-red"
+                          : "text-civilia-ink"
+                      }`}
+                      onClick={() => setIsProjectsOpen(false)}
+                    >
+                      {t("civWest")}
+                    </Link>
+                  </div>
+                </div>
+              );
+            }
+
             const isActive = pathname === item.href;
 
             return (
@@ -182,22 +245,26 @@ export function Header() {
         </button>
       </div>
 
+      {/* Mobile menu */}
       <div
         id="mobile-menu"
         className={`container-civilia overflow-hidden rounded-b-2xl bg-civilia-paper shadow-soft transition-all duration-300 xl:hidden ${
-          isOpen ? "max-h-[500px] border border-black/5" : "max-h-0"
+          isOpen ? "max-h-[560px] border border-black/5" : "max-h-0"
         }`}
       >
         <nav className="flex flex-col p-4" aria-label="Mobile navigation">
-          {[...navItems, { key: "contact", href: "/contact" }].map((item) => {
-            const isActive = pathname === item.href;
+          {navItems.map((item) => {
+            const isActive =
+              item.key === "projects"
+                ? isProjectsActive
+                : pathname === item.href;
 
             return (
               <Link
                 key={item.key}
                 href={item.href}
                 onClick={closeMenu}
-                className={`border-b border-black/5 px-2 py-3 text-base last:border-b-0 sm:text-lg ${
+                className={`border-b border-black/5 px-2 py-3 text-base sm:text-lg ${
                   isActive ? "font-medium text-civilia-red" : "text-civilia-ink"
                 }`}
               >
@@ -205,6 +272,31 @@ export function Header() {
               </Link>
             );
           })}
+
+          {/* CIV.WEST sub-item */}
+          <Link
+            href="/projects/civ-west"
+            onClick={closeMenu}
+            className={`border-b border-black/5 py-3 pl-6 pr-2 text-sm sm:text-base ${
+              pathname === "/projects/civ-west"
+                ? "font-medium text-civilia-red"
+                : "text-civilia-muted"
+            }`}
+          >
+            ↳ {t("civWest")}
+          </Link>
+
+          <Link
+            href="/contact"
+            onClick={closeMenu}
+            className={`border-b border-black/5 px-2 py-3 text-base last:border-b-0 sm:text-lg ${
+              pathname === "/contact"
+                ? "font-medium text-civilia-red"
+                : "text-civilia-ink"
+            }`}
+          >
+            {t("contact")}
+          </Link>
 
           <div className="pt-2">
             <LanguageSwitcher />

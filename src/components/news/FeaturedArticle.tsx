@@ -1,7 +1,8 @@
 "use client";
 
 import Image from "next/image";
-import Link from "next/link";
+import { useTranslations } from "next-intl";
+import { Link } from "@/i18n/navigation";
 import { NewsItem } from "@/lib/api";
 
 type FeaturedArticleProps = {
@@ -9,6 +10,8 @@ type FeaturedArticleProps = {
 };
 
 export function FeaturedArticle({ article }: FeaturedArticleProps) {
+  const t = useTranslations("newsPage");
+
   if (!article) return null;
 
   return (
@@ -20,7 +23,6 @@ export function FeaturedArticle({ article }: FeaturedArticleProps) {
           bg-[linear-gradient(90deg,#FFFDFA_0%,#FFF4E5_50%,#FFFDFA_100%)]
         "
       >
-        {/* Image */}
         {article.image && (
           <div className="relative aspect-[16/9] w-full">
             <Image
@@ -34,16 +36,8 @@ export function FeaturedArticle({ article }: FeaturedArticleProps) {
           </div>
         )}
 
-        {/* Content */}
         <div className="px-8 py-8 md:px-12 md:py-10">
-          <p
-            className="
-              text-xs
-              uppercase
-              tracking-[2px]
-              text-civilia-red
-            "
-          >
+          <p className="text-xs uppercase tracking-[2px] text-civilia-red">
             {article.date}
           </p>
 
@@ -61,35 +55,27 @@ export function FeaturedArticle({ article }: FeaturedArticleProps) {
             {article.title}
           </h2>
 
-          <p
-            className="
-              mt-5
-              text-[18px]
-              leading-8
-              text-[#555]
-              line-clamp-2
-            "
-          >
+          <p className="mt-5 text-[18px] leading-8 text-[#555] line-clamp-2">
             {article.excerpt}
           </p>
 
           <div className="mt-8 flex justify-end">
             <Link
-              href={`/news/${article.slug}`}
+              href={{ pathname: "/news/[slug]", params: { slug: article.slug } }}
               className="
-    mt-10
-    inline-flex
-    items-center
-    rounded-full
-    bg-civilia-red
-    px-8
-    py-3
-    text-white
-    transition-opacity
-    hover:opacity-90
-  "
+                mt-10
+                inline-flex
+                items-center
+                rounded-full
+                bg-civilia-red
+                px-8
+                py-3
+                text-white
+                transition-opacity
+                hover:opacity-90
+              "
             >
-              Read More
+              {t("readMore")}
             </Link>
           </div>
         </div>

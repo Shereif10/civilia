@@ -1,8 +1,9 @@
 "use client";
 
 import Image from "next/image";
-import Link from "next/link";
 import { useRef, useState } from "react";
+import { useTranslations } from "next-intl";
+import { Link } from "@/i18n/navigation";
 import { NewsItem } from "@/lib/api";
 
 type NewsGridProps = {
@@ -12,43 +13,31 @@ type NewsGridProps = {
 const ARTICLES_PER_PAGE = 4;
 
 export function NewsGrid({ articles }: NewsGridProps) {
+  const t = useTranslations("newsPage");
   const [currentPage, setCurrentPage] = useState(1);
-
   const gridRef = useRef<HTMLDivElement>(null);
 
   if (!articles.length) return null;
 
   const totalPages = Math.ceil(articles.length / ARTICLES_PER_PAGE);
-
   const startIndex = (currentPage - 1) * ARTICLES_PER_PAGE;
-  const endIndex = startIndex + ARTICLES_PER_PAGE;
-
-  const currentArticles = articles.slice(startIndex, endIndex);
+  const currentArticles = articles.slice(startIndex, startIndex + ARTICLES_PER_PAGE);
 
   const changePage = (page: number) => {
     setCurrentPage(page);
-
-    gridRef.current?.scrollIntoView({
-      behavior: "smooth",
-      block: "start",
-    });
+    gridRef.current?.scrollIntoView({ behavior: "smooth", block: "start" });
   };
 
   return (
     <>
       <div
         ref={gridRef}
-        className="
-          grid
-          grid-cols-1
-          gap-8
-          md:grid-cols-2
-        "
+        className="grid grid-cols-1 gap-8 md:grid-cols-2"
       >
         {currentArticles.map((article) => (
           <Link
             key={article.id}
-            href={`/news/${article.slug}`}
+            href={{ pathname: "/news/[slug]", params: { slug: article.slug } }}
             className="
               group
               overflow-hidden
@@ -61,7 +50,6 @@ export function NewsGrid({ articles }: NewsGridProps) {
               hover:shadow-lg
             "
           >
-            {/* Image */}
             <div className="relative aspect-[4/3] bg-[#F0EBE3]">
               {article.image && (
                 <Image
@@ -74,7 +62,6 @@ export function NewsGrid({ articles }: NewsGridProps) {
               )}
             </div>
 
-            {/* Content */}
             <div className="p-6">
               <p className="text-xs uppercase tracking-[2px] text-civilia-red">
                 {article.date}
@@ -90,9 +77,8 @@ export function NewsGrid({ articles }: NewsGridProps) {
 
               <div className="mt-6 flex items-center justify-between">
                 <span className="text-sm font-semibold text-civilia-ink">
-                  Read Article
+                  {t("readArticle")}
                 </span>
-
                 <span className="text-2xl transition-transform group-hover:translate-x-1">
                   →
                 </span>
@@ -109,12 +95,11 @@ export function NewsGrid({ articles }: NewsGridProps) {
             disabled={currentPage === 1}
             className="rounded-lg border border-[#DDD] px-4 py-2 transition disabled:cursor-not-allowed disabled:opacity-40"
           >
-            Previous
+            {t("previous")}
           </button>
 
           {Array.from({ length: totalPages }).map((_, index) => {
             const page = index + 1;
-
             return (
               <button
                 key={page}
@@ -135,7 +120,7 @@ export function NewsGrid({ articles }: NewsGridProps) {
             disabled={currentPage === totalPages}
             className="rounded-lg border border-[#DDD] px-4 py-2 transition disabled:cursor-not-allowed disabled:opacity-40"
           >
-            Next
+            {t("next")}
           </button>
         </div>
       )}

@@ -240,7 +240,7 @@ export function LatestProjectSection({
               </div>
 
               <div className="mt-10 flex justify-center md:mt-12 md:justify-end">
-                <CiviliaButton href="/projects">{t("cta")}</CiviliaButton>
+                <CiviliaButton href="/projects/civ-west">{t("cta")}</CiviliaButton>
               </div>
             </>
           ) : (

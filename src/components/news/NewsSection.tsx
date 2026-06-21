@@ -1,5 +1,6 @@
 "use client";
 
+import { useTranslations } from "next-intl";
 import { NewsItem } from "@/lib/api";
 import { FeaturedArticle } from "./FeaturedArticle";
 import { NewsGrid } from "./NewsGrid";
@@ -9,10 +10,12 @@ type Props = {
 };
 
 export function NewsSection({ articles }: Props) {
+  const t = useTranslations("newsPage");
+
   if (!articles.length) {
     return (
       <section className="container-civilia py-24 text-center text-[#888]">
-        No articles found.
+        {t("noArticles")}
       </section>
     );
   }

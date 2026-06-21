@@ -1,8 +1,20 @@
 {
+  "newsPage": {
+    "backToNews": "Back to News",
+    "moreArticles": "More Articles",
+    "viewAll": "View All",
+    "readArticle": "Read Article",
+    "readMore": "Read More",
+    "noArticles": "No articles found.",
+    "latestTitle": "Latest News & Articles",
+    "previous": "Previous",
+    "next": "Next"
+  },
   "nav": {
     "home": "Home",
     "about": "About",
     "projects": "Projects",
+    "civWest": "CIV.WEST",
     "contact": "Contact",
     "news": "News",
     "careers": "Careers"

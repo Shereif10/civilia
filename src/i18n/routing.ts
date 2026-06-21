@@ -23,7 +23,11 @@ export const routing = defineRouting({
     },
     "/news/[slug]": {
       en: "/news/[slug]",
-      ar: "/الأخبار/[slug]",
+      ar: "/news/[slug]",
+    },
+    "/projects/civ-west": {
+      en: "/projects/civ-west",
+      ar: "/المشاريع/civ-west",
     },
     "/careers": {
       en: "/careers",

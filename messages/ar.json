@@ -1,8 +1,20 @@
 {
+  "newsPage": {
+    "backToNews": "العودة إلى الأخبار",
+    "moreArticles": "مقالات أخرى",
+    "viewAll": "عرض الكل",
+    "readArticle": "اقرأ المقال",
+    "readMore": "اقرأ المزيد",
+    "noArticles": "لا توجد مقالات.",
+    "latestTitle": "آخر الأخبار والمقالات",
+    "previous": "السابق",
+    "next": "التالي"
+  },
   "nav": {
     "home": "الرئيسية",
     "about": "من نحن",
     "projects": "المشاريع",
+    "civWest": "CIV.WEST",
     "contact": "تواصل معنا",
     "news": "الأخبار",
     "careers": "الوظائف"

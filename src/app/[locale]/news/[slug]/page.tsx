@@ -6,16 +6,17 @@ import { Footer } from "@/components/layout/Footer";
 
 type Props = {
   params: Promise<{
+    locale: string;
     slug: string;
   }>;
 };
 
 export default async function ArticlePage({ params }: Props) {
-  const { slug } = await params;
+  const { locale, slug } = await params;
 
   const [article, allNews] = await Promise.all([
-    fetchNewsItemBySlug(slug),
-    fetchNewsItems(),
+    fetchNewsItemBySlug(slug, locale),
+    fetchNewsItems(locale),
   ]);
 
   if (!article) notFound();

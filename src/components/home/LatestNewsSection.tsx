@@ -1,6 +1,8 @@
 import Image from "next/image";
+import { useTranslations } from "next-intl";
 import { SectionTitle } from "@/components/ui/SectionTitle";
 import { CiviliaButton } from "@/components/ui/CiviliaButton";
+import { Link } from "@/i18n/navigation";
 import { NewsItem } from "@/lib/api";
 
 type Props = {
@@ -8,12 +10,14 @@ type Props = {
 };
 
 export function LatestNewsSection({ articles }: Props) {
+  const t = useTranslations("newsPage");
+
   if (!articles.length) return null;
 
   return (
     <section id="news" className="bg-civilia-paper py-16 md:py-24">
       <SectionTitle className="mx-auto w-full">
-        Latest News &amp; Articles
+        {t("latestTitle")}
       </SectionTitle>
 
       <div
@@ -42,7 +46,7 @@ export function LatestNewsSection({ articles }: Props) {
               </h3>
               <div className="flex justify-end">
                 <CiviliaButton href={`/news/${item.slug}`}>
-                  Read More
+                  {t("readMore")}
                 </CiviliaButton>
               </div>
             </div>

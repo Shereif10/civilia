@@ -1,8 +1,9 @@
 "use client";
 
 import Image from "next/image";
-import Link from "next/link";
 import { ArrowLeft, ArrowRight } from "lucide-react";
+import { useTranslations } from "next-intl";
+import { Link } from "@/i18n/navigation";
 import { NewsItem } from "@/lib/api";
 
 type Props = {
@@ -11,6 +12,8 @@ type Props = {
 };
 
 export function ArticleDetails({ article, relatedArticles }: Props) {
+  const t = useTranslations("newsPage");
+
   if (!article) return null;
 
   return (
@@ -22,7 +25,7 @@ export function ArticleDetails({ article, relatedArticles }: Props) {
           className="inline-flex items-center gap-2 text-civilia-red font-medium hover:opacity-70 transition"
         >
           <ArrowLeft size={18} />
-          Back to News
+          {t("backToNews")}
         </Link>
       </div>
 
@@ -116,7 +119,7 @@ export function ArticleDetails({ article, relatedArticles }: Props) {
                 "
               >
                 <ArrowLeft size={18} />
-                Back to News
+                {t("backToNews")}
               </Link>
 
               <div className="flex items-center gap-3 text-[#888]">
@@ -133,14 +136,14 @@ export function ArticleDetails({ article, relatedArticles }: Props) {
           <div className="container-civilia">
             <div className="mb-14 flex items-center justify-between">
               <h2 className="text-[42px] font-semibold text-civilia-ink">
-                More Articles
+                {t("moreArticles")}
               </h2>
 
               <Link
                 href="/news"
                 className="flex items-center gap-2 font-medium text-civilia-red"
               >
-                View All
+                {t("viewAll")}
                 <ArrowRight size={18} />
               </Link>
             </div>
@@ -149,7 +152,7 @@ export function ArticleDetails({ article, relatedArticles }: Props) {
               {relatedArticles.map((item) => (
                 <Link
                   key={item.id}
-                  href={`/news/${item.slug}`}
+                  href={{ pathname: "/news/[slug]", params: { slug: item.slug } }}
                   className="
                     group
                     overflow-hidden
@@ -206,16 +209,9 @@ export function ArticleDetails({ article, relatedArticles }: Props) {
                       {item.excerpt}
                     </p>
 
-                    <div
-                      className="
-                        mt-8
-                        flex
-                        items-center
-                        justify-between
-                      "
-                    >
+                    <div className="mt-8 flex items-center justify-between">
                       <span className="font-medium text-civilia-red">
-                        Read Article
+                        {t("readArticle")}
                       </span>
 
                       <ArrowRight
