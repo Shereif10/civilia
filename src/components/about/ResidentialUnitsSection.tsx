@@ -16,9 +16,9 @@ const residentialIcons = [
   "/assets/nasr-city.svg",
   "/assets/maadi.svg",
   "/assets/khamayel.svg",
-  "/assets/First.svg",
+  "/assets/first.svg",
   "/assets/khamayel.svg",
-  "/assets/Capital.svg",
+  "/assets/capital.svg",
   "/assets/khamayel.svg",
 ];
 

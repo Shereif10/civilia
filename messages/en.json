@@ -315,14 +315,19 @@
     "stats": [
       {
         "value": "38,000",
+        "suffix": "",
+
         "label": "Square Meters"
       },
       {
-        "value": "77%",
+        "value": "77",
+        "suffix":"%",
         "label": "Landscape Area"
       },
       {
-        "value": "23%",
+        "value": "23",
+        "suffix": "%",
+
         "label": "Building Footprint"
       }
     ]
@@ -523,11 +528,11 @@
         "label": "Customer Support"
       },
       {
-        "value": "20+",
+        "value": "20 +",
         "label": "Years Experience"
       },
       {
-        "value": "100%",
+        "value": "100 %",
         "label": "Client Focused"
       }
     ]

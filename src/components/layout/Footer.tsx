@@ -240,11 +240,11 @@ export function Footer() {
                 className="
                   mt-3
                   max-w-[285px]
-                  text-xs
+                  text-s
                   leading-[5]
                   text-[#8e8e8e]
 
-                  md:text-[10px]
+                  md:text-[12px]
                   md:leading-[1.5]
                 "
               >

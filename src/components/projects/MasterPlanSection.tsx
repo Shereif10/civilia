@@ -26,17 +26,16 @@ useEffect(() => {
     xPercent: 0,
   });
 
-  const tl = gsap.timeline({
-    scrollTrigger: {
-      trigger: sectionRef.current,
-      start: "top 70%",
-      once: true,
-    },
+  gsap.set(fillsRef.current, {
+    scaleY: 0,
+    transformOrigin: "bottom",
   });
 
   const activeBoxes = fillsRef.current
     .slice(totalBoxes - filledBoxes)
     .reverse();
+
+  const tl = gsap.timeline({ paused: true });
 
   tl.to(
     activeBoxes,
@@ -60,8 +59,35 @@ useEffect(() => {
     },
     0,
   );
+
+  const trigger = ScrollTrigger.create({
+    trigger: sectionRef.current,
+    start: "top 70%",
+    end: "bottom top",
+
+    onEnter: () => {
+      tl.restart();
+    },
+
+    onEnterBack: () => {
+      tl.restart();
+    },
+
+    onLeave: () => {
+      tl.pause(0);
+      gsap.set(overlayRef.current, { xPercent: 0 });
+      gsap.set(fillsRef.current, { scaleY: 0 });
+    },
+
+    onLeaveBack: () => {
+      tl.pause(0);
+      gsap.set(overlayRef.current, { xPercent: 0 });
+      gsap.set(fillsRef.current, { scaleY: 0 });
+    },
+  });
+
   return () => {
-    tl.scrollTrigger?.kill();
+    trigger.kill();
     tl.kill();
   };
 }, [filledBoxes]);
@@ -83,7 +109,7 @@ useEffect(() => {
             className="
     mx-auto
     mt-8
-    max-w-[900px]
+    
     text-center
     text-[18px]
     leading-[1.7]

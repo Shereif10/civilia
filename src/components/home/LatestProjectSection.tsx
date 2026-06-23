@@ -228,7 +228,7 @@ export function LatestProjectSection({
               >
                 {projectStats.map((item, index) => (
                   <div key={item.label}>
-                    <p className="text-[28px] font-[georgia] font-semibold leading-none text-civilia-red sm:text-[30px] md:text-[32px]">
+                    <p className="text-[28px] font-semibold leading-none text-civilia-red sm:text-[30px] md:text-[32px]">
                       {item.value}
                     </p>
 

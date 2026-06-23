@@ -3,7 +3,7 @@
 import Image from "next/image";
 import { useLocale, useTranslations } from "next-intl";
 
-const icons = ["/assets/vision-icon.svg", "/assets/mission-icon.svg"];
+const icons = ["/assets/vision.svg", "/assets/mission.svg"];
 
 type VisionMissionItem = {
   title: string;

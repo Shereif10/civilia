@@ -138,7 +138,7 @@ export default function ContactPage() {
         <ContactHero />
         <ContactIntro />
         <ContactDetailsSection />
-        <QuestionsSection />
+        {/* <QuestionsSection /> */}
       </main>
       <Footer />
       <script
