@@ -14,6 +14,7 @@ import { AboutDeveloperSection } from "@/components/projects/AboutDeveloperSecti
 import { QuestionsSection } from "@/components/home/QuestionsSection";
 import { ReusableHeroSection } from "@/components/home/ReusableHeroSection";
 import { LegacyProjectsSection } from "@/components/projects/LegacyProjectsSection";
+import { PartnersSection } from "@/components/projects/PartnersSection";
 
 const siteUrl = "https://civilia-developments.com";
 
@@ -151,6 +152,7 @@ export default function CivWestPage() {
         <PrimeLocationSection />
         <JourneyCta variant="project" />
         <MasterPlanSection />
+        <PartnersSection/>
         <PaymentPlanSection />
         <WhyChooseCivWestSection />
         <AboutDeveloperSection />

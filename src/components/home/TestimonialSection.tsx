@@ -150,7 +150,7 @@ export function TestimonialSection() {
               md:mt-10
             "
           >
-            <cite
+            {/* <cite
               className="
                 text-[20px]
                 font-semibold
@@ -177,7 +177,7 @@ export function TestimonialSection() {
               "
             >
               {t("role")}
-            </span>
+            </span> */}
           </footer>
         </blockquote>
       </div>

@@ -114,7 +114,9 @@ export function Footer() {
                   {t("tagline")}
                 </h2>
 
-                <p className="mt-1 max-w-[380px] text-base leading-[1.5] text-civilia-red md:text-lg">
+                <p
+                  className="mt-1 max-w-[380px] text-base leading-[1.25] text-civilia-red md:text-lg md:leading-[1.25]"
+                >
                   {t("description")}
                 </p>
               </div>
@@ -129,7 +131,7 @@ export function Footer() {
                 17703
               </p>
 
-              <p className="max-w-[216px] text-xs leading-[1.5] text-[#d9d9d9]">
+              <p className="max-w-[216px] text-xs leading-[1.5] text-[#d9d9d9] md:leading-[1.5]">
                 {t("phoneAvailability")}
               </p>
             </div>
@@ -239,11 +241,11 @@ export function Footer() {
                   mt-3
                   max-w-[285px]
                   text-xs
-                  leading-[1.5]
+                  leading-[5]
                   text-[#8e8e8e]
 
                   md:text-[10px]
-                  md:leading-[1.25]
+                  md:leading-[1.5]
                 "
               >
                 {t("stayUpdatedDesc")}

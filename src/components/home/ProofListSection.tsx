@@ -71,19 +71,12 @@ export function ProofListSection() {
                 flex
                 w-full
                 items-center
-                gap-3
+                gap-5
 
-                sm:gap-4
+                sm:gap-6
               "
             >
-              <Image
-                src="/assets/list-icon.svg"
-                alt=""
-                width={48}
-                height={48}
-                className="shrink-0"
-              />
-
+              <div className="h-3 w-3 rounded-full bg-civilia-red shrink-0" />
               <p
                 className="
                   text-base

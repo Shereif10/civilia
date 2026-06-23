@@ -1,4 +1,13 @@
 {
+  "masterPlan": {
+    "title": "Master Plan",
+    "description": "Designed in collaboration with ADC Architecture & Design Consultants, every detail has been carefully considered—from the road network and landscaped spaces to the residential buildings and amenities—creating a community where every element enhances everyday living.",
+    "progressText": "The first stage has ended",
+    "imageAlt": "CIV West Master Plan"
+  },
+  "partners": {
+    "title": "Our Parteners"
+  },
   "newsPage": {
     "backToNews": "Back to News",
     "moreArticles": "More Articles",
@@ -6,7 +15,7 @@
     "readArticle": "Read Article",
     "readMore": "Read More",
     "noArticles": "No articles found.",
-    "latestTitle": "Latest News & Articles",
+    "latestTitle": "Latest News ",
     "previous": "Previous",
     "next": "Next"
   },
@@ -47,9 +56,9 @@
     "location": "Sheikh Zayed",
     "cta": "View Project Details",
     "stats": {
-      "units": "Residential Units",
-      "experience": "Years of Experience",
-      "project": "Project"
+      "units": "Square Meters",
+      "experience": "Landscape Area",
+      "project": "Building Footprint"
     }
   },
   "whyChoose": {
@@ -163,7 +172,7 @@
     "quickLinks": "Quick Links",
     "links": {
       "home": "Home",
-      "about": "About Civilia",
+      "about": "About civilia",
       "projects": "Our Projects",
       "news": "News",
       "careers": "Careers",
@@ -178,7 +187,7 @@
   },
   "reusableHero": {
     "about": {
-      "title": ["About", "Civilia"]
+      "title": ["ABOUT", "CIVILIA"]
     },
     "projects": {
       "title": ["CIV WEST – Modern Living,", "Engineered Around You"]
@@ -191,7 +200,8 @@
       "title": ["WE ARE", "HIRING"],
       "subtitle": "Build the Future of Living",
       "description": "Join the visionaries redefining Egypt's architectural landscape through precision, integrity, and sustainable luxury."
-    }},
+    }
+  },
   "ourStory": {
     "title": "Our Story",
     "redParagraph": "CIVILIA Developments",
@@ -362,10 +372,7 @@
       }
     ]
   },
-  "masterPlan": {
-    "title": "Master Plan",
-    "description": "In collaboration with ADC – Architecture and Design Consultant, we have carefully considered every aspect of modern living, from the layout of streets and parks to the design of homes and amenities, creating a community where every detail enhances your lifestyle."
-  },
+  
   "paymentPlan": {
     "title": "Payment Plan",
     "plans": [
@@ -419,14 +426,6 @@
       {
         "title": "Trusted Developer",
         "description": "CIVILIA Developments with more than 20 years of construction expertise."
-      },
-      {
-        "title": "Master-Planned by ADC",
-        "description": "Streets, parks, and residences carefully designed with modern architecture and panoramic views."
-      },
-      {
-        "title": "Delta Block Construction",
-        "description": "Premium Delta Sand Brick providing structural strength, thermal efficiency, and sound insulation."
       }
     ]
   },

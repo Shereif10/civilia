@@ -140,7 +140,7 @@ export default function CareersPage() {
         <JoinOurTeamSection />
         <WhyWorkWithUsSection />
         <BenefitsSection />
-        <QuestionsSection />
+        {/* <QuestionsSection /> */}
         <TestimonialSection />
         <JourneyCta variant="careers" />
       </main>

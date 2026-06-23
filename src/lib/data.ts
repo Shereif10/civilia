@@ -18,9 +18,9 @@ export const stats = [
 ];
 
 export const projectStats = [
-  { value: "748 +", label: "Residential Units" },
-  { value: "2,244 +", label: "Years of Experience" },
-  { value: "24 +", label: "Project" },
+  { value: "38,000", label: "Square Meters" },
+  { value: "77%", label: "Landscape Area" },
+  { value: "23%", label: "Building Footprint" },
 ];
 
 export const reasons = [

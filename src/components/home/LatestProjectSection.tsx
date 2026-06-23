@@ -15,8 +15,8 @@ const projects = [
   { src: "/assets/project-2.webp", alt: "Project 2" },
   { src: "/assets/project-3.webp", alt: "Project 3" },
   { src: "/assets/project-4.webp", alt: "Project 4" },
-  { src: "/assets/project-5.webp", alt: "Project 5" },
-  { src: "/assets/project-6.webp", alt: "Project 6" },
+  // { src: "/assets/project-5.webp", alt: "Project 5" },
+  // { src: "/assets/project-6.webp", alt: "Project 6" },
 ];
 
 const projectStatKeys = ["units", "experience", "project"] as const;
@@ -217,7 +217,7 @@ export function LatestProjectSection({
                 {t("description")}
               </p>
 
-              <div className="mx-auto mt-6 flex max-w-[715px] flex-col items-center justify-between gap-3 text-center text-lg leading-[1.4] text-civilia-red sm:text-xl md:flex-row md:text-2xl md:leading-[1.25]">
+              <div className="mx-auto mt-6 flex max-w-[715px] flex-col items-center justify-between gap-3 text-center text-lg leading-[1.4] font-bold sm:text-xl md:flex-row md:text-2xl md:leading-[1.25]">
                 <span>{t("tagline")}</span>
                 <span>{t("location")}</span>
               </div>
@@ -228,7 +228,7 @@ export function LatestProjectSection({
               >
                 {projectStats.map((item, index) => (
                   <div key={item.label}>
-                    <p className="text-[28px] font-semibold leading-none text-civilia-red sm:text-[30px] md:text-[32px]">
+                    <p className="text-[28px] font-[georgia] font-semibold leading-none text-civilia-red sm:text-[30px] md:text-[32px]">
                       {item.value}
                     </p>
 
