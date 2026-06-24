@@ -158,7 +158,7 @@ export function Footer() {
                 leading-[1.5]
 
                 md:mt-6
-                md:text-[22px]
+                md:text-[21px]
               "
             >
               {quickLinks.map((link) => {
