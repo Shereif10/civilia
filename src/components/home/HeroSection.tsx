@@ -12,6 +12,7 @@ export function HeroSection() {
   const t = useTranslations("hero");
   const locale = useLocale();
   const isArabic = locale === "ar";
+
   const wordmarkRef = useRef<HTMLDivElement>(null);
   const shineRef = useRef<HTMLDivElement>(null);
 
@@ -52,18 +53,18 @@ export function HeroSection() {
       <div
         ref={wordmarkRef}
         className="
-    absolute
-    left-1/2
-    top-[223px]
-    hidden
-    w-[80vw]
-    max-w-[1024px]
-    -translate-x-1/2
-    overflow-hidden
-    md:block
-    2xl:max-w-[1280px]
-    z-10 
-  "
+          absolute
+          left-1/2
+          top-[223px]
+          z-20
+          hidden
+          w-[80vw]
+          max-w-[1024px]
+          -translate-x-1/2
+          overflow-hidden
+          md:block
+          2xl:max-w-[1280px]
+        "
       >
         <Image
           src="/assets/civilia-wordmark.svg"
@@ -87,13 +88,24 @@ export function HeroSection() {
 
       {/* Hero Image */}
       <div className="absolute inset-x-0 bottom-0 top-[128px] overflow-hidden md:top-[355px]">
+        {/* Mobile */}
         <Image
           src="/assets/hero.webp"
           alt="CIVILIA landmark residential development"
           fill
           priority
           sizes="100vw"
-          className="object-cover object-center"
+          className="object-cover object-center md:hidden"
+        />
+
+        {/* Desktop */}
+        <Image
+          src="/assets/hero.webp"
+          alt="CIVILIA landmark residential development"
+          fill
+          priority
+          sizes="100vw"
+          className="hidden object-fill object-center md:block"
         />
       </div>
 
@@ -128,7 +140,11 @@ export function HeroSection() {
               md:whitespace-nowrap
               md:text-[56px]
 
-              ${isArabic ? "tracking-normal" : "tracking-[2px] sm:tracking-[3px] md:tracking-[5.6px]"}
+              ${
+                isArabic
+                  ? "tracking-normal"
+                  : "tracking-[2px] sm:tracking-[3px] md:tracking-[5.6px]"
+              }
             `}
           >
             <span className="block text-[24px] font-light sm:text-[30px] md:text-[40px]">
