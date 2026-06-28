@@ -7,9 +7,9 @@ import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 
 const slides = [
-  { image: "/assets/slide-1.webp" },
-  { image: "/assets/slide-2.webp" },
-  { image: "/assets/slide-3.webp" },
+  { image: "/assets/slide1.jpeg" },
+  { image: "/assets/slide2.jpeg" },
+  { image: "/assets/slide3.jpeg" },
 ];
 
 export function LifestyleGallerySection() {

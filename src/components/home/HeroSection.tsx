@@ -52,17 +52,18 @@ export function HeroSection() {
       <div
         ref={wordmarkRef}
         className="
-          absolute
-          left-1/2
-          top-[223px]
-          hidden
-          w-[80vw]
-          max-w-[1024px]
-          -translate-x-1/2
-          overflow-hidden
-          md:block
-          2xl:max-w-[1280px]
-        "
+    absolute
+    left-1/2
+    top-[223px]
+    hidden
+    w-[80vw]
+    max-w-[1024px]
+    -translate-x-1/2
+    overflow-hidden
+    md:block
+    2xl:max-w-[1280px]
+    z-10 
+  "
       >
         <Image
           src="/assets/civilia-wordmark.svg"
@@ -92,7 +93,7 @@ export function HeroSection() {
           fill
           priority
           sizes="100vw"
-          className="object-fill object-center"
+          className="object-cover object-center"
         />
       </div>
 

@@ -92,20 +92,21 @@ export function Footer() {
             <div className="flex flex-col gap-4">
               <div
                 className="
-                  footer-logo
-                  relative
-                  h-[40px]
-                  w-[200px]
+    footer-logo
+    relative
+    h-[40px]
+    w-[200px]
 
-                  sm:h-[49px]
-                  sm:w-[244px]
-                "
+    sm:h-[49px]
+    sm:w-[244px]
+  "
               >
                 <Image
                   src="/assets/footer-logo.svg"
                   alt="CIVILIA Developments"
                   fill
                   sizes="244px"
+                  className="!w-auto !max-w-none object-contain"
                 />
               </div>
 
@@ -114,9 +115,7 @@ export function Footer() {
                   {t("tagline")}
                 </h2>
 
-                <p
-                  className="mt-1 max-w-[380px] text-base leading-[1.25] text-civilia-red md:text-lg md:leading-[1.25]"
-                >
+                <p className="mt-1 max-w-[380px] text-base leading-[1.25] text-civilia-red md:text-lg md:leading-[1.25]">
                   {t("description")}
                 </p>
               </div>
