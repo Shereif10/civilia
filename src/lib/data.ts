@@ -19,8 +19,8 @@ export const stats = [
 
 export const projectStats = [
   { value: "38,000", label: "Square Meters" },
-  { value: "77 %", label: "Landscape Area" },
-  { value: "23 %", label: "Building Footprint" },
+  { value: "77%", label: "Landscape Area" },
+  { value: "23%", label: "Building Footprint" },
 ];
 
 export const reasons = [
