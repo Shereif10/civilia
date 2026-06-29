@@ -71,7 +71,6 @@ export function HeroSection() {
           alt="CIVILIA Developments"
           width={1024}
           height={192}
-          priority
           className="h-auto w-full"
         />
 
@@ -88,24 +87,13 @@ export function HeroSection() {
 
       {/* Hero Image */}
       <div className="absolute inset-x-0 bottom-0 top-[128px] overflow-hidden md:top-[355px]">
-        {/* Mobile */}
         <Image
           src="/assets/hero.webp"
           alt="CIVILIA landmark residential development"
           fill
           priority
           sizes="100vw"
-          className="object-cover object-center md:hidden"
-        />
-
-        {/* Desktop */}
-        <Image
-          src="/assets/hero.webp"
-          alt="CIVILIA landmark residential development"
-          fill
-          priority
-          sizes="100vw"
-          className="hidden object-fill object-center md:block"
+          className="object-cover object-center md:object-fill"
         />
       </div>
 
