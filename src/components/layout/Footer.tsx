@@ -130,7 +130,7 @@ export function Footer() {
                 17703
               </p>
 
-              <p className="max-w-[216px] text-xs leading-[1.5] text-[#d9d9d9] md:leading-[1.5]">
+              <p className="max-w-[320px] text-[16px] leading-[1.5] text-[#8e8e8e] md:leading-[1.5]">
                 {t("phoneAvailability")}
               </p>
             </div>
