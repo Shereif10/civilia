@@ -36,7 +36,7 @@
 
 @font-face {
   font-family: "Georgetown";
-  src: url("/fonts/GEORGETOWN-REGULAR1.TTF") format("truetype");
+  src: url("/fonts/GEORGETOWN-REGULAR2.TTF") format("truetype");
   font-weight: 400;
   font-style: normal;
   font-display: swap;
@@ -44,7 +44,7 @@
 
 @font-face {
   font-family: "Georgetown";
-  src: url("/fonts/GEORGETOWN-MEDIUM1.TTF") format("truetype");
+  src: url("/fonts/GEORGETOWN-MEDIUM2.TTF") format("truetype");
   font-weight: 500;
   font-style: normal;
   font-display: swap;
@@ -52,7 +52,7 @@
 
 @font-face {
   font-family: "Georgetown";
-  src: url("/fonts/GEORGETOWN-SEMIBOLD1.TTF") format("truetype");
+  src: url("/fonts/GEORGETOWN-SEMIBOLD2.TTF") format("truetype");
   font-weight: 600;
   font-style: normal;
   font-display: swap;
