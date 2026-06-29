@@ -8,7 +8,6 @@ import { useForm } from "react-hook-form";
 import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
 
-import { motion } from "framer-motion";
 import { Loader2 } from "lucide-react";
 
 type SubmitStatus = "idle" | "loading" | "success" | "error";
@@ -366,11 +365,8 @@ export function JoinOurTeamSection() {
       </div>
 
       {showPopup && (
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.2 }}
-          className={`fixed bottom-6 left-1/2 z-[9999] -translate-x-1/2 rounded-2xl border px-6 py-4 text-sm font-medium shadow-2xl backdrop-blur-xl ${
+        <div
+          className={`animate-popup-in fixed bottom-6 left-1/2 z-[9999] -translate-x-1/2 rounded-2xl border px-6 py-4 text-sm font-medium shadow-2xl backdrop-blur-xl ${
             submitStatus === "success"
               ? "border-green-400/20 bg-green-500/10 text-green-300"
               : "border-red-400/20 bg-red-500/10 text-red-300"
@@ -379,7 +375,7 @@ export function JoinOurTeamSection() {
           {submitStatus === "success"
             ? t("messages.success")
             : t("messages.error")}
-        </motion.div>
+        </div>
       )}
     </section>
   );

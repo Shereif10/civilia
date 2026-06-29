@@ -1,9 +1,17 @@
 import type { Metadata } from "next";
+import { IBM_Plex_Sans_Arabic } from "next/font/google";
 import { NextIntlClientProvider, hasLocale } from "next-intl";
 import { getMessages } from "next-intl/server";
 import { notFound } from "next/navigation";
 import { routing } from "@/i18n/routing";
 import "../globals.css";
+
+const ibmPlexArabic = IBM_Plex_Sans_Arabic({
+  subsets: ["arabic", "latin"],
+  weight: ["300", "400", "500", "600", "700"],
+  display: "swap",
+  variable: "--font-ibm-plex-arabic",
+});
 
 const siteUrl = "https://civilia-developments.com";
 
@@ -131,7 +139,7 @@ export default async function LocaleLayout({
     <html
       lang={locale}
       dir={isArabic ? "rtl" : "ltr"}
-      className="font-sans"
+      className={`font-sans ${ibmPlexArabic.variable}`}
     >
       <head>
         <script

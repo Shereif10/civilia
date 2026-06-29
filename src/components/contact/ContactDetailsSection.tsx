@@ -7,7 +7,6 @@ import { useForm } from "react-hook-form";
 import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
 
-import { motion } from "framer-motion";
 import { Send, Loader2 } from "lucide-react";
 
 import { Phone, Mail, MapPin } from "lucide-react";
@@ -436,23 +435,8 @@ export function ContactDetailsSection() {
 
       {/* Popup */}
       {showPopup && (
-        <motion.div
-          initial={{
-            opacity: 0,
-            y: 20,
-          }}
-          animate={{
-            opacity: 1,
-            y: 0,
-          }}
-          exit={{
-            opacity: 0,
-            y: 20,
-          }}
-          transition={{
-            duration: 0.2,
-          }}
-          className={`fixed bottom-6 left-1/2 z-[9999] -translate-x-1/2 rounded-2xl border px-5 py-3 text-sm font-medium shadow-2xl backdrop-blur-xl sm:px-6 sm:py-4 ${
+        <div
+          className={`animate-popup-in fixed bottom-6 left-1/2 z-[9999] -translate-x-1/2 rounded-2xl border px-5 py-3 text-sm font-medium shadow-2xl backdrop-blur-xl sm:px-6 sm:py-4 ${
             submitStatus === "success"
               ? "border-green-400/20 bg-green-500/10 text-green-600"
               : "border-red-400/20 bg-red-500/10 text-red-600"
@@ -461,7 +445,7 @@ export function ContactDetailsSection() {
           {submitStatus === "success"
             ? t("messages.success")
             : t("messages.error")}
-        </motion.div>
+        </div>
       )}
     </section>
   );
