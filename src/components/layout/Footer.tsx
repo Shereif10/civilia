@@ -115,9 +115,9 @@ export function Footer() {
                   {t("tagline")}
                 </h2>
 
-                <p className="mt-1 max-w-[380px] text-base leading-[1.25] text-civilia-red md:text-lg md:leading-[1.25]">
+                {/* <p className="mt-1 max-w-[380px] text-base leading-[1.25] text-civilia-red md:text-lg md:leading-[1.25]">
                   {t("description")}
-                </p>
+                </p> */}
               </div>
             </div>
 
@@ -239,11 +239,11 @@ export function Footer() {
                 className="
                   mt-3
                   max-w-[285px]
-                  text-s
-                  leading-[5]
+                  text-[16px]
+                  leading-normal
                   text-[#8e8e8e]
 
-                  md:text-[12px]
+                  md:text-[16px]
                   md:leading-[1.5]
                 "
               >

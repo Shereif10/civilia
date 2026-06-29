@@ -16,7 +16,7 @@ const heroStyles = {
       "bg-[linear-gradient(90deg,rgba(24,24,24,0.48)_0%,rgba(24,24,24,0.18)_38%,rgba(24,24,24,0)_72%)]",
   },
   projects: {
-    image: "/assets/new-projects-hero.webp",
+    image: "/assets/new-projects-hero2.png",
     roundedBottom: true,
     overlay:
       "bg-[linear-gradient(262.09deg,rgba(255,255,255,0)_-0.07%,rgba(0,0,0,0.5)_100%)]",
