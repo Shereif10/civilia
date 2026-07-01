@@ -9,7 +9,7 @@ export function PartnersSection() {
   const partners = [
     {
       name: "DJ",
-      logo: "/assets/dj.png",
+      logo: "/assets/dj4.png",
       width: 90,
       height: 90,
     },
