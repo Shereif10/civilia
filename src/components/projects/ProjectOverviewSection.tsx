@@ -45,9 +45,6 @@ export function ProjectOverviewSection() {
                   md:text-[26px]
                 "
               >
-                <span className="font-semibold text-[#031286]">
-                  {t("highlight")}
-                </span>{" "}
                 {t("paragraph1")}
               </p>
 
